@@ -1,132 +1,170 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>السيرة الذاتية - محمد العتيبي</title>
+  <title>Mohammed Alotaibi - CV</title>
   <style>
     body {
-      font-family: 'Tahoma', 'Arial', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
       margin: 0;
       padding: 20px;
-      direction: rtl;
       line-height: 1.6;
     }
+
     .container {
       max-width: 850px;
-      margin: auto;
-      background-color: #1e1e1e;
+      margin: 0 auto;
+      background-color: #fff;
       padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    h1 {
-      color: #90caf9;
-      margin-bottom: 10px;
-      font-size: 2.2rem;
-      border-bottom: 2px solid #2d2d2d;
-      padding-bottom: 10px;
-    }
-    h2 {
-      color: #90caf9;
-      margin-top: 25px;
-      font-size: 1.5rem;
-      border-right: 4px solid #64b5f6;
-      padding-right: 15px;
-    }
+
     .header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 20px;
     }
+
+    h1 {
+      color: #2c3e50;
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    .title {
+      color: #3498db;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+
     .contact-info {
-      text-align: left;
-      direction: ltr;
+      text-align: right;
     }
-    a {
-      color: #64b5f6;
-      text-decoration: none;
-      transition: color 0.3s;
+
+    .contact-info p {
+      margin: 5px 0;
     }
-    a:hover {
-      color: #bbdefb;
-      text-decoration: underline;
+
+    h2 {
+      color: #2c3e50;
+      margin-top: 30px;
+      font-size: 1.5rem;
+      border-left: 4px solid #3498db;
+      padding-left: 15px;
     }
+
     .section {
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
-    ul {
-      padding-right: 25px;
-      list-style-type: square;
-    }
-    li {
-      margin-bottom: 10px;
-      position: relative;
-      right: -5px;
-    }
+
     .job-title {
       font-weight: bold;
-      color: #e0e0e0;
+      font-size: 1.1rem;
+      color: #2c3e50;
       margin-bottom: 5px;
     }
+
+    .company {
+      font-weight: bold;
+      color: #3498db;
+    }
+
     .job-duration {
-      color: #aaa;
+      color: #7f8c8d;
       font-size: 0.9rem;
       margin-bottom: 10px;
       display: block;
     }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
     .skills-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 20px;
     }
+
     .skill-category {
       flex: 1;
       min-width: 200px;
     }
+
     .skill-category h3 {
-      color: #bbdefb;
+      color: #3498db;
       font-size: 1.1rem;
       margin-bottom: 10px;
     }
-    .education-item {
+
+    .project-item {
       margin-bottom: 15px;
     }
-    .education-degree {
+
+    .project-title {
       font-weight: bold;
+      color: #2c3e50;
     }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
     .social-links {
       display: flex;
-      flex-wrap: wrap;
       gap: 15px;
       margin-top: 10px;
     }
+
     .social-links a {
       display: flex;
       align-items: center;
       gap: 5px;
-      background-color: #2d2d2d;
+      background-color: #ecf0f1;
       padding: 8px 15px;
       border-radius: 5px;
+      transition: background-color 0.3s;
     }
+
     .social-links a:hover {
-      background-color: #3d3d3d;
+      background-color: #d6eaf8;
+      text-decoration: none;
     }
+
     @media (max-width: 768px) {
       .container {
         padding: 25px;
       }
+      
       .header {
         flex-direction: column;
-        align-items: flex-start;
       }
+      
       .contact-info {
+        text-align: left;
         margin-top: 15px;
-        text-align: right;
-        direction: rtl;
+      }
+      
+      .skills-container {
+        flex-direction: column;
+        gap: 15px;
       }
     }
   </style>
@@ -135,120 +173,179 @@
   <div class="container">
     <div class="header">
       <div>
-        <h1>محمد العتيبي</h1>
-        <p>Sr. Application Development & Integration</p>
+        <h1>Mohammed Alotaibi</h1>
+        <p class="title">Senior Application Development and Integration Specialist</p>
       </div>
       <div class="contact-info">
         <p>📧 motaibi1989@gmail.com</p>
         <p>📱 +966 56 979 4545</p>
+        <p>🔗 <a href="https://www.linkedin.com/in/motaibi1989" target="_blank">linkedin.com/in/motaibi1989</a></p>
       </div>
     </div>
+
     <div class="section">
-      <h2>الملخص المهني</h2>
-      <p>خبير تقني يتمتع بخبرة تزيد عن 10 سنوات في تقديم حلول تقنية مخصصة، مع خلفية قوية في الأمن السيبراني والحوسبة السحابية، وإدارة الأنظمة، خاصة بيئة Linux وWindows وMAXIMO وAMOS. معروف بدعم العملاء المتميز وحل المشكلات وتحسين الكفاءة المؤسسية.</p>
+      <h2>Professional Summary</h2>
+      <p>
+        Highly skilled IT professional with 10+ years of experience in delivering tailored technology solutions. 
+        Seeking a role at an innovative IT company where I can apply my cybersecurity and cloud computing expertise 
+        to solve complex client problems. Proven track record in system integration, application development, 
+        and IT infrastructure management.
+      </p>
     </div>
+
     <div class="section">
-      <h2>الخبرات العملية</h2>
-      <div class="job-title">Sr. Application Development and Integration</div>
-      <span class="job-duration">Saudia Technic | 2022 - 2024</span>
+      <h2>Professional Experience</h2>
+      
+      <div class="job-title">Senior Application Development and Integration Specialist</div>
+      <span class="company">Saudia Technic (ST)</span>
+      <span class="job-duration">2022 - 2024</span>
       <ul>
-        <li>تحويل العمليات الورقية إلى نظام رقمي بالكامل لرفع الكفاءة وتقليل الأخطاء.</li>
+        <li>Spearheaded the transition to a paperless system, enhancing workflow efficiency and approval process accuracy</li>
+        <li>Developed integrated solutions that reduced manual data entry by 60%</li>
+        <li>Collaborated with cross-functional teams to implement enterprise-wide digital transformation initiatives</li>
       </ul>
-      <div class="job-title">AMOS Admin Specialist</div>
-      <span class="job-duration">SAEI | 2020 - 2022</span>
+      
+      <div class="job-title">AMOS System Administrator Specialist</div>
+      <span class="company">Saudia Aerospace Engineering Industries (SAEI)</span>
+      <span class="job-duration">2020 - 2022</span>
       <ul>
-        <li>تنفيذ AMOS على macOS مع دعم عملاء Linux وتحسين أداء الأجهزة ونظام البدء.</li>
+        <li>Successfully implemented AMOS on MacOS with Linux client support</li>
+        <li>Optimized barcode and NFC device configurations, improving scanning efficiency by 40%</li>
+        <li>Reduced system startup time from 45 seconds to just 5 seconds through performance tuning</li>
       </ul>
+      
       <div class="job-title">Data Integration Specialist</div>
-      <span class="job-duration">SAEI | 2018 - 2020</span>
+      <span class="company">Saudia Aerospace Engineering Industries (SAEI)</span>
+      <span class="job-duration">2018 - 2020</span>
       <ul>
-        <li>برمجة نظام تحويل بيانات Excel إلى XML وربطها بأنظمة الأوامر تلقائيًا.</li>
+        <li>Developed integration strategies using XML, MQ, and JSON for seamless AMOS integration</li>
+        <li>Created an Excel-to-XML conversion program for Work Orders, reducing processing time by 75%</li>
+        <li>Automated data transfer and analysis processes, improving system performance by 30%</li>
       </ul>
-      <div class="job-title">Programmer & System Admin</div>
-      <span class="job-duration">SAEI | 2017 - 2018</span>
+      
+      <div class="job-title">Programmer & Systems Administrator</div>
+      <span class="company">Saudia Aerospace Engineering Industries (SAEI)</span>
+      <span class="job-duration">2017 - 2018</span>
       <ul>
-        <li>تطوير تقارير MAXIMO وبرامج GUI لاستخراج البيانات.</li>
+        <li>Developed a Java program for automated MAXIMO system status reports</li>
+        <li>Created a GUI tool for simplified data extraction from databases</li>
+        <li>Reduced report generation time from 2 hours to 15 minutes through automation</li>
       </ul>
+      
       <div class="job-title">Systems Administrator</div>
-      <span class="job-duration">SAEI | 2014 - 2017</span>
+      <span class="company">Saudia Aerospace Engineering Industries (SAEI)</span>
+      <span class="job-duration">2014 - 2017</span>
       <ul>
-        <li>إدارة بيئة MAXIMO، Azure، وأنظمة Windows/Linux مع ضبط الأداء عبر الكلاستر.</li>
-      </ul>
-      <div class="job-title">AMOS Admin</div>
-      <span class="job-duration">SAEI | 2013 - 2014</span>
-      <ul>
-        <li>إدارة الحسابات والطابعات والمهام المجدولة عبر cron.</li>
+        <li>Managed IBM's MAXIMO software for enterprise asset management</li>
+        <li>Installed and maintained Windows/Linux systems with 99.9% uptime</li>
+        <li>Configured Microsoft Azure environments and ensured optimal server performance</li>
       </ul>
     </div>
+
     <div class="section">
-      <h2>المشاريع</h2>
-      <ul>
-        <li>GL Interface – ربط الفواتير بنظام SAP</li>
-        <li>UiPath RPA – أتمتة العمليات اليومية</li>
-        <li>Reverse Proxy – إدارة حركة مرور HTTP على بيئة Linux</li>
-        <li>Laser Fiche – أرشفة إلكترونية لبيانات AMOS</li>
-        <li>PCInfo – أداة للحصول على معلومات النظام</li>
-        <li>Airnavx – نظام الوثائق الفنية لطائرات Airbus</li>
-      </ul>
-    </div>
-    <div class="section">
-      <h2>المهارات التقنية</h2>
+      <h2>Technical Skills</h2>
       <div class="skills-container">
         <div class="skill-category">
-          <h3>البرمجة</h3>
+          <h3>Programming Languages</h3>
           <ul>
-            <li>Java, Free Pascal</li>
             <li>HTML, CSS, JavaScript, PHP</li>
-            <li>Python, Shell (Bash)</li>
+            <li>Java, Free Pascal</li>
           </ul>
         </div>
+        
         <div class="skill-category">
-          <h3>البنية التحتية</h3>
+          <h3>Cloud Technologies</h3>
           <ul>
-            <li>Linux, Windows Server</li>
-            <li>VMware, VirtualBox, Hyper-V</li>
-            <li>QEMU, Hypervisor</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>الأنظمة السحابية</h3>
-          <ul>
-            <li>AWS, Azure, Google Cloud</li>
             <li>IaaS, PaaS, SaaS</li>
+            <li>AWS, Azure, Google Cloud</li>
           </ul>
         </div>
+        
         <div class="skill-category">
-          <h3>الشبكات</h3>
+          <h3>Databases</h3>
           <ul>
+            <li>MSSQL, MySQL</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Other Skills</h3>
+          <ul>
+            <li>RSA, AES encryption technologies</li>
+            <li>Linux/Windows server management</li>
             <li>CCNA Certified</li>
-            <li>RSA, AES, Reverse Proxy</li>
+            <li>Hypervisor, VMware, VirtualBox</li>
+            <li>Microcontroller programming</li>
           </ul>
         </div>
       </div>
     </div>
+
     <div class="section">
-      <h2>الشهادات</h2>
+      <h2>Key Projects</h2>
+      
+      <div class="project-item">
+        <div class="project-title">UiPath RPA Solution</div>
+        <div>Developed robotic process automation to streamline daily workflows, reducing manual tasks by 70%</div>
+      </div>
+      
+      <div class="project-item">
+        <div class="project-title">GL Interface</div>
+        <div>Created interface to automatically update SAP system with invoice data</div>
+      </div>
+      
+      <div class="project-item">
+        <div class="project-title">Laser Fiche DMS</div>
+        <div>Implemented document management system to digitize paperwork from AMOS</div>
+      </div>
+      
+      <div class="project-item">
+        <div class="project-title">Airnavx Documentation System</div>
+        <div>Developed technical documentation system for Airbus aircraft maintenance</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Education</h2>
+      <div class="job-title">Bachelor of Information Technology</div>
+      <span class="company">King Abdulaziz University</span>
+      <span class="job-duration">2012</span>
       <ul>
-        <li>Project Management Professional (PMP)</li>
-        <li>CCNA Certification</li>
+        <li>GPA: 4.47/5.00 (Second Class Honors)</li>
+        <li>Faculty of Computing and Information Technology</li>
       </ul>
     </div>
+
     <div class="section">
-      <h2>التعليم</h2>
-      <div class="education-item">
-        <div class="education-degree">بكالوريوس تقنية معلومات</div>
-        <div>جامعة الملك عبدالعزيز | 2012</div>
-        <div>المعدل: 4.47 / 5 – مرتبة الشرف الثانية</div>
-      </div>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Project Management Professional (PMP)</li>
+        <li>Cisco Certified Network Associate (CCNA)</li>
+      </ul>
     </div>
+
     <div class="section">
-      <h2>معلومات التواصل</h2>
+      <h2>Achievements</h2>
+      <ul>
+        <li>Successfully managed critical IT systems and databases for aerospace engineering operations</li>
+        <li>Presented research at Undergraduate Conference on using technology to improve public health</li>
+        <li>Recognized for excellent customer service and technical support capabilities</li>
+        <li>Maintained exceptional performance while managing multiple high-pressure projects</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
       <div class="social-links">
-        <a href="https://linkedin.com/in/motaibi1989" target="_blank">LinkedIn</a>
-        <a href="https://github.com/motaibi1989" target="_blank">GitHub</a>
-        <a href="https://twitter.com/motaibi1989" target="_blank">Twitter</a>
-        <a href="https://stackoverflow.com/users/story/your-id" target="_blank">Stack Overflow</a>
-        <a href="https://linktr.ee/motaibi1989" target="_blank">Linktree</a>
+        <a href="https://www.linkedin.com/in/motaibi1989" target="_blank">
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:motaibi1989@gmail.com">
+          <span>Email</span>
+        </a>
+        <a href="tel:+966569794545">
+          <span>Phone</span>
+        </a>
       </div>
     </div>
   </div>
