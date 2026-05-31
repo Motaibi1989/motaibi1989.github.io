@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quran | Mohammed Alotaibi</title>
+<meta content="Quran PDF library and Saudi Holy Quran Radio live stream." name="description"/>
+<meta content="Mohammed Alotaibi" name="author"/>
+<meta content="Mohammed Alotaibi, Enterprise Integration, IBM MQ, AMOS, Nginx, Linux, Azure Integration, SFTP, API, Middleware" name="keywords"/>
+<meta content="Quran | Mohammed Alotaibi" property="og:title"/>
+<meta content="Quran PDF library and Saudi Holy Quran Radio live stream." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="#0f2b5e" name="theme-color"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary-color: #0f2b5e;
+        --primary-light: #1e4a8a;
+        --primary-glow: #3b82f6;
+        --secondary-color: #1e293b;
+        --accent-color: #10b981;
+        --light-color: #f1f5f9;
+        --text-color: #334155;
+        --text-light: #64748b;
+        --white: #ffffff;
+        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        --radius-lg: 20px;
+        --radius-xl: 28px;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    }
+    
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    
+    /* Navigation */
+    nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow-md);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 8px;
+    }
+    
+    .nav-links li a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 20px;
+        border-radius: 40px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links li a:hover {
+        background: var(--light-color);
+        color: var(--primary-color);
+    }
+    
+    .nav-links li a.active {
+        background: var(--primary-color);
+        color: white;
+    }
+    
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    /* Hero */
+    .page-hero {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .eyebrow {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.8;
+    }
+    
+    .page-hero h1 {
+        font-size: 2.5rem;
+        margin: 16px 0;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    /* Sections */
+    .section {
+        padding: 64px 0;
+    }
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 12px;
+    }
+    
+    /* Grid */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+    
+    /* Cards */
+    .radio-panel, .card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 32px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .radio-panel {
+        background: linear-gradient(135deg, #064e3b, #10b981);
+        color: white;
+    }
+    
+    .radio-panel h2 {
+        margin-bottom: 16px;
+    }
+    
+    .arabic {
+        font-size: 2rem;
+        text-align: center;
+        font-family: 'Amiri', 'Times New Roman', serif;
+        margin: 20px 0;
+        direction: rtl;
+    }
+    
+    .audio-box {
+        width: 100%;
+        margin: 20px 0;
+        border-radius: 40px;
+    }
+    
+    .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn:hover {
+        background: var(--primary-light);
+        transform: translateY(-2px);
+    }
+    
+    .btn.secondary {
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .btn.secondary:hover {
+        background: rgba(255,255,255,0.3);
+    }
+    
+    /* File List */
+    .file-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 24px;
+    }
+    
+    .file-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        background: var(--white);
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--text-color);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+    }
+    
+    .file-link:hover {
+        transform: translateX(5px);
+        border-color: var(--primary-color);
+    }
+    
+    .file-link span {
+        color: var(--text-light);
+        font-size: 0.8rem;
+    }
+    
+    /* Footer */
+    footer {
+        background: var(--secondary-color);
+        color: white;
+        padding: 48px 0 32px;
+        margin-top: 64px;
+    }
+    
+    .footer-content {
+        text-align: center;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+        color: white;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .nav-links {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: var(--white);
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+            transition: left 0.3s ease;
+            z-index: 99;
+        }
+        
+        .nav-links.active {
+            left: 0;
+        }
+        
+        .hamburger {
+            display: block;
+        }
+        
+        .page-hero h1 {
+            font-size: 1.8rem;
+        }
+        
+        .file-link {
+            flex-direction: column;
+            text-align: center;
+            gap: 8px;
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .fade-in {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+</style>
+<link href="assets/css/master.css" rel="stylesheet"/></head>
+<body><div data-include="header.html"></div><div data-include="nav.html"></div>
+
+<section class="page-hero">
+<div class="container">
+<div class="eyebrow">📖 Quran Library</div>
+<h1>Quran PDFs &amp; Saudi Holy Quran Radio</h1>
+<p class="lead">Resources for Quran recitation, translation, and live radio streaming.</p>
+</div>
+</section>
+<section class="section">
+<div class="container grid">
+<article class="radio-panel fade-in">
+<h2>📻 Saudi Holy Quran Radio</h2>
+<p>Live stream from Saudi Broadcasting Authority</p>
+<audio autoplay="" class="audio-box" controls="" id="quranRadio" muted="" preload="none">
+<source src="https://radioplus.sba.sa/live/4" type="audio/mpeg"/>
+                    Your browser does not support the audio element.
+                </audio>
+<p id="radioMessage">If the stream doesn't start, click the button below.</p>
+<div class="actions">
+<button class="btn" id="startRadio" type="button">▶ Start Radio</button>
+<a class="btn secondary" href="https://radioplus.sba.sa/live/4" rel="noopener" target="_blank">Open Official Page</a>
+</div>
+</article>
+<article class="card fade-in delay-1">
+<h2>🤲 Daily Reminder</h2>
+<div class="arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+<p style="text-align:center">"Verily, in the remembrance of Allah do hearts find rest."<br/>— Quran 13:28</p>
+</article>
+</div>
+</section>
+<section class="section" style="background: var(--light-color);">
+<div class="container">
+<div class="section-title">
+<h2>📚 PDF Library</h2>
+<p>Download Quran resources (add your PDFs to <code>/quran/pdf/</code>)</p>
+</div>
+<div class="file-list">
+<a class="file-link fade-in" href="/quran/pdf/quran-arabic.pdf" target="_blank">
+                    📄 Quran (Arabic) <span>PDF</span>
+</a>
+<a class="file-link fade-in delay-1" href="/quran/pdf/quran-english.pdf" target="_blank">
+                    📄 Quran (English Translation) <span>PDF</span>
+</a>
+<a class="file-link fade-in delay-2" href="/quran/pdf/tafsir-ibn-kathir.pdf" target="_blank">
+                    📚 Tafsir Ibn Kathir <span>PDF</span>
+</a>
+<a class="file-link fade-in delay-3" href="/quran/pdf/hisnul-muslim.pdf" target="_blank">
+                    📘 Hisnul Muslim (Fortress of the Muslim) <span>PDF</span>
+</a>
+<a class="file-link fade-in delay-4" href="/quran/pdf/forty-hadith.pdf" target="_blank">
+                    📘 Forty Hadith Nawawi <span>PDF</span>
+</a>
+</div>
+</div>
+</section>
+
+<div data-include="footer.html"></div><script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        document.addEventListener('click', (e) => {
+            if (navLinks && navLinks.classList.contains('active')) {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            }
+        });
+        
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Quran Radio
+        const radio = document.getElementById('quranRadio');
+        const radioBtn = document.getElementById('startRadio');
+        
+        if (radio) {
+            radio.muted = true;
+            
+            async function startRadio() {
+                if (!radio) return;
+                try {
+                    radio.muted = false;
+                    await radio.play();
+                    const msg = document.getElementById('radioMessage');
+                    if (msg) msg.textContent = 'Stream is now playing!';
+                } catch(e) {
+                    const msg = document.getElementById('radioMessage');
+                    if (msg) msg.textContent = 'Browser blocked autoplay. Click Play on the audio control.';
+                }
+            }
+            
+            if (radioBtn) {
+                radioBtn.addEventListener('click', startRadio);
+            }
+            
+            window.addEventListener('click', function() {
+                radio.muted = false;
+                radio.play().catch(function() {});
+            }, { once: true });
+        }
+        
+        // Animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+<button aria-label="Scroll to top" class="scroll-top" id="scrollTop" type="button"><i class="fas fa-arrow-up"></i></button><script src="assets/js/include.js"></script><script src="assets/js/main.js"></script></body>
+</html>

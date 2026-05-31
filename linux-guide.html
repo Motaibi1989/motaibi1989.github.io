@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Linux Modern vs Legacy Commands | Mohammed Alotaibi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { margin-bottom: 16px; font-size: 2rem; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #0f2b5e;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover { background: #f1f5f9; }
+        .modern { color: #10b981; font-family: monospace; }
+        .legacy { color: #f59e0b; font-family: monospace; }
+        @media (max-width: 768px) {
+            th, td { padding: 8px 12px; font-size: 0.8rem; }
+        }
+    </style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/><link href="assets/css/master.css" rel="stylesheet"/></head>
+<body><div data-include="header.html"></div><div data-include="nav.html"></div>
+<!-- At the top of body in other pages -->
+
+
+<div class="container">
+<a class="back-link" href="/">← Back to Portfolio</a>
+<h1>🐧 Linux Modern vs Legacy Commands</h1>
+<p>A comprehensive reference for transitioning from legacy networking commands to modern alternatives.</p>
+<table>
+<thead>
+<tr><th>Category</th><th>Modern Command (ip/ss)</th><th>Legacy Command (ifconfig/netstat)</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Addressing</td><td class="modern">ip addr show</td><td class="legacy">ifconfig</td><td>Show all IP addresses</td></tr>
+<tr><td>Interfaces</td><td class="modern">ip link show</td><td class="legacy">ifconfig -a</td><td>Show interface status</td></tr>
+<tr><td>Routing</td><td class="modern">ip route show</td><td class="legacy">route -n</td><td>Show routing table</td></tr>
+<tr><td>ARP/Neighbors</td><td class="modern">ip neigh show</td><td class="legacy">arp -n</td><td>Show ARP cache</td></tr>
+<tr><td>Ports/Connections</td><td class="modern">ss -tuln</td><td class="legacy">netstat -tulnp</td><td>Show listening ports</td></tr>
+<tr><td>Statistics</td><td class="modern">ss -s</td><td class="legacy">netstat -s</td><td>Socket statistics</td></tr>
+<tr><td>Bring up interface</td><td class="modern">ip link set eth0 up</td><td class="legacy">ifconfig eth0 up</td><td>Enable interface</td></tr>
+<tr><td>Add IP address</td><td class="modern">ip addr add 192.168.1.10/24 dev eth0</td><td class="legacy">ifconfig eth0 add 192.168.1.10</td><td>Assign IP</td></tr>
+<tr><td>Add route</td><td class="modern">ip route add 192.168.2.0/24 via 192.168.1.1</td><td class="legacy">route add -net 192.168.2.0/24 gw 192.168.1.1</td><td>Add network route</td></tr>
+</tbody>
+</table>
+<p style="margin-top: 24px; color: #64748b;">📌 Pro tip: Use <code class="modern">ip -br addr</code> for a compact, script-friendly output.</p>
+</div>
+<!-- Your page content here -->
+
+
+<div data-include="footer.html"></div><button aria-label="Scroll to top" class="scroll-top" id="scrollTop" type="button"><i class="fas fa-arrow-up"></i></button><script src="assets/js/include.js"></script><script src="assets/js/main.js"></script></body>
+</html>
