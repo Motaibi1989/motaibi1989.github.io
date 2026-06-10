@@ -1,6 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammed Alotaibi | Senior Integration Specialist – Professional Resume</title>
+
+<!-- Google Fonts & Font Awesome -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 40px 24px;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover {
+    color: #0f2b5e;
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: #0f2b5e;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef2f6;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+  }
+
+  .card h2 {
+    color: #0f2b5e;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e9edf2;
+    vertical-align: top;
+  }
+  th {
+    background: #0f2b5e;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    width: 28%;
+  }
+  td {
+    color: #1e293b;
+    font-size: 0.88rem;
+  }
+  tr:hover td {
+    background: #f8fafc;
+  }
+  tr:last-child td, tr:last-child th {
+    border-bottom: none;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .skill-box {
+    background: #fafcff;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid #eef2fa;
+    transition: all 0.2s;
+  }
+  .skill-box h3 {
+    color: #0f2b5e;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-box p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #2d3a4e;
+  }
+
+  .job {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e9edf2;
+  }
+  .job:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .job-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #0f2b5e;
+    letter-spacing: -0.2px;
+  }
+  .job-company {
+    color: #4a6a8e;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 8px;
+    color: #334155;
+    line-height: 1.45;
+    font-size: 0.88rem;
+  }
+
+  .projects-website-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .project-card-mini {
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 14px 18px;
+    border-left: 3px solid #3b82f6;
+  }
+  .project-card-mini strong {
+    color: #0f2b5e;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+  }
+  .project-card-mini p {
+    font-size: 0.75rem;
+    color: #475569;
+    line-height: 1.4;
+  }
+
+  .pdf-download-section {
+    margin-top: 20px;
+    text-align: center;
+    background: #f1f5f9;
+    border-radius: 20px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border: 1px solid #e2e8f0;
+  }
+  .pdf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #0f2b5e;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .pdf-btn i {
+    font-size: 1rem;
+  }
+  .pdf-btn:hover {
+    background: #1e3f72;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 43, 94, 0.2);
+  }
+  .pdf-note {
+    font-size: 0.75rem;
+    color: #5a6e8a;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 24px 16px;
+    }
+    .card {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .pdf-download-section {
+      justify-content: center;
+      text-align: center;
+    }
+    th, td {
+      padding: 12px;
+      display: block;
+    }
+    th {
+      width: 100%;
+    }
+  }
+
+  @media print {
+    body {
+      background: white;
+      padding: 0.2in;
+    }
+    .card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
+    .pdf-download-section {
+      display: none;
+    }
+    .back-link {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a href="#" class="back-link" onclick="return false;"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+
+  <h1>📄 Professional Resume</h1>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="card">
+    <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+    <p>
+      Senior Integration Specialist with 10+ years of experience in enterprise integration, middleware engineering, Linux infrastructure, cloud platforms, automation, and digital transformation within aviation and enterprise IT environments. Experienced in Azure Integration Services (AIS), enterprise middleware, APIs, reverse proxy technologies, enterprise automation, production support, and high-availability systems. Strong background in enterprise architecture, operational support, workflow automation, infrastructure optimization, incident troubleshooting, release management, and enterprise modernization initiatives. Proven ability to support mission-critical enterprise systems, optimize operational workflows, and deliver scalable enterprise IT integration solutions.
+    </p>
+  </div>
+
+  <!-- PROFESSIONAL OVERVIEW TABLE -->
+  <div class="card">
+    <h2><i class="fas fa-chart-simple"></i> Professional Overview</h2>
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="Category">Current Position</td><td data-label="Details">Senior Integration Specialist at SAUDIA TECHNIC (ST)</td></tr>
+        <tr><td data-label="Category">Industry</td><td data-label="Details">Aviation & Enterprise IT</td></tr>
+        <tr><td data-label="Category">Specialization</td><td data-label="Details">Enterprise Integration • AMOS Interfaces • Backend Engineering • Middleware Architecture • API Development • DevOps • Linux Automation</td></tr>
+        <tr><td data-label="Category">Infrastructure</td><td data-label="Details">Linux Administration, Windows Server, VMware, Hyper-V, Reverse Proxy Platforms, High Availability</td></tr>
+        <tr><td data-label="Category">Integration Stack</td><td data-label="Details">Azure Integration Services (AIS), ESB, REST/SOAP APIs, XML/JSON/MQ, SFTP, API Governance</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="card">
+    <h2><i class="fas fa-cogs"></i> Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h3><i class="fas fa-plug"></i> Integration & Middleware</h3>
+        <p>Azure Integration Services (AIS), Enterprise Service Bus (ESB), REST/SOAP APIs, XML/JSON/MQ, SFTP Integration, API Governance, Enterprise Application Integration</p>
+      </div>
+      <div class="skill-box">
+        <h3><i class="fas fa-cloud"></i> Infrastructure & Cloud</h3>
+        <p>Linux Administration, Windows Server, Microsoft Azure, AWS, VMware, Hyper-V, Reverse Proxy Platforms, Active Directory, DNS Management, Disaster Recovery, High Availability, Infrastructure Hardening</p>
+      </div>
+      <div class="skill-box">
+        <h3><i class="fas fa-code"></i> Development & Automation</h3>
+        <p>Java, PHP, JavaScript, PowerShell, Shell Scripting, HTML/CSS, Free Pascal, Workflow Automation, Reporting Automation, Enterprise Utilities Development</p>
+      </div>
+      <div class="skill-box">
+        <h3><i class="fas fa-database"></i> Database & Security</h3>
+        <p>MySQL, RSA Encryption, AES Encryption, Security Validation, Enterprise Security Standards, Infrastructure Security, Networking Fundamentals</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <div class="card">
+    <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+    
+    <div class="job">
+      <div class="job-title">Senior Integration Specialist</div>
+      <div class="job-company">SAUDIA TECHNIC (ST) – Jeddah, Saudi Arabia | 2022 – Present</div>
+      <ul>
+        <li>Lead enterprise integration and digital transformation initiatives supporting aviation operational systems, including AMOS interfacing and backend integrations.</li>
+        <li>Architect integrations between core systems, middleware, Azure services, APIs, and third-party applications.</li>
+        <li>Develop scalable automation workflows using Azure Integration Services (AIS), APIs, and SFTP.</li>
+        <li>Manage middleware operations, production deployment, UAT coordination, and high-availability environments.</li>
+        <li>Build operational dashboards, monitoring solutions, and automated reporting for management visibility.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-title">Integration Specialist</div>
+      <div class="job-company">SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI) – Jeddah, Saudi Arabia | 2018 – 2022</div>
+      <ul>
+        <li>Designed enterprise integrations using XML, MQ, JSON, APIs, and middleware transformation workflows.</li>
+        <li>Developed Excel-to-XML automation, General Ledger Interface automation.</li>
+        <li>Reduced AMOS startup latency to ~5 seconds through performance tuning; integrated barcode/NFC technologies.</li>
+        <li>Automated Boeing SFTP notifications, AirVault (GE) and Laserfiche integrations, and BIOSTAR → TAM real-time sync.</li>
+        <li>Applied RSA/AES encryption and built Java-based automation tools for operational efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-title">Systems Administrator</div>
+      <div class="job-company">SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI) – Jeddah, Saudi Arabia | 2014 – 2018</div>
+      <ul>
+        <li>Managed Linux/Windows servers, reverse proxy platforms, Azure infrastructure, and virtualization (VMware/Hyper-V).</li>
+        <li>Handled Active Directory, disaster recovery, SSL automation, shell scripting for monitoring and reporting.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-title">Junior Systems Administrator</div>
+      <div class="job-company">SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI) – Jeddah, Saudi Arabia | 2013 – 2014</div>
+      <ul>
+        <li>Administered AMOS user accounts, cron jobs, and enterprise printing services.</li>
+        <li>Supported technical documentation systems, Linux troubleshooting, and operational monitoring.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- KEY PROJECTS -->
+  <div class="card">
+    <h2><i class="fas fa-rocket"></i> Key Projects</h2>
+    <div class="projects-website-grid">
+      <div class="project-card-mini"><strong>Enterprise Integration</strong><p>BIOSTAR integration for clock-in/clock-out to update TAM system; General Ledger Interface Automation; Boeing Modification Status Interface; ESB Monitoring & Reporting; Boeing SFTP Notification Automation</p></div>
+      <div class="project-card-mini"><strong>Enterprise Applications</strong><p>Document Management Platform; Attendance Management System; Reporting Dashboards; Enterprise Workflow Automation</p></div>
+      <div class="project-card-mini"><strong>Infrastructure & Monitoring</strong><p>Reverse Proxy Platform; AirVault (GE) Integration; Laserfiche Document Management; ServerMonitor; PCInfo; QRCode Application; Enterprise Scheduling Automation</p></div>
+      <div class="project-card-mini"><strong>Enterprise Platforms</strong><p>ERP Systems | AMOS | MAXIMO | ESB Middleware | Laserfiche | SharePoint | Power BI | Technical Documentation Systems</p></div>
+    </div>
+  </div>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <div class="card">
+    <h2><i class="fas fa-graduation-cap"></i> Education & Certifications</h2>
+    <table class="info-table">
+      <tbody>
+        <tr>
+          <th>🎓 Education</th>
+          <td><strong>Bachelor of Information Technology</strong><br>King Abdulaziz University, Jeddah<br>GPA: 4.47 / 5.00</td>
+        </tr>
+        <tr>
+          <th>📜 Certifications & Training</th>
+          <td>
+            <strong>Microsoft Security Operations Analyst</strong> (2025) • PMP (35 Training Hours, 2024)<br>
+            Enterprise Linux Administration • Cloud Infrastructure & Virtualization • Networking Fundamentals • ITIL Foundation
+           </td>
+        </tr>
+        <tr>
+          <th>🏅 Continuous Learning</th>
+          <td>Docker Fundamentals, DevOps Practices, API Security, Azure Integration Architectures, Agile Methodologies.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PDF DOWNLOAD BUTTON - FIXED WITH PROPER LINK AND STYLING -->
+  <div class="pdf-download-section">
+    <div class="pdf-note">
+      <i class="fas fa-file-pdf" style="color:#dc2626; margin-right:6px;"></i> Complete CV with full project portfolio and integration references.
+    </div>
+    <a href="MOHAMMED_ALOTAIBI_CV.pdf" class="pdf-btn" download>
+      <i class="fas fa-download"></i> Download PDF Resume
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+<!--
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resume | Mohammed Alotaibi</title>
@@ -378,4 +815,5 @@ li{
 
 </body>
 </html>
+-->
 
