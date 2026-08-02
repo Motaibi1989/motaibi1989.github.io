@@ -1045,10 +1045,10 @@
         <h2 style="color: var(--primary); margin-bottom: 8px; font-size: 1.3rem;">Scan to View Resume</h2>
         <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 24px;">Scan this QR code to view the full resume on your mobile device</p>
         <div style="background: var(--white); padding: 16px; border-radius: var(--radius-md); display: inline-block; border: 2px solid var(--gray-200);">
-            <img id="qrCodeImage" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://Motaibi1989.com/cv.html&bgcolor=ffffff&color=0f2b5e" alt="QR Code" style="width: 200px; height: 200px; display: block;">
+            <img id="qrCodeImage" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://Motaibi1989.com/cv/cv.html&bgcolor=ffffff&color=0f2b5e" alt="QR Code" style="width: 200px; height: 200px; display: block;">
         </div>
         <p style="color: var(--gray-400); font-size: 0.7rem; margin-top: 16px;">
-            <i class="fas fa-link"></i> https://Motaibi1989.com/cv.html
+            <i class="fas fa-link"></i> https://Motaibi1989.com/cv/cv.html
         </p>
         <button onclick="closeQRModal();" class="btn btn-primary" style="margin-top: 16px; width: 100%; justify-content: center;">
             Close
@@ -1114,7 +1114,7 @@
         const body = encodeURIComponent(
             'Hi,\n\n' +
             'I would like to share my professional resume with you.\n' +
-            'You can view it online at: https://Motaibi1989.com/cv.html\n\n' +
+            'You can view it online at: https://Motaibi1989.com/cv/cv.html\n\n' +
             'Best regards,\n' +
             'Mohammed Alotaibi'
         );
@@ -1125,14 +1125,14 @@
     function shareViaWhatsApp() {
         const text = encodeURIComponent(
             'Hi! Check out my professional resume:\n' +
-            'https://Motaibi1989.com/cv.html'
+            'https://Motaibi1989.com/cv/cv.html'
         );
         window.open(`https://wa.me/?text=${text}`, '_blank');
         showToast('Opening WhatsApp...');
     }
     
     function shareViaLinkedIn() {
-        const url = encodeURIComponent('https://Motaibi1989.com/cv.html');
+        const url = encodeURIComponent('https://Motaibi1989.com/cv/cv.html');
         window.open(
             `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
             '_blank'
@@ -1142,7 +1142,7 @@
     
     // ===== Copy Functions =====
     function copyProfileLink() {
-        const link = 'https://Motaibi1989.com/cv.html';
+        const link = 'https://Motaibi1989.com/cv/cv.html';
         
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(link)
