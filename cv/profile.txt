@@ -1,0 +1,119 @@
+MOHAMMED ALOTAIBI
+Senior Enterprise Integration Specialist
+
+LOCATION
+Jeddah, Saudi Arabia
+
+CONTACT
+Phone: +966569794545
+Email: motaibi1989@gmail.com
+LinkedIn: https://www.linkedin.com/in/motaibi1989
+GitHub: https://github.com/Motaibi1989
+Website: https://motaibi1989.com
+
+PROFESSIONAL SUMMARY
+Senior Enterprise Integration Specialist with over 10 years of experience delivering enterprise integration, application development, cloud infrastructure, and digital transformation solutions. Specialized in Azure Integration Services, IBM MQ, APIs, middleware, Linux, enterprise automation, and AMOS aviation systems. Experienced in designing secure, scalable, and high-availability integration platforms that connect enterprise applications, automate business processes, and improve operational efficiency.
+
+CORE SPECIALIZATIONS
+- Enterprise Integration
+- Azure Integration Services
+- Middleware Architecture
+- API Integration
+- IBM MQ
+- SFTP Integration
+- Linux Administration
+- Cloud Infrastructure
+- Automation
+- Digital Transformation
+- AMOS Aviation Systems
+
+PROFESSIONAL EXPERIENCE
+
+SENIOR ENTERPRISE INTEGRATION SPECIALIST
+SAUDIA TECHNIC | Jeddah, Saudi Arabia | 2022 – Present
+- Lead enterprise integration and digital transformation initiatives supporting aviation operational systems.
+- Architect integrations between enterprise systems, Azure Integration Services, APIs, IBM MQ, middleware, databases, and third-party platforms.
+- Design scalable automation workflows using Azure Logic Apps, REST APIs, SFTP, and enterprise messaging.
+- Manage middleware operations, production deployments, UAT coordination, and high-availability environments.
+- Develop monitoring dashboards, reporting solutions, and operational automation.
+- Provide production support, troubleshooting, performance optimization, and root cause analysis.
+
+INTEGRATION SPECIALIST
+SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI) | Jeddah, Saudi Arabia | 2018 – 2022
+- Designed enterprise integrations using XML, JSON, IBM MQ, REST APIs, and middleware.
+- Developed Excel-to-XML automation and General Ledger integration solutions.
+- Reduced AMOS startup time to approximately five seconds.
+- Integrated barcode and NFC technologies.
+- Implemented Boeing SFTP, AirVault (GE), Laserfiche, and BIOSTAR integrations.
+- Applied RSA and AES encryption.
+- Developed Java automation tools.
+
+SYSTEMS ADMINISTRATOR
+SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI) | Jeddah, Saudi Arabia | 2014 – 2018
+- Managed Linux and Windows Server environments.
+- Administered Microsoft Azure infrastructure and virtualization platforms.
+- Managed Active Directory, SSL certificates, disaster recovery, and reverse proxy solutions.
+- Developed shell scripts for automation and monitoring.
+
+JUNIOR SYSTEMS ADMINISTRATOR
+SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI) | Jeddah, Saudi Arabia | 2013 – 2014
+- Administered AMOS user accounts and enterprise printing services.
+- Managed Linux cron jobs.
+- Supported enterprise operations and technical documentation systems.
+
+TECHNICAL SKILLS
+Enterprise Integration: Azure Integration Services, Azure Logic Apps, REST APIs, SOAP, XML, JSON, SFTP, Enterprise Messaging
+Middleware: IBM MQ, Middleware transformation workflows
+Programming: Java, Free Pascal, PHP, JavaScript, HTML5, CSS3
+Cloud: Microsoft Azure, AWS, Google Cloud Platform
+Operating Systems: Linux, Windows Server
+Databases: Microsoft SQL Server, MySQL
+Virtualization: VMware, Hyper-V, VirtualBox, QEMU
+Security: RSA, AES, SSL/TLS, Active Directory
+
+PROJECTS
+- Azure Integration Services: Enterprise integration solutions using Azure Logic Apps, APIs, SFTP, IBM MQ, and cloud-native integration services.
+- AMOS Enterprise Interfaces: Enterprise interfaces connecting AMOS with operational, financial, documentation, and third-party systems.
+- General Ledger (GL) Interface: Automated invoice and financial data integration with SAP.
+- Laserfiche Integration: Document management integration for digitizing, storing, and processing documents generated from AMOS.
+- Active Directory Integration: Integration for synchronizing user information between Active Directory and enterprise systems.
+- Boeing SFTP Integration: Automated secure file transfer and notification workflows with Boeing.
+- AirVault (GE) Integration: Secure data integration with GE AirVault services.
+- BIOSTAR Integration: Real-time synchronization between BIOSTAR and Time Attendance Management systems.
+- UiPath Automation: RPA solution designed to simplify daily work through automation.
+- Airnavx Technical Documentation System: Technical documentation and manuals system for Airbus aircraft.
+- PCInfo Utility: Utility that helps users retrieve computer hardware, software, and operating system information.
+- Nginx Reverse Proxy: Linux-based Nginx reverse proxy environment for managing HTTP and HTTPS traffic.
+
+EDUCATION
+Bachelor of Information Technology
+King Abdulaziz University
+Faculty of Computing and Information Technology
+Graduated: 2012
+GPA: 4.47 / 5.00
+Second Class Honors
+
+TRAINING
+- Project Management Professional (PMP) Training
+- CCNA Training
+
+ACHIEVEMENTS
+- Led enterprise digital transformation initiatives.
+- Delivered multiple mission-critical enterprise integration solutions.
+- Improved AMOS performance and reduced startup time to approximately five seconds.
+- Automated business processes that significantly improved operational efficiency.
+- Built extensive experience in Linux, cloud platforms, enterprise middleware, APIs, and production support.
+
+PLATFORM CONTENT
+LinkedIn Headline:
+Senior Enterprise Integration Specialist | Azure Integration Services | IBM MQ | APIs | Middleware | Linux | Automation
+
+GitHub Introduction:
+Building enterprise integration, cloud automation, Linux, middleware, API, and infrastructure projects.
+
+X Bio:
+Senior Enterprise Integration Specialist | Azure | IBM MQ | APIs | Linux | Automation
+
+Website Hero:
+Senior Enterprise Integration Specialist
+Secure, scalable enterprise integration, cloud, automation, and Linux solutions.
