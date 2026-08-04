@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohammed Alotaibi - CV</title>
+    <style>
+        /* ── Reset & Base ── */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 30px 20px;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+        .cv-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 40px 45px;
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #1e2a3a;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0b1a2e;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+        .header .headline {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c5282;
+            margin-bottom: 10px;
+        }
+        .header .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px 30px;
+            font-size: 0.95rem;
+            color: #2d3748;
+            margin-top: 8px;
+        }
+        .header .contact-row a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .header .contact-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Sections ── */
+        .section {
+            margin-bottom: 34px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b1a2e;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title span {
+            background: #1e2a3a;
+            color: #fff;
+            font-size: 0.8rem;
+            border-radius: 30px;
+            padding: 0 14px;
+            line-height: 26px;
+        }
+
+        /* ── Summary / Objective ── */
+        .summary-text {
+            font-size: 1.02rem;
+            color: #2d3748;
+            margin-bottom: 14px;
+        }
+        .objective-text {
+            background: #f7fafc;
+            padding: 14px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #2b6cb0;
+            font-style: italic;
+            color: #1a202c;
+        }
+
+        /* ── Specializations & Competencies ── */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-top: 6px;
+        }
+        .tag {
+            background: #edf2f7;
+            color: #1a202c;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+        .tag-blue {
+            background: #bee3f8;
+            color: #2a4365;
+        }
+
+        /* ── Skills Grid ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px 20px;
+            margin-top: 8px;
+        }
+        .skill-category {
+            background: #f7fafc;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .skill-category strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+        .skill-category .skill-items {
+            font-size: 0.92rem;
+            color: #1a202c;
+            line-height: 1.5;
+        }
+
+        /* ── Experience ── */
+        .job {
+            margin-bottom: 30px;
+            border-left: 3px solid #cbd5e0;
+            padding-left: 20px;
+        }
+        .job:last-child {
+            margin-bottom: 0;
+        }
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0b1a2e;
+        }
+        .job-company {
+            font-weight: 600;
+            color: #2c5282;
+        }
+        .job-date {
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        .job-location {
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+        .job-summary {
+            margin: 6px 0 10px;
+            color: #2d3748;
+            font-style: italic;
+        }
+        .job ul {
+            list-style: none;
+            padding-left: 4px;
+        }
+        .job ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 4px;
+            color: #2d3748;
+        }
+        .job ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2b6cb0;
+            font-weight: 700;
+        }
+        .job-achievements {
+            margin-top: 8px;
+            padding: 8px 14px;
+            background: #f0f7ff;
+            border-radius: 8px;
+            border-left: 4px solid #2b6cb0;
+        }
+        .job-achievements strong {
+            color: #1e2a3a;
+        }
+        .job-achievements ul {
+            margin-top: 4px;
+        }
+        .job-achievements ul li::before {
+            color: #2b6cb0;
+        }
+
+        /* ── Projects ── */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+        }
+        .project-card:hover {
+            border-color: #90cdf4;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.08);
+        }
+        .project-card .name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0b1a2e;
+        }
+        .project-card .category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #4a5568;
+            letter-spacing: 0.3px;
+        }
+        .project-card .status {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0 10px;
+            border-radius: 30px;
+            background: #e2e8f0;
+            color: #2d3748;
+            margin-left: 8px;
+        }
+        .project-card .status.active {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .project-card .status.completed {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+        .project-card .desc {
+            font-size: 0.92rem;
+            color: #2d3748;
+            margin: 8px 0;
+        }
+        .project-card .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+            margin-top: 6px;
+        }
+        .project-card .tech-tags span {
+            background: #edf2f7;
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: #2d3748;
+        }
+        .project-card .proj-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .project-card .proj-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Education ── */
+        .edu-item {
+            background: #f7fafc;
+            padding: 14px 20px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .edu-item .degree {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0b1a2e;
+        }
+        .edu-item .institution {
+            color: #2c5282;
+            font-weight: 500;
+        }
+        .edu-item .detail {
+            font-size: 0.92rem;
+            color: #4a5568;
+        }
+
+        /* ── Languages ── */
+        .lang-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 30px;
+            margin-top: 4px;
+        }
+        .lang-list .lang-item {
+            font-size: 1rem;
+        }
+        .lang-list .lang-item strong {
+            font-weight: 600;
+            color: #0b1a2e;
+        }
+        .lang-list .lang-item .level {
+            color: #4a5568;
+            font-weight: 400;
+        }
+
+        /* ── Footer / Meta ── */
+        .footer-meta {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: #718096;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .footer-meta a {
+            color: #2b6cb0;
+            text-decoration: none;
+        }
+        .footer-meta a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .cv-container {
+                padding: 20px 18px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header .contact-row {
+                flex-direction: column;
+                gap: 6px;
+                align-items: center;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 30px;
+            }
+            .project-card:hover {
+                box-shadow: none;
+                border-color: #e2e8f0;
+            }
+            .footer-meta {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container" id="cv-container">
+        <!-- Rendered by JavaScript -->
+        <div style="text-align:center; padding:60px 0; color:#718096;">
+            ⏳ Loading profile…
+        </div>
+    </div>
+
+    <script>
+        // ─── Fetch and Render ────────────────────────────────────────────────
+        const PROFILE_URL =
+            'https://raw.githubusercontent.com/Motaibi1989/motaibi1989.github.io/refs/heads/main/cv/profile.json';
+
+        async function loadProfile() {
+            try {
+                const res = await fetch(PROFILE_URL);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                renderCV(data);
+            } catch (err) {
+                document.getElementById('cv-container').innerHTML = `
+                    <div style="color:#c53030; padding:40px; text-align:center; background:#fff5f5; border-radius:12px;">
+                        <strong>⚠️ Could not load profile.</strong><br>
+                        ${err.message}
+                    </div>
+                `;
+                console.error('Profile fetch error:', err);
+            }
+        }
+
+        // ─── Renderer ────────────────────────────────────────────────────────
+        function renderCV(p) {
+            const container = document.getElementById('cv-container');
+            let html = '';
+
+            // ── Header ──
+            html += `
+                <div class="header">
+                    <h1>${esc(p.identity.full_name)}</h1>
+                    <div class="headline">${esc(p.identity.headline)}</div>
+                    <div class="contact-row">
+                        <span>📧 <a href="mailto:${esc(p.contact.email)}">${esc(p.contact.email)}</a></span>
+                        <span>📞 ${esc(p.contact.phone)}</span>
+                        <span>📍 ${esc(p.identity.location.city)}, ${esc(p.identity.location.country)}</span>
+                        ${p.profiles.map(pr => `
+                            <span><a href="${esc(pr.url)}" target="_blank">${esc(pr.platform)}</a></span>
+                        `).join('')}
+                        ${p.domains.map(d => `
+                            <span>🌐 <a href="${esc(d.url)}" target="_blank">${esc(d.domain)}</a></span>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // ── Professional Summary ──
+            html += `
+                <div class="section">
+                    <div class="section-title">Professional Summary</div>
+                    <div class="summary-text">${esc(p.professional_summary)}</div>
+                    ${p.career_objective ? `
+                        <div class="objective-text">🎯 ${esc(p.career_objective)}</div>
+                    ` : ''}
+                </div>
+            `;
+
+            // ── Specializations ──
+            if (p.specializations && p.specializations.length) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">Specializations</div>
+                        <div class="tag-list">
+                            ${p.specializations.map(s => `<span class="tag tag-blue">${esc(s)}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ── Core Competencies ──
+            if (p.core_competencies && p.core_competencies.length) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">Core Competencies</div>
+                        <div class="tag-list">
+                            ${p.core_competencies.map(c => `<span class="tag">${esc(c)}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ── Technical Skills ──
+            if (p.technical_skills) {
+                const skillEntries = Object.entries(p.technical_skills).filter(([_, val]) => val && val.length > 0);
+                if (skillEntries.length) {
+                    html += `
+                        <div class="section">
+                            <div class="section-title">Technical Skills</div>
+                            <div class="skills-grid">
+                    `;
+                    for (const [key, values] of skillEntries) {
+                        const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        html += `
+                            <div class="skill-category">
+                                <strong>${esc(label)}</strong>
+                                <div class="skill-items">${values.map(v => esc(v)).join(', ')}</div>
+                            </div>
+                        `;
+                    }
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // ── Experience ──
+            if (p.professional_experience && p.professional_experience.length) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">Professional Experience</div>
+                `;
+                for (const job of p.professional_experience) {
+                    const dateEnd = job.end_date ? job.end_date : 'Present';
+                    html += `
+                        <div class="job">
+                            <div class="job-header">
+                                <div>
+                                    <span class="job-title">${esc(job.title)}</span>
+                                    ${job.company ? ` · <span class="job-company">${esc(job.company)}</span>` : ''}
+                                </div>
+                                <div>
+                                    <span class="job-date">${esc(job.start_date)} – ${esc(dateEnd)}</span>
+                                    ${job.location ? ` · <span class="job-location">${esc(job.location)}</span>` : ''}
+                                </div>
+                            </div>
+                            ${job.summary ? `<div class="job-summary">${esc(job.summary)}</div>` : ''}
+                            ${job.responsibilities && job.responsibilities.length ? `
+                                <ul>
+                                    ${job.responsibilities.map(r => `<li>${esc(r)}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                            ${job.achievements && job.achievements.length ? `
+                                <div class="job-achievements">
+                                    <strong>🏆 Key Achievements</strong>
+                                    <ul>
+                                        ${job.achievements.map(a => `<li>${esc(a)}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            ${job.technologies && job.technologies.length ? `
+                                <div style="margin-top:6px; display:flex; flex-wrap:wrap; gap:4px 8px;">
+                                    ${job.technologies.map(t => `<span style="background:#edf2f7;font-size:0.75rem;padding:2px 12px;border-radius:20px;color:#2d3748;">${esc(t)}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            }
+
+            // ── Projects ──
+            if (p.projects && p.projects.length) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">Projects <span>${p.projects.length}</span></div>
+                        <div class="project-grid">
+                `;
+                const featured = p.projects.filter(pr => pr.featured);
+                const others = p.projects.filter(pr => !pr.featured);
+                const sorted = [...featured, ...others];
+                for (const pr of sorted) {
+                    const statusClass = (pr.status || '').toLowerCase() === 'active' ? 'active' : 'completed';
+                    const repoLink = pr.repository ? `<a href="${esc(pr.repository)}" target="_blank" class="proj-link">🔗 Repository</a>` :
+                        '';
+                    html += `
+                        <div class="project-card">
+                            <div>
+                                <span class="name">${esc(pr.name)}</span>
+                                ${pr.status ? `<span class="status ${statusClass}">${esc(pr.status)}</span>` : ''}
+                            </div>
+                            <div class="category">${esc(pr.category || '')} ${pr.role ? `· ${esc(pr.role)}` : ''}</div>
+                            ${pr.description ? `<div class="desc">${esc(pr.description)}</div>` : ''}
+                            ${pr.technologies && pr.technologies.length ? `
+                                <div class="tech-tags">
+                                    ${pr.technologies.map(t => `<span>${esc(t)}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            ${repoLink}
+                            ${pr.tags && pr.tags.length ? `
+                                <div style="margin-top:6px; display:flex; flex-wrap:wrap; gap:3px 6px;">
+                                    ${pr.tags.map(t => `<span style="background:#e2e8f0;font-size:0.65rem;padding:1px 8px;border-radius:20px;color:#4a5568;">#${esc(t)}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+                html += `
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ── Education ──
+            if (p.education && p.education.length) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">Education</div>
+                `;
+                for (const edu of p.education) {
+                    html += `
+                        <div class="edu-item">
+                            <div class="degree">${esc(edu.degree)}${edu.major ? ` — ${esc(edu.major)}` : ''}</div>
+                            <div class="institution">${esc(edu.institution)}${edu.faculty ? ` · ${esc(edu.faculty)}` : ''}</div>
+                            <div class="detail">
+                                ${edu.graduation_year ? `Graduated ${esc(edu.graduation_year)}` : ''}
+                                ${edu.gpa ? ` · GPA ${esc(edu.gpa)}` : ''}
+                                ${edu.honors ? ` · ${esc(edu.honors)}` : ''}
+                                ${edu.country ? ` · ${esc(edu.country)}` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            }
+
+            // ── Languages ──
+            if (p.languages && p.languages.length) {
+                html += `
+                    <div class="section">
+                        <div class="section-title">Languages</div>
+                        <div class="lang-list">
+                            ${p.languages.map(l => `
+                                <span class="lang-item"><strong>${esc(l.language)}</strong> <span class="level">${esc(l.level)}</span></span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ── Footer ──
+            html += `
+                <div class="footer-meta">
+                    <span>📄 ${esc(p.identity.full_name)} · ${esc(p.identity.headline)}</span>
+                    <span>
+                        ${p.metadata ? `Updated ${esc(p.metadata.modified || '')} · ` : ''}
+                        ${p.domains && p.domains.length ? `<a href="${esc(p.domains[0].url)}" target="_blank">${esc(p.domains[0].domain)}</a>` : ''}
+                        ${p.github ? ` · <a href="${esc(p.github.profile_url)}" target="_blank">GitHub</a>` : ''}
+                    </span>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // ─── Helpers ────────────────────────────────────────────────────────
+        function esc(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ─── Start ──────────────────────────────────────────────────────────
+        loadProfile();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyper-V & Virtualization — Complete 10 Modules</title>
+<style>
+:root{--bg:#06111f;--panel:#0d1d31;--panel2:#122842;--text:#eef7ff;--muted:#a8bdd2;--blue:#41a8ff;--green:#63e0b6;--yellow:#ffd166;--border:rgba(255,255,255,.12);--shadow:0 20px 55px rgba(0,0,0,.35)}
+*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;background:radial-gradient(circle at 18% 10%,rgba(65,168,255,.16),transparent 32%),radial-gradient(circle at 82% 85%,rgba(99,224,182,.10),transparent 28%),var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif}
+button{font:inherit} .slide{position:absolute;inset:0;padding:34px 5vw 28px;display:grid;grid-template-rows:auto 1fr auto;opacity:0;visibility:hidden;transform:translateX(28px);transition:.28s ease;overflow-y:auto}
+.slide.active{opacity:1;visibility:visible;transform:none;z-index:2} .cover{background:linear-gradient(135deg,rgba(65,168,255,.08),transparent 45%)}
+header{display:flex;justify-content:space-between;gap:24px} .eyebrow{font-size:.74rem;text-transform:uppercase;letter-spacing:.15em;color:var(--green);font-weight:800}
+h1{font-size:clamp(2rem,4vw,4rem);line-height:1.05;margin:.5rem 0 1rem;letter-spacing:-.035em} .cover h1{font-size:clamp(2.8rem,5.8vw,5.8rem);max-width:1100px}
+.slidenum{color:var(--muted);font-weight:700} .content{display:flex;align-items:center;min-height:0;width:100%} .cover .content{display:block;padding-top:5vh}
+.lead{font-size:clamp(1.05rem,1.7vw,1.42rem);line-height:1.6;color:var(--muted);max-width:950px} .lead.small{font-size:1.02rem}
+.modulebadge{display:inline-block;margin-top:28px;padding:11px 16px;border-radius:999px;border:1px solid rgba(65,168,255,.4);background:rgba(65,168,255,.1);color:var(--blue);font-weight:800}
+.grid{display:grid;gap:18px;width:100%} .grid.two{grid-template-columns:repeat(2,1fr)} .grid.three{grid-template-columns:repeat(3,1fr)} .grid.four{grid-template-columns:repeat(4,1fr)}
+.card{background:linear-gradient(145deg,rgba(18,40,66,.95),rgba(9,24,41,.96));border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)} .card h3{margin:0 0 10px} .card p,.card li,td{color:var(--muted);line-height:1.5}
+.arch{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1050px;margin:auto} .node,.wide{padding:18px;border:1px solid var(--border);border-radius:16px;background:rgba(65,168,255,.08);text-align:center;font-weight:800} .node.root{background:rgba(99,224,182,.08);border-color:rgba(99,224,182,.35)} .node small{display:block;margin-top:8px;color:var(--muted);font-weight:500} .wide{grid-column:1/-1} .hyper{background:rgba(65,168,255,.13);border-color:rgba(65,168,255,.42)} .hw{background:rgba(99,224,182,.10);border-color:rgba(99,224,182,.38)} .os{background:rgba(255,209,102,.08);border-color:rgba(255,209,102,.35)}
+.flow{display:flex;align-items:center;justify-content:center;gap:11px;flex-wrap:wrap;width:100%} .flow.vertical{flex-direction:column} .box{padding:16px 18px;min-width:145px;text-align:center;border:1px solid var(--border);border-radius:15px;background:var(--panel2);font-weight:800} .box.accent{background:rgba(65,168,255,.12);border-color:rgba(65,168,255,.42)} .box.green{background:rgba(99,224,182,.10);border-color:rgba(99,224,182,.4)} .arrow{color:var(--blue);font-size:1.5rem;font-weight:900}
+.cmdgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%} .cmd{background:#07101c;border:1px solid var(--border);border-radius:18px;padding:18px;overflow:auto} .cmdtitle{color:var(--green);font-weight:800;margin-bottom:10px} pre{margin:0;white-space:pre-wrap;word-break:break-word} code{font-family:"Cascadia Code","Consolas",monospace;color:#d9efff;line-height:1.55;font-size:.88rem}
+.tablewrap{width:100%;overflow:auto;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)} table{width:100%;border-collapse:collapse;background:rgba(13,29,49,.94)} th,td{padding:13px 15px;border-bottom:1px solid var(--border);text-align:left} th{background:rgba(65,168,255,.10)} tr:last-child td{border-bottom:0}
+.note{margin-top:20px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,209,102,.35);background:rgba(255,209,102,.08);color:#ffe6a8} .mt{margin-top:20px}
+footer{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;padding-top:18px} .controls{position:fixed;right:22px;bottom:22px;display:flex;gap:9px;z-index:20} .controls button,.menuBtn{width:44px;height:44px;border-radius:13px;border:1px solid var(--border);background:rgba(13,29,49,.94);color:var(--text);cursor:pointer;box-shadow:var(--shadow)} .menuBtn{position:fixed;left:22px;bottom:22px;z-index:21}
+.progress{position:fixed;left:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--blue),var(--green));z-index:30;transition:.25s} .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(390px,88vw);background:rgba(7,16,28,.985);border-right:1px solid var(--border);z-index:40;padding:25px;transform:translateX(-102%);transition:.25s;overflow:auto} .sidebar.open{transform:none} .sidebar h2{margin-top:0} .close{float:right;border:0;background:none;color:var(--text);font-size:1.5rem;cursor:pointer} .navitem{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text);cursor:pointer} .navitem:hover{background:rgba(65,168,255,.12)}
+@media(max-width:900px){.slide{padding:24px 4vw 80px} .grid.two,.grid.three,.grid.four,.cmdgrid{grid-template-columns:1fr} .arch{grid-template-columns:1fr} .wide{grid-column:1} footer{display:none} h1{font-size:2.2rem}}
+@media print{html,body{overflow:visible;background:#fff;color:#111} .slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;min-height:100vh;background:#fff;color:#111} .controls,.menuBtn,.sidebar,.progress{display:none} .card,.cmd,.box,.node,.wide,table{background:#fff;color:#111;box-shadow:none;border-color:#bbb} .card p,.card li,td,.lead,footer{color:#333!important} code{color:#111}}
+</style>
+</head>
+<body>
+<div class="sidebar" id="sidebar"><button class="close" id="closeMenu">×</button><h2>Complete Course Modules</h2><button class="navitem" data-target="0">Module 1 — Virtualization Fundamentals</button><button class="navitem" data-target="7">Module 2 — Hypervisor Architecture</button><button class="navitem" data-target="14">Module 3 — Hypervisor Types</button><button class="navitem" data-target="20">Module 4 — Microsoft Hyper-V Architecture</button><button class="navitem" data-target="27">Module 5 — Installing and Configuring Hyper-V</button><button class="navitem" data-target="34">Module 6 — Creating and Managing Virtual Machines</button><button class="navitem" data-target="42">Module 7 — Hyper-V Networking</button><button class="navitem" data-target="49">Module 8 — Hyper-V Storage</button><button class="navitem" data-target="57">Module 9 — High Availability and Disaster Recovery</button><button class="navitem" data-target="65">Module 10 — Performance Tuning and Monitoring</button></div>
+<button class="menuBtn" id="menuBtn" aria-label="Open module menu">☰</button>
+<main>
+<section class="slide active cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 1 — Virtualization Fundamentals</h1>
+  </div>
+  <div class="slidenum">01 / 74</div>
+</header>
+<div class="content"><p class="lead">Physical vs. virtual infrastructure, terminology, lifecycle, use cases, benefits, and limitations.</p><div class="modulebadge">Module 1 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 1 — Virtualization Fundamentals</div>
+    <h1>What Is Virtualization?</h1>
+  </div>
+  <div class="slidenum">02 / 74</div>
+</header>
+<div class="content">
+<p class="lead">Virtualization abstracts physical compute resources into isolated logical systems called virtual machines.</p>
+<div class="arch">
+  <div class="node">VM 01<br><small>Windows Server</small></div>
+  <div class="node">VM 02<br><small>Linux</small></div>
+  <div class="node">VM 03<br><small>FreeBSD</small></div>
+  <div class="wide hyper">Hypervisor / Virtual Machine Monitor</div>
+  <div class="wide hw">CPU · Memory · Storage · Network</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 1 — Virtualization Fundamentals</div>
+    <h1>Traditional vs. Virtual Deployment</h1>
+  </div>
+  <div class="slidenum">03 / 74</div>
+</header>
+<div class="content"><div class="grid two"><div class="card"><h3>Traditional Server</h3><p>One operating system and one primary workload per physical server. Often underutilized and hardware-dependent.</p></div><div class="card"><h3>Virtualized Server</h3><p>Multiple isolated guest operating systems share the same hardware through a hypervisor.</p></div></div>
+<div class="flow mt"><div class="box">Application</div><div class="arrow">→</div><div class="box">Guest OS</div><div class="arrow">→</div><div class="box accent">Hypervisor</div><div class="arrow">→</div><div class="box green">Hardware</div></div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 1 — Virtualization Fundamentals</div>
+    <h1>Core Terminology</h1>
+  </div>
+  <div class="slidenum">04 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Term</th><th>Technical Meaning</th></tr></thead><tbody><tr><td>Host</td><td>Physical server that provides CPU, memory, storage, and network resources.</td></tr><tr><td>Guest</td><td>Operating system running inside a virtual machine.</td></tr><tr><td>VM</td><td>Software-defined computer with virtual hardware.</td></tr><tr><td>vCPU</td><td>Virtual processor scheduled onto a physical CPU.</td></tr><tr><td>vRAM</td><td>Memory assigned to a virtual machine.</td></tr><tr><td>vNIC</td><td>Virtual network adapter connected to a virtual switch.</td></tr><tr><td>Virtual Disk</td><td>File or block device presented to a guest as a disk.</td></tr><tr><td>Checkpoint / Snapshot</td><td>Point-in-time state used for rollback or testing.</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 1 — Virtualization Fundamentals</div>
+    <h1>Why Enterprises Use Virtualization</h1>
+  </div>
+  <div class="slidenum">05 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>Consolidation</h3><p>Run multiple workloads on fewer physical servers.</p></div><div class="card"><h3>Isolation</h3><p>Separate applications, operating systems, and security boundaries.</p></div><div class="card"><h3>Portability</h3><p>Move or copy VM files between hosts and storage platforms.</p></div><div class="card"><h3>Rapid Provisioning</h3><p>Deploy new systems in minutes instead of waiting for hardware.</p></div><div class="card"><h3>Recovery</h3><p>Use checkpoints, replication, export, and backup.</p></div><div class="card"><h3>Cost Optimization</h3><p>Reduce hardware, power, cooling, and rack-space requirements.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 1 — Virtualization Fundamentals</div>
+    <h1>Common Enterprise Use Cases</h1>
+  </div>
+  <div class="slidenum">06 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>Production Servers</h3><p>Domain controllers, web servers, databases, middleware, and application servers.</p></div><div class="card"><h3>Development & QA</h3><p>Repeatable isolated environments for build, test, and validation.</p></div><div class="card"><h3>Training Labs</h3><p>Multi-server environments hosted on one workstation or server.</p></div><div class="card"><h3>Disaster Recovery</h3><p>Replicated standby VMs in a second site or cloud.</p></div><div class="card"><h3>Cloud Computing</h3><p>Multi-tenant resource pools with on-demand provisioning.</p></div><div class="card"><h3>Legacy Workloads</h3><p>Older operating systems isolated from modern hardware.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 1 — Virtualization Fundamentals</div>
+    <h1>Basic Host Inspection Commands</h1>
+  </div>
+  <div class="slidenum">07 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows CMD / PowerShell</div><pre><code>systeminfo
+Get-ComputerInfo
+Get-CimInstance Win32_Processor
+Get-PhysicalDisk
+Get-NetAdapter</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>lscpu
+free -h
+lsblk
+ip -br addr
+uname -a</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 1</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 2 — Hypervisor Architecture</h1>
+  </div>
+  <div class="slidenum">08 / 74</div>
+</header>
+<div class="content"><p class="lead">Hypervisor internals, CPU virtualization, memory translation, privileged instructions, and hardware acceleration.</p><div class="modulebadge">Module 2 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 2 — Hypervisor Architecture</div>
+    <h1>Hypervisor Responsibilities</h1>
+  </div>
+  <div class="slidenum">09 / 74</div>
+</header>
+<div class="content"><div class="grid four"><div class="card"><h3>CPU Scheduling</h3><p>Maps vCPUs to physical logical processors and controls execution time.</p></div><div class="card"><h3>Memory Virtualization</h3><p>Maps guest virtual and guest physical addresses to host physical memory.</p></div><div class="card"><h3>I/O Virtualization</h3><p>Presents virtual devices and coordinates physical device access.</p></div><div class="card"><h3>Isolation</h3><p>Prevents one VM from directly accessing another VM's memory and devices.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 2 — Hypervisor Architecture</div>
+    <h1>Dispatcher, Allocator, and Interpreter</h1>
+  </div>
+  <div class="slidenum">10 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">Guest Instruction</div><div class="arrow">→</div>
+<div class="box accent">Dispatcher</div><div class="arrow">→</div>
+<div class="box">Allocator</div><div class="arrow">/</div>
+<div class="box">Interpreter</div><div class="arrow">→</div>
+<div class="box green">Hardware</div>
+</div>
+<div class="grid three"><div class="card"><h3>Dispatcher</h3><p>Entry point that handles VM exits and routes events.</p></div><div class="card"><h3>Allocator</h3><p>Assigns CPU, memory, storage, and network resources.</p></div><div class="card"><h3>Interpreter</h3><p>Safely handles privileged or emulated instructions.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 2 — Hypervisor Architecture</div>
+    <h1>VM Entry and VM Exit</h1>
+  </div>
+  <div class="slidenum">11 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box green">Guest Running</div><div class="arrow">→</div>
+<div class="box">Privileged Operation</div><div class="arrow">→</div>
+<div class="box accent">VM Exit</div><div class="arrow">→</div>
+<div class="box">Hypervisor Handles Event</div><div class="arrow">→</div>
+<div class="box green">VM Entry</div>
+</div>
+<p class="lead small mt">Common VM-exit triggers include control-register access, I/O instructions, interrupts, CPUID, model-specific registers, and device emulation.</p>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 2 — Hypervisor Architecture</div>
+    <h1>Hardware-Assisted Virtualization</h1>
+  </div>
+  <div class="slidenum">12 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Vendor</th><th>Feature</th><th>Purpose</th></tr></thead><tbody><tr><td>Intel</td><td>VT-x / VMX</td><td>CPU virtualization extensions.</td></tr><tr><td>Intel</td><td>EPT</td><td>Extended Page Tables for second-level address translation.</td></tr><tr><td>Intel</td><td>VT-d</td><td>IOMMU and device passthrough.</td></tr><tr><td>AMD</td><td>AMD-V / SVM</td><td>CPU virtualization extensions.</td></tr><tr><td>AMD</td><td>NPT / RVI</td><td>Nested Page Tables.</td></tr><tr><td>AMD</td><td>AMD-Vi</td><td>I/O memory management and device isolation.</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 2 — Hypervisor Architecture</div>
+    <h1>Memory Translation with SLAT</h1>
+  </div>
+  <div class="slidenum">13 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">Guest Virtual Address</div><div class="arrow">→</div>
+<div class="box">Guest Physical Address</div><div class="arrow">→</div>
+<div class="box accent">EPT / NPT</div><div class="arrow">→</div>
+<div class="box green">Host Physical Address</div>
+</div>
+<p class="lead small mt">SLAT performs the second translation in hardware, reducing hypervisor intervention and increasing VM density.</p>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 2 — Hypervisor Architecture</div>
+    <h1>Verify CPU Virtualization</h1>
+  </div>
+  <div class="slidenum">14 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>systeminfo | findstr /i &quot;Hyper-V&quot;
+Get-ComputerInfo | Select-Object HyperV*
+Get-CimInstance Win32_Processor |
+  Select-Object Name,VirtualizationFirmwareEnabled,SecondLevelAddressTranslationExtensions</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>lscpu | grep -Ei &#x27;Virtualization|Hypervisor&#x27;
+egrep -o &#x27;vmx|svm&#x27; /proc/cpuinfo | sort -u
+dmesg | grep -Ei &#x27;kvm|iommu|vmx|svm&#x27;
+virt-host-validate</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 2</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 3 — Hypervisor Types</h1>
+  </div>
+  <div class="slidenum">15 / 74</div>
+</header>
+<div class="content"><p class="lead">Type 1 and Type 2 architectures, examples, trade-offs, security, and platform selection.</p><div class="modulebadge">Module 3 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 3</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 3 — Hypervisor Types</div>
+    <h1>Type 1 — Bare-Metal Hypervisor</h1>
+  </div>
+  <div class="slidenum">16 / 74</div>
+</header>
+<div class="content">
+<div class="arch">
+<div class="node">VM 01</div><div class="node">VM 02</div><div class="node">VM 03</div>
+<div class="wide hyper">Type 1 Hypervisor</div>
+<div class="wide hw">Physical Hardware</div>
+</div>
+<div class="grid two"><div class="card"><h3>Advantages</h3><p>High performance, strong isolation, enterprise scalability, and direct hardware control.</p></div><div class="card"><h3>Limitations</h3><p>More complex deployment and dedicated server-oriented management.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 3</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 3 — Hypervisor Types</div>
+    <h1>Type 2 — Hosted Hypervisor</h1>
+  </div>
+  <div class="slidenum">17 / 74</div>
+</header>
+<div class="content">
+<div class="arch">
+<div class="node">VM 01</div><div class="node">VM 02</div><div class="node">VM 03</div>
+<div class="wide hyper">Hosted Hypervisor</div>
+<div class="wide os">Host Operating System</div>
+<div class="wide hw">Physical Hardware</div>
+</div>
+<div class="grid two"><div class="card"><h3>Advantages</h3><p>Simple installation, desktop integration, and rapid lab deployment.</p></div><div class="card"><h3>Limitations</h3><p>Additional host OS overhead and a larger dependency chain.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 3</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 3 — Hypervisor Types</div>
+    <h1>Type 1 vs. Type 2</h1>
+  </div>
+  <div class="slidenum">18 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Characteristic</th><th>Type 1</th><th>Type 2</th></tr></thead><tbody><tr><td>Placement</td><td>Directly on hardware</td><td>Application on a host OS</td></tr><tr><td>Performance</td><td>Near-native</td><td>Additional overhead</td></tr><tr><td>Security</td><td>Smaller attack surface</td><td>Depends heavily on host OS</td></tr><tr><td>Scalability</td><td>Enterprise and cloud</td><td>Desktop and small labs</td></tr><tr><td>Management</td><td>Dedicated virtualization tools</td><td>Desktop GUI and local CLI</td></tr><tr><td>Examples</td><td>Hyper-V, ESXi, KVM, Xen</td><td>VirtualBox, Workstation, Parallels</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 3</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 3 — Hypervisor Types</div>
+    <h1>Major Hypervisor Platforms</h1>
+  </div>
+  <div class="slidenum">19 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Platform</th><th>Type</th><th>Host Platform</th><th>Typical Use</th></tr></thead><tbody><tr><td>Microsoft Hyper-V</td><td>Type 1</td><td>Windows / Windows Server</td><td>Microsoft enterprise virtualization</td></tr><tr><td>VMware ESXi</td><td>Type 1</td><td>VMkernel</td><td>Enterprise data centers</td></tr><tr><td>KVM</td><td>Type 1</td><td>Linux kernel</td><td>Linux, OpenStack, cloud</td></tr><tr><td>Xen</td><td>Type 1</td><td>Xen / Linux control domain</td><td>Cloud and server virtualization</td></tr><tr><td>Proxmox VE</td><td>Type 1 platform</td><td>Debian + KVM/LXC</td><td>Labs, SMB, production</td></tr><tr><td>Oracle VirtualBox</td><td>Type 2</td><td>Windows/Linux/macOS</td><td>Development and training</td></tr><tr><td>VMware Workstation</td><td>Type 2</td><td>Windows/Linux</td><td>Desktop testing</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 3</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 3 — Hypervisor Types</div>
+    <h1>Hypervisor Selection Criteria</h1>
+  </div>
+  <div class="slidenum">20 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>Workload</h3><p>Production, development, desktop, database, VDI, or cloud.</p></div><div class="card"><h3>Guest Support</h3><p>Required Windows, Linux, BSD, or specialized operating systems.</p></div><div class="card"><h3>HA & Migration</h3><p>Need for clustering, live migration, replication, and failover.</p></div><div class="card"><h3>Automation</h3><p>PowerShell, APIs, Terraform, Ansible, or orchestration requirements.</p></div><div class="card"><h3>Storage & Network</h3><p>SAN, Ceph, S2D, VLAN, SR-IOV, and SDN support.</p></div><div class="card"><h3>Cost & Support</h3><p>Licensing, subscriptions, enterprise support, and skills.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 3</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 4 — Microsoft Hyper-V Architecture</h1>
+  </div>
+  <div class="slidenum">21 / 74</div>
+</header>
+<div class="content"><p class="lead">Root and child partitions, VMBus, VSP/VSC, worker processes, virtual switch, and VM generations.</p><div class="modulebadge">Module 4 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 4 — Microsoft Hyper-V Architecture</div>
+    <h1>Hyper-V Boot Architecture</h1>
+  </div>
+  <div class="slidenum">22 / 74</div>
+</header>
+<div class="content">
+<div class="flow vertical">
+<div class="box">BIOS / UEFI</div><div class="arrow">↓</div>
+<div class="box">Windows Boot Manager</div><div class="arrow">↓</div>
+<div class="box accent">Hyper-V Hypervisor</div><div class="arrow">↓</div>
+<div class="box green">Root Partition (Windows)</div>
+</div>
+<p class="lead small">After Hyper-V is enabled, Windows becomes the privileged root partition rather than directly owning the hardware execution layer.</p>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 4 — Microsoft Hyper-V Architecture</div>
+    <h1>Partition Model</h1>
+  </div>
+  <div class="slidenum">23 / 74</div>
+</header>
+<div class="content">
+<div class="arch">
+<div class="node root">Root Partition<br><small>Drivers · VMMS · VSP · vSwitch</small></div>
+<div class="node">Child Partition 1<br><small>Guest OS · VSC</small></div>
+<div class="node">Child Partition 2<br><small>Guest OS · VSC</small></div>
+<div class="wide hyper">Hyper-V Hypervisor</div>
+<div class="wide hw">Physical Hardware</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 4 — Microsoft Hyper-V Architecture</div>
+    <h1>VMBus, VSP, and VSC</h1>
+  </div>
+  <div class="slidenum">24 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">Guest VSC</div><div class="arrow">→</div>
+<div class="box accent">VMBus</div><div class="arrow">→</div>
+<div class="box">Root VSP</div><div class="arrow">→</div>
+<div class="box green">Physical Driver / Device</div>
+</div>
+<div class="grid three"><div class="card"><h3>VSC</h3><p>Virtualization Service Client in the guest.</p></div><div class="card"><h3>VMBus</h3><p>High-speed interpartition communication channel.</p></div><div class="card"><h3>VSP</h3><p>Virtualization Service Provider in the root partition.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 4 — Microsoft Hyper-V Architecture</div>
+    <h1>Hyper-V Services and Processes</h1>
+  </div>
+  <div class="slidenum">25 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Component</th><th>Purpose</th></tr></thead><tbody><tr><td>vmms.exe</td><td>Virtual Machine Management Service; inventory and lifecycle management.</td></tr><tr><td>vmwp.exe</td><td>Per-VM worker process that hosts virtual device and VM runtime state.</td></tr><tr><td>vmcompute</td><td>Host Compute Service used by VMs, containers, and WSL-related components.</td></tr><tr><td>vmic*</td><td>Guest integration services.</td></tr><tr><td>Hyper-V Virtual Switch</td><td>Software-defined Layer 2 switching and policy enforcement.</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 4 — Microsoft Hyper-V Architecture</div>
+    <h1>Generation 1 vs. Generation 2</h1>
+  </div>
+  <div class="slidenum">26 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Feature</th><th>Generation 1</th><th>Generation 2</th></tr></thead><tbody><tr><td>Firmware</td><td>Legacy BIOS</td><td>UEFI</td></tr><tr><td>Boot Disk</td><td>IDE</td><td>SCSI</td></tr><tr><td>Secure Boot</td><td>No</td><td>Yes</td></tr><tr><td>vTPM</td><td>No</td><td>Yes</td></tr><tr><td>PXE</td><td>Legacy adapter</td><td>Synthetic adapter</td></tr><tr><td>Recommended Use</td><td>Legacy operating systems</td><td>Modern Windows and Linux</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 4 — Microsoft Hyper-V Architecture</div>
+    <h1>Inspect Hyper-V Components</h1>
+  </div>
+  <div class="slidenum">27 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Hyper-V</div><pre><code>Get-Service vmms,vmcompute
+Get-Process vmwp -ErrorAction SilentlyContinue
+Get-VM
+Get-VMHost
+Get-VMSwitch
+Get-VMIntegrationService -VMName WEB-01</code></pre></div><div class="cmd"><div class="cmdtitle">Linux KVM Equivalent</div><pre><code>systemctl status libvirtd
+ps -ef | grep qemu-system
+virsh list --all
+virsh dominfo web-01
+virsh domiflist web-01</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 4</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 5 — Installing and Configuring Hyper-V</h1>
+  </div>
+  <div class="slidenum">28 / 74</div>
+</header>
+<div class="content"><p class="lead">Requirements, BIOS settings, installation, verification, initial networking, storage, and Linux KVM equivalents.</p><div class="modulebadge">Module 5 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 5 — Installing and Configuring Hyper-V</div>
+    <h1>Supported Windows Platforms</h1>
+  </div>
+  <div class="slidenum">29 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Platform</th><th>Hyper-V Availability</th></tr></thead><tbody><tr><td>Windows Server 2016 / 2019 / 2022 / 2025</td><td>Server role</td></tr><tr><td>Windows 10 Pro / Enterprise / Education</td><td>Optional feature</td></tr><tr><td>Windows 11 Pro / Enterprise / Education</td><td>Optional feature</td></tr><tr><td>Windows Home editions</td><td>Hyper-V role not supported</td></tr><tr><td>Azure Local 2311.2+</td><td>Integrated virtualization platform</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 5 — Installing and Configuring Hyper-V</div>
+    <h1>Hardware Requirements</h1>
+  </div>
+  <div class="slidenum">30 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>64-bit CPU</h3><p>Processor with Intel VT-x or AMD-V.</p></div><div class="card"><h3>SLAT</h3><p>Intel EPT or AMD NPT.</p></div><div class="card"><h3>DEP</h3><p>NX or XD execution protection enabled.</p></div><div class="card"><h3>Memory</h3><p>4 GB minimum; production sizing depends on host and VM workloads.</p></div><div class="card"><h3>Firmware</h3><p>Virtualization enabled in BIOS/UEFI.</p></div><div class="card"><h3>Storage</h3><p>SSD/NVMe, RAID, SAN, SMB, or S2D depending on design.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 5 — Installing and Configuring Hyper-V</div>
+    <h1>Install Hyper-V on Windows</h1>
+  </div>
+  <div class="slidenum">31 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Client — PowerShell</div><pre><code>Enable-WindowsOptionalFeature `
+  -Online `
+  -FeatureName Microsoft-Hyper-V `
+  -All
+
+Restart-Computer</code></pre></div><div class="cmd"><div class="cmdtitle">Windows Server — PowerShell</div><pre><code>Install-WindowsFeature `
+  -Name Hyper-V `
+  -IncludeManagementTools `
+  -Restart</code></pre></div><div class="cmd"><div class="cmdtitle">Windows — DISM</div><pre><code>DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V</code></pre></div><div class="cmd"><div class="cmdtitle">Verify</div><pre><code>Get-WindowsOptionalFeature -Online `
+  -FeatureName Microsoft-Hyper-V
+
+Get-Service vmms
+systeminfo</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 5 — Installing and Configuring Hyper-V</div>
+    <h1>Install KVM on Linux</h1>
+  </div>
+  <div class="slidenum">32 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Debian / Ubuntu</div><pre><code>sudo apt update
+sudo apt install qemu-kvm libvirt-daemon-system   libvirt-clients bridge-utils virt-manager
+sudo systemctl enable --now libvirtd</code></pre></div><div class="cmd"><div class="cmdtitle">RHEL / Rocky / AlmaLinux</div><pre><code>sudo dnf install qemu-kvm libvirt virt-install   cockpit-machines
+sudo systemctl enable --now libvirtd
+sudo systemctl enable --now cockpit.socket</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 5 — Installing and Configuring Hyper-V</div>
+    <h1>Initial Host Configuration</h1>
+  </div>
+  <div class="slidenum">33 / 74</div>
+</header>
+<div class="content"><div class="grid four"><div class="card"><h3>Storage Paths</h3><p>Separate host OS, VM configuration, VHDX, ISO, and export locations.</p></div><div class="card"><h3>Networking</h3><p>Create External, Internal, or Private switches based on required connectivity.</p></div><div class="card"><h3>Security</h3><p>Patch host, restrict administration, enable firewall, Secure Boot, and vTPM.</p></div><div class="card"><h3>Monitoring</h3><p>Enable event collection, performance baselines, and backup monitoring.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 5 — Installing and Configuring Hyper-V</div>
+    <h1>Create Initial Virtual Networks</h1>
+  </div>
+  <div class="slidenum">34 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Hyper-V</div><pre><code>New-VMSwitch -Name &quot;Production&quot; `
+  -NetAdapterName &quot;Ethernet1&quot;
+
+New-VMSwitch -Name &quot;Lab&quot; `
+  -SwitchType Internal
+
+Get-VMSwitch</code></pre></div><div class="cmd"><div class="cmdtitle">Linux Bridge</div><pre><code>sudo ip link add br0 type bridge
+sudo ip link set eth0 master br0
+sudo ip link set br0 up
+sudo ip link set eth0 up
+
+bridge link
+ip addr show br0</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 5</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 6 — Creating and Managing Virtual Machines</h1>
+  </div>
+  <div class="slidenum">35 / 74</div>
+</header>
+<div class="content"><p class="lead">Generation selection, VM provisioning, CPU, memory, storage, ISO, power, snapshots, export, and Linux equivalents.</p><div class="modulebadge">Module 6 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>VM Design Checklist</h1>
+  </div>
+  <div class="slidenum">36 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Item</th><th>Example</th></tr></thead><tbody><tr><td>Name</td><td>WEB-01</td></tr><tr><td>Generation</td><td>Generation 2</td></tr><tr><td>Guest OS</td><td>Windows Server 2025 or RHEL 10</td></tr><tr><td>vCPU</td><td>4</td></tr><tr><td>Memory</td><td>4 GB startup, 16 GB maximum</td></tr><tr><td>Disk</td><td>120 GB VHDX or QCOW2</td></tr><tr><td>Network</td><td>Production VLAN 100</td></tr><tr><td>Security</td><td>Secure Boot and vTPM</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>Create a VM</h1>
+  </div>
+  <div class="slidenum">37 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Hyper-V</div><pre><code>New-VM `
+  -Name &quot;WEB-01&quot; `
+  -Generation 2 `
+  -MemoryStartupBytes 4GB `
+  -NewVHDPath &quot;D:\VMs\WEB-01\WEB-01.vhdx&quot; `
+  -NewVHDSizeBytes 120GB `
+  -SwitchName &quot;Production&quot;
+
+Set-VMProcessor -VMName WEB-01 -Count 4</code></pre></div><div class="cmd"><div class="cmdtitle">Linux KVM / libvirt</div><pre><code>sudo virt-install   --name web-01   --memory 4096   --vcpus 4   --disk path=/var/lib/libvirt/images/web-01.qcow2,size=120   --network bridge=br0   --cdrom /var/lib/libvirt/boot/server.iso</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>Configure CPU and Memory</h1>
+  </div>
+  <div class="slidenum">38 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Set-VMProcessor -VMName WEB-01 -Count 4
+
+Set-VMMemory -VMName WEB-01 `
+  -DynamicMemoryEnabled $true `
+  -MinimumBytes 2GB `
+  -StartupBytes 4GB `
+  -MaximumBytes 16GB</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>virsh setvcpus web-01 4 --config
+virsh setmaxmem web-01 16G --config
+virsh setmem web-01 4G --config
+virsh dominfo web-01</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>Virtual Disk Types</h1>
+  </div>
+  <div class="slidenum">39 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Disk Type</th><th>Behavior</th><th>Use</th></tr></thead><tbody><tr><td>Fixed VHDX / RAW</td><td>Allocates full size immediately.</td><td>Predictable production performance.</td></tr><tr><td>Dynamic VHDX / QCOW2</td><td>Grows as data is written.</td><td>General-purpose and lab use.</td></tr><tr><td>Differencing / QCOW2 backing</td><td>Stores changes relative to a parent.</td><td>Templates and temporary labs.</td></tr><tr><td>Pass-through</td><td>Direct physical disk access.</td><td>Specialized cases; reduced portability.</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>ISO, Firmware, and Security</h1>
+  </div>
+  <div class="slidenum">40 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Set-VMDvdDrive -VMName WEB-01 `
+  -Path &quot;D:\ISO\Windows_Server_2025.iso&quot;
+
+Set-VMFirmware -VMName WEB-01 `
+  -EnableSecureBoot On
+
+Set-VMKeyProtector -VMName WEB-01 `
+  -NewLocalKeyProtector
+Enable-VMTPM -VMName WEB-01</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>virsh attach-disk web-01   /var/lib/libvirt/boot/rhel.iso sdb   --type cdrom --mode readonly --config
+
+virsh edit web-01
+# Configure UEFI / OVMF and virtual TPM in XML</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>Power and Checkpoints</h1>
+  </div>
+  <div class="slidenum">41 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Start-VM WEB-01
+Stop-VM WEB-01
+Restart-VM WEB-01
+Suspend-VM WEB-01
+Resume-VM WEB-01
+
+Checkpoint-VM WEB-01 `
+  -SnapshotName &quot;Before Patch&quot;</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>virsh start web-01
+virsh shutdown web-01
+virsh reboot web-01
+virsh suspend web-01
+virsh resume web-01
+
+virsh snapshot-create-as web-01 before-patch</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 6 — Creating and Managing Virtual Machines</div>
+    <h1>Export, Import, and Definition</h1>
+  </div>
+  <div class="slidenum">42 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Export-VM -Name WEB-01 -Path &quot;D:\Exports&quot;
+Import-VM -Path &quot;D:\Exports\WEB-01&quot;
+Get-VM WEB-01</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>virsh dumpxml web-01 &gt; web-01.xml
+virsh undefine web-01
+virsh define web-01.xml
+qemu-img info /var/lib/libvirt/images/web-01.qcow2</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 6</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 7 — Hyper-V Networking</h1>
+  </div>
+  <div class="slidenum">43 / 74</div>
+</header>
+<div class="content"><p class="lead">Virtual switch types, VLANs, NIC teaming, SR-IOV, VMQ, vRSS, RDMA, security, and troubleshooting.</p><div class="modulebadge">Module 7 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 7 — Hyper-V Networking</div>
+    <h1>Virtual Switch Architecture</h1>
+  </div>
+  <div class="slidenum">44 / 74</div>
+</header>
+<div class="content">
+<div class="arch">
+<div class="node">VM vNIC</div><div class="node">Host vNIC</div><div class="node">VM vNIC</div>
+<div class="wide hyper">Hyper-V Virtual Switch / Linux Bridge</div>
+<div class="wide hw">Physical NIC · VLAN · Physical Switch</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 7 — Hyper-V Networking</div>
+    <h1>External, Internal, and Private Switches</h1>
+  </div>
+  <div class="slidenum">45 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Connectivity</th><th>External</th><th>Internal</th><th>Private</th></tr></thead><tbody><tr><td>VM to VM</td><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><td>VM to Host</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>VM to Physical LAN</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Internet via Physical LAN</td><td>Yes</td><td>No by default</td><td>No</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 7 — Hyper-V Networking</div>
+    <h1>Create Switches and VLANs</h1>
+  </div>
+  <div class="slidenum">46 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Hyper-V</div><pre><code>New-VMSwitch -Name &quot;Production&quot; `
+  -NetAdapterName &quot;Ethernet1&quot;
+
+New-VMSwitch -Name &quot;Lab&quot; `
+  -SwitchType Internal
+
+Set-VMNetworkAdapterVlan `
+  -VMName WEB-01 `
+  -Access `
+  -VlanId 100</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>sudo ip link add br0 type bridge
+sudo ip link set eth0 master br0
+sudo ip link set br0 up
+
+sudo bridge vlan add dev vnet0 vid 100 pvid untagged
+bridge vlan show</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 7 — Hyper-V Networking</div>
+    <h1>Advanced Network Features</h1>
+  </div>
+  <div class="slidenum">47 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>SET</h3><p>Switch Embedded Teaming combines physical NICs for resilience and throughput.</p></div><div class="card"><h3>SR-IOV</h3><p>Assigns a NIC virtual function directly to a VM for reduced latency.</p></div><div class="card"><h3>VMQ</h3><p>Distributes VM traffic queues across host processors.</p></div><div class="card"><h3>vRSS</h3><p>Allows one VM to process receive traffic across multiple vCPUs.</p></div><div class="card"><h3>RDMA</h3><p>Low-latency direct memory transfer for SMB Direct and storage.</p></div><div class="card"><h3>QoS</h3><p>Applies minimum and maximum bandwidth policies.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 7 — Hyper-V Networking</div>
+    <h1>Network Security Controls</h1>
+  </div>
+  <div class="slidenum">48 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>DHCP Guard</h3><p>Blocks unauthorized DHCP server responses from a VM.</p></div><div class="card"><h3>Router Guard</h3><p>Blocks unauthorized router advertisements.</p></div><div class="card"><h3>Port ACLs</h3><p>Filters traffic based on address, direction, and protocol.</p></div><div class="card"><h3>Port Mirroring</h3><p>Copies VM traffic to a monitoring or security VM.</p></div><div class="card"><h3>MAC Spoofing</h3><p>Enable only when required by clustering, appliances, or nested virtualization.</p></div><div class="card"><h3>VLAN Isolation</h3><p>Separates workload networks at Layer 2.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 7 — Hyper-V Networking</div>
+    <h1>Network Diagnostics</h1>
+  </div>
+  <div class="slidenum">49 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Get-VMSwitch
+Get-VMNetworkAdapter
+Get-VMNetworkAdapterVlan
+Get-NetAdapter
+Get-NetIPAddress
+Test-NetConnection server01 -Port 443</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>ip -br link
+ip -br addr
+bridge link
+bridge vlan show
+ethtool -k eth0
+ss -tulpn
+ping -c 4 server01</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 7</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 8 — Hyper-V Storage</h1>
+  </div>
+  <div class="slidenum">50 / 74</div>
+</header>
+<div class="content"><p class="lead">VHD/VHDX, QCOW2, fixed/dynamic/differencing disks, controllers, SAN, SMB, CSV, S2D, QoS, and performance.</p><div class="modulebadge">Module 8 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Virtual Storage Stack</h1>
+  </div>
+  <div class="slidenum">51 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">Guest File System</div><div class="arrow">→</div>
+<div class="box">Virtual Controller</div><div class="arrow">→</div>
+<div class="box accent">VHDX / QCOW2</div><div class="arrow">→</div>
+<div class="box">Host File System</div><div class="arrow">→</div>
+<div class="box green">Physical / Shared Storage</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Virtual Disk Formats</h1>
+  </div>
+  <div class="slidenum">52 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Format</th><th>Platform</th><th>Technical Notes</th></tr></thead><tbody><tr><td>VHD</td><td>Hyper-V</td><td>Legacy; maximum 2 TB.</td></tr><tr><td>VHDX</td><td>Hyper-V</td><td>Up to 64 TB, metadata protection, 4K support, TRIM/UNMAP.</td></tr><tr><td>QCOW2</td><td>QEMU/KVM</td><td>Thin provisioning, snapshots, compression, backing files.</td></tr><tr><td>RAW</td><td>QEMU/KVM</td><td>Simple block layout and predictable performance.</td></tr><tr><td>AVHDX</td><td>Hyper-V</td><td>Checkpoint differencing disk.</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Create and Manage Virtual Disks</h1>
+  </div>
+  <div class="slidenum">53 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Hyper-V</div><pre><code>New-VHD -Path &quot;D:\VMs\Data.vhdx&quot; `
+  -SizeBytes 250GB `
+  -Fixed
+
+Resize-VHD -Path &quot;D:\VMs\Data.vhdx&quot; `
+  -SizeBytes 500GB
+
+Optimize-VHD -Path &quot;D:\VMs\Data.vhdx&quot; `
+  -Mode Full</code></pre></div><div class="cmd"><div class="cmdtitle">Linux QEMU</div><pre><code>qemu-img create -f qcow2 data.qcow2 250G
+qemu-img resize data.qcow2 500G
+qemu-img info data.qcow2
+qemu-img convert -p -O raw data.qcow2 data.raw</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Enterprise Storage Options</h1>
+  </div>
+  <div class="slidenum">54 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Technology</th><th>Windows / Hyper-V</th><th>Linux / KVM</th></tr></thead><tbody><tr><td>Local</td><td>NTFS/ReFS on SSD, NVMe, RAID</td><td>XFS/ext4/ZFS on SSD, NVMe, RAID</td></tr><tr><td>Shared Block</td><td>Fibre Channel, iSCSI, CSV</td><td>iSCSI, Fibre Channel, LVM</td></tr><tr><td>Shared File</td><td>SMB 3.x Continuous Availability</td><td>NFS, GlusterFS</td></tr><tr><td>Software Defined</td><td>Storage Spaces Direct</td><td>Ceph, ZFS, GlusterFS</td></tr><tr><td>Cluster Storage</td><td>CSVFS</td><td>Ceph RBD, shared LVM, NFS</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Storage Controllers and Features</h1>
+  </div>
+  <div class="slidenum">55 / 74</div>
+</header>
+<div class="content"><div class="grid three"><div class="card"><h3>SCSI Controller</h3><p>Preferred for modern VMs; supports hot add/remove and many disks.</p></div><div class="card"><h3>IDE Controller</h3><p>Generation 1 legacy boot and DVD support.</p></div><div class="card"><h3>Virtual Fibre Channel</h3><p>Direct guest access to SAN fabric through a virtual HBA.</p></div><div class="card"><h3>TRIM / UNMAP</h3><p>Reclaims unused blocks from thin-provisioned storage.</p></div><div class="card"><h3>ODX</h3><p>Offloads supported copy operations to the storage array.</p></div><div class="card"><h3>Storage QoS</h3><p>Controls minimum and maximum IOPS.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Checkpoint Disk Chain</h1>
+  </div>
+  <div class="slidenum">56 / 74</div>
+</header>
+<div class="content">
+<div class="flow vertical">
+<div class="box green">Original.vhdx</div><div class="arrow">↓</div>
+<div class="box">Checkpoint1.avhdx</div><div class="arrow">↓</div>
+<div class="box accent">Checkpoint2.avhdx</div>
+</div>
+<p class="lead small">Keep checkpoints short-lived. Long chains increase operational risk, merge time, and storage complexity.</p>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 8 — Hyper-V Storage</div>
+    <h1>Storage Performance Commands</h1>
+  </div>
+  <div class="slidenum">57 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Get-VMHardDiskDrive
+Get-VHD &quot;D:\VMs\Data.vhdx&quot;
+Get-PhysicalDisk
+Get-StoragePool
+Get-Counter &#x27;\PhysicalDisk(*)\Avg. Disk sec/Read&#x27;
+Get-Counter &#x27;\PhysicalDisk(*)\Avg. Disk sec/Write&#x27;</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>lsblk -f
+lvs
+pvs
+vgs
+iostat -xz 1
+iotop
+qemu-img info data.qcow2</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 8</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 9 — High Availability and Disaster Recovery</h1>
+  </div>
+  <div class="slidenum">58 / 74</div>
+</header>
+<div class="content"><p class="lead">Failover clustering, quorum, CSV, live migration, replication, backup, RPO/RTO, and DR design.</p><div class="modulebadge">Module 9 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>High Availability vs. Disaster Recovery</h1>
+  </div>
+  <div class="slidenum">59 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Area</th><th>High Availability</th><th>Disaster Recovery</th></tr></thead><tbody><tr><td>Failure Scope</td><td>Host or component failure</td><td>Site or regional failure</td></tr><tr><td>Location</td><td>Usually same data center</td><td>Secondary site or cloud</td></tr><tr><td>Recovery</td><td>Automatic or rapid failover</td><td>Planned or emergency failover</td></tr><tr><td>Technology</td><td>Cluster, CSV, live migration</td><td>Replica, backup, ASR, storage replication</td></tr><tr><td>Primary Metric</td><td>Service availability</td><td>RPO and RTO</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>Failover Cluster Architecture</h1>
+  </div>
+  <div class="slidenum">60 / 74</div>
+</header>
+<div class="content">
+<div class="arch">
+<div class="node root">Hyper-V Node 1</div><div class="node root">Hyper-V Node 2</div><div class="node root">Hyper-V Node 3</div>
+<div class="wide hyper">Cluster Network · Quorum · Live Migration</div>
+<div class="wide hw">CSV / S2D / SAN / SMB Shared Storage</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>Quorum and Witness</h1>
+  </div>
+  <div class="slidenum">61 / 74</div>
+</header>
+<div class="content"><div class="grid four"><div class="card"><h3>Node Majority</h3><p>Cluster continues while a majority of node votes remains.</p></div><div class="card"><h3>Disk Witness</h3><p>Shared disk contributes a quorum vote.</p></div><div class="card"><h3>File Share Witness</h3><p>SMB file share provides a vote.</p></div><div class="card"><h3>Cloud Witness</h3><p>Azure storage-based witness for distributed environments.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>Live Migration Workflow</h1>
+  </div>
+  <div class="slidenum">62 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">Copy Memory</div><div class="arrow">→</div>
+<div class="box">Re-copy Changed Pages</div><div class="arrow">→</div>
+<div class="box accent">Transfer CPU State</div><div class="arrow">→</div>
+<div class="box green">Resume on Target</div>
+</div>
+<p class="lead small mt">Storage Live Migration moves virtual disks while the VM remains running. Shared-nothing migration transfers both compute state and storage over the network.</p>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>Migration Commands</h1>
+  </div>
+  <div class="slidenum">63 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows Hyper-V</div><pre><code>Get-Cluster
+Get-ClusterNode
+Move-ClusterVirtualMachineRole -Name WEB-01
+
+Move-VM -Name WEB-01 `
+  -DestinationHost HV02 `
+  -IncludeStorage `
+  -DestinationStoragePath &quot;D:\VMs&quot;</code></pre></div><div class="cmd"><div class="cmdtitle">Linux KVM / libvirt</div><pre><code>virsh migrate --live --persistent   web-01 qemu+ssh://hv02/system
+
+virsh dominfo web-01
+pcs status
+crm_mon -1</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>Hyper-V Replica and DR</h1>
+  </div>
+  <div class="slidenum">64 / 74</div>
+</header>
+<div class="content">
+<div class="arch">
+<div class="node root">Primary Site<br><small>Running Production VM</small></div>
+<div class="node">Replication Channel<br><small>30 sec / 5 min / 15 min</small></div>
+<div class="node">DR Site<br><small>Powered-off Replica VM</small></div>
+<div class="wide hyper">Planned Failover · Test Failover · Unplanned Failover</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 9 — High Availability and Disaster Recovery</div>
+    <h1>Backup, RPO, and RTO</h1>
+  </div>
+  <div class="slidenum">65 / 74</div>
+</header>
+<div class="content"><div class="grid four"><div class="card"><h3>Backup</h3><p>Maintains historical restore points and protects against corruption or deletion.</p></div><div class="card"><h3>Replica</h3><p>Maintains a recent standby copy for rapid recovery.</p></div><div class="card"><h3>RPO</h3><p>Maximum acceptable data loss measured in time.</p></div><div class="card"><h3>RTO</h3><p>Maximum acceptable service downtime.</p></div></div><div class="note">Replication does not replace backup. Use both for a complete recovery strategy.</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 9</span>
+</footer>
+</section>
+
+<section class="slide cover">
+<header>
+  <div>
+    <div class="eyebrow">Enterprise Virtualization Technical Course</div>
+    <h1>Module 10 — Performance Tuning and Monitoring</h1>
+  </div>
+  <div class="slidenum">66 / 74</div>
+</header>
+<div class="content"><p class="lead">CPU, memory, storage, network, PerfMon, Resource Metering, Linux monitoring, and structured troubleshooting.</p><div class="modulebadge">Module 10 of 10</div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Performance Domains</h1>
+  </div>
+  <div class="slidenum">67 / 74</div>
+</header>
+<div class="content"><div class="grid four"><div class="card"><h3>CPU</h3><p>vCPU:pCPU ratio, scheduler delay, utilization, and NUMA locality.</p></div><div class="card"><h3>Memory</h3><p>Static vs. dynamic memory, pressure, ballooning, and host reserve.</p></div><div class="card"><h3>Storage</h3><p>IOPS, latency, throughput, queue depth, and free capacity.</p></div><div class="card"><h3>Network</h3><p>Throughput, packet loss, offloads, VMQ, vRSS, RDMA, and SR-IOV.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>CPU and NUMA</h1>
+  </div>
+  <div class="slidenum">68 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">VM vCPU</div><div class="arrow">→</div>
+<div class="box accent">Hypervisor Scheduler</div><div class="arrow">→</div>
+<div class="box green">Physical Logical Processor</div>
+</div>
+<div class="grid three"><div class="card"><h3>Overcommitment</h3><p>Too many active vCPUs increase scheduling delay.</p></div><div class="card"><h3>NUMA Locality</h3><p>Keep vCPU and memory allocation within the same NUMA node where possible.</p></div><div class="card"><h3>Right-Sizing</h3><p>Start small and increase based on measured workload demand.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Memory Performance</h1>
+  </div>
+  <div class="slidenum">69 / 74</div>
+</header>
+<div class="content"><div class="grid four"><div class="card"><h3>Dynamic Memory</h3><p>Adjusts assigned memory based on configured minimum, startup, and maximum values.</p></div><div class="card"><h3>Memory Pressure</h3><p>Occurs when guest demand exceeds available physical memory.</p></div><div class="card"><h3>Smart Paging</h3><p>Temporary paging used during restart under limited conditions.</p></div><div class="card"><h3>Static Memory</h3><p>Often preferred for latency-sensitive databases and specialized applications.</p></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Storage Latency Guidelines</h1>
+  </div>
+  <div class="slidenum">70 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Average Latency</th><th>Assessment</th></tr></thead><tbody><tr><td>Below 5 ms</td><td>Excellent</td></tr><tr><td>5–10 ms</td><td>Good</td></tr><tr><td>10–20 ms</td><td>Acceptable depending on workload</td></tr><tr><td>Above 20 ms</td><td>Investigate</td></tr><tr><td>Above 50 ms</td><td>Critical for most transactional workloads</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Monitoring Commands</h1>
+  </div>
+  <div class="slidenum">71 / 74</div>
+</header>
+<div class="content"><div class="cmdgrid"><div class="cmd"><div class="cmdtitle">Windows</div><pre><code>Get-VM
+Get-VMProcessor
+Get-VMMemory
+Enable-VMResourceMetering -VMName WEB-01
+Measure-VM WEB-01
+Get-Counter
+perfmon.exe
+
+Get-WinEvent -LogName `
+ &quot;Microsoft-Windows-Hyper-V-VMMS-Admin&quot;</code></pre></div><div class="cmd"><div class="cmdtitle">Linux</div><pre><code>virsh domstats web-01
+virt-top
+top
+free -h
+vmstat 1
+iostat -xz 1
+sar -n DEV 1
+journalctl -u libvirtd</code></pre></div></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Structured Troubleshooting Workflow</h1>
+  </div>
+  <div class="slidenum">72 / 74</div>
+</header>
+<div class="content">
+<div class="flow">
+<div class="box">Define Symptom</div><div class="arrow">→</div>
+<div class="box">Identify Resource</div><div class="arrow">→</div>
+<div class="box">Collect Baseline</div><div class="arrow">→</div>
+<div class="box">Change One Variable</div><div class="arrow">→</div>
+<div class="box green">Validate Result</div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Common Bottlenecks</h1>
+  </div>
+  <div class="slidenum">73 / 74</div>
+</header>
+<div class="content"><div class="tablewrap"><table><thead><tr><th>Symptom</th><th>Likely Cause</th><th>Primary Check</th></tr></thead><tbody><tr><td>High CPU wait</td><td>vCPU overcommit or busy host</td><td>Hyper-V CPU counters / virt-top</td></tr><tr><td>Slow VM disk</td><td>High latency or storage queue</td><td>PerfMon / iostat</td></tr><tr><td>Memory pressure</td><td>Host overcommit</td><td>Dynamic Memory counters / free</td></tr><tr><td>Low network throughput</td><td>NIC saturation or offload issue</td><td>vSwitch counters / ethtool</td></tr><tr><td>Slow migration</td><td>Network or storage contention</td><td>Migration network and storage metrics</td></tr><tr><td>VM pauses</td><td>Memory or I/O stalls</td><td>Event logs and host performance data</td></tr></tbody></table></div></div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+
+<section class="slide">
+<header>
+  <div>
+    <div class="eyebrow">Module 10 — Performance Tuning and Monitoring</div>
+    <h1>Course Completion</h1>
+  </div>
+  <div class="slidenum">74 / 74</div>
+</header>
+<div class="content">
+<p class="lead">You now have a complete technical foundation for Hyper-V, KVM, virtual machines, networking, storage, high availability, disaster recovery, and performance troubleshooting.</p>
+<div class="grid three mt">
+<div class="card"><h3>Build</h3><p>Install and configure virtualization hosts and VMs.</p></div>
+<div class="card"><h3>Operate</h3><p>Manage compute, storage, network, security, and lifecycle.</p></div>
+<div class="card"><h3>Protect</h3><p>Implement monitoring, backup, replication, clustering, and recovery.</p></div>
+</div>
+</div>
+<footer>
+  <span>Hyper-V & Virtualization — Complete Technical Course</span>
+  <span>Module 10</span>
+</footer>
+</section>
+</main>
+<div class="controls"><button id="prev" aria-label="Previous slide">←</button><button id="next" aria-label="Next slide">→</button></div>
+<div class="progress" id="progress"></div>
+<script>
+(() => {
+ const slides=[...document.querySelectorAll('.slide')], progress=document.getElementById('progress'), sidebar=document.getElementById('sidebar'); let current=0;
+ function show(i){current=Math.max(0,Math.min(i,slides.length-1));slides.forEach((s,n)=>s.classList.toggle('active',n===current));progress.style.width=((current+1)/slides.length*100)+'%';document.title=`Hyper-V Complete Course — ${current+1}/${slides.length}`;}
+ document.getElementById('next').onclick=()=>show(current+1); document.getElementById('prev').onclick=()=>show(current-1);
+ document.getElementById('menuBtn').onclick=()=>sidebar.classList.add('open'); document.getElementById('closeMenu').onclick=()=>sidebar.classList.remove('open');
+ document.querySelectorAll('.navitem').forEach(b=>b.onclick=()=>{show(Number(b.dataset.target));sidebar.classList.remove('open')});
+ document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)} if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);});
+ let x=null; document.addEventListener('touchstart',e=>x=e.changedTouches[0].screenX,{passive:true}); document.addEventListener('touchend',e=>{if(x===null)return;let d=e.changedTouches[0].screenX-x;if(Math.abs(d)>50)show(current+(d<0?1:-1));x=null},{passive:true});
+ show(0);
+})();
+</script>
+</body>
+</html>
