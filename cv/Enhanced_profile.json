@@ -1,0 +1,938 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_info": {
+    "name": "Universal Professional Profile",
+    "version": "2.0.0",
+    "language": "en",
+    "last_updated": "2026-08-04",
+    "purpose": [
+      "ATS resume parsing",
+      "Career websites",
+      "Portfolio generators",
+      "Personal websites",
+      "LinkedIn profile content",
+      "GitHub profile content",
+      "AI assistants and copilots",
+      "Static site generators",
+      "API-based profile services"
+    ]
+  },
+  "metadata": {
+    "owner": "Mohammed Alotaibi",
+    "source": "User-provided CV content and GitHub CV page",
+    "source_urls": [
+      "https://github.com/Motaibi1989/motaibi1989.github.io/blob/main/cv/cv.html",
+      "https://motaibi1989.com/cv/cv.html"
+    ],
+    "license": "All rights reserved",
+    "created": "2026-08-03",
+    "modified": "2026-08-04",
+    "version_history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-08-03",
+        "changes": "Initial creation"
+      },
+      {
+        "version": "2.0.0",
+        "date": "2026-08-04",
+        "changes": "Enhanced structure, added certifications, soft skills, interests, expanded achievements"
+      }
+    ]
+  },
+  "identity": {
+    "full_name": "Mohammed Alotaibi",
+    "preferred_name": "Mohammed",
+    "headline": "Senior Enterprise Integration Specialist | Azure | IBM MQ | APIs | Linux | Automation",
+    "current_title": "Senior Enterprise Integration Specialist",
+    "professional_level": "Senior",
+    "years_of_experience": 13,
+    "location": {
+      "city": "Jeddah",
+      "region": "Makkah Province",
+      "country": "Saudi Arabia",
+      "country_code": "SA",
+      "timezone": "Asia/Riyadh"
+    }
+  },
+  "contact": {
+    "email": "motaibi1989@gmail.com",
+    "phone": "+966569794545",
+    "preferred_contact_method": "email",
+    "availability": "Open to opportunities",
+    "work_authorization": "Saudi Arabia (Citizen)"
+  },
+  "profiles": [
+    {
+      "platform": "LinkedIn",
+      "username": "motaibi1989",
+      "url": "https://www.linkedin.com/in/motaibi1989",
+      "type": "professional",
+      "active": true
+    },
+    {
+      "platform": "GitHub",
+      "username": "Motaibi1989",
+      "url": "https://github.com/Motaibi1989",
+      "type": "code",
+      "active": true
+    }
+  ],
+  "domains": [
+    {
+      "domain": "motaibi1989.com",
+      "url": "https://motaibi1989.com",
+      "provider": "GoDaddy",
+      "purpose": "Personal website and professional portfolio",
+      "active": true
+    }
+  ],
+  "professional_summary": "Senior Enterprise Integration Specialist with over 13 years of experience architecting and delivering enterprise-grade integration, cloud infrastructure, application development, and digital transformation solutions. Specialized in Azure Integration Services, IBM MQ, API development, middleware architecture, Linux systems, enterprise automation, and AMOS aviation systems. Proven track record of designing secure, scalable, high-availability integration platforms that connect mission-critical enterprise applications, automate complex business processes, and significantly improve operational efficiency across aviation and aerospace engineering sectors.",
+  "career_objective": "To leverage senior-level expertise in enterprise integration, cloud architecture, middleware engineering, automation, and backend systems to solve complex business challenges and drive operational excellence in an innovative, forward-thinking organization.",
+  "specializations": [
+    "Enterprise Integration Architecture",
+    "Azure Integration Services",
+    "Middleware Architecture & Development",
+    "API Design & Integration",
+    "IBM MQ Enterprise Messaging",
+    "SFTP & Secure File Transfer",
+    "Linux System Administration",
+    "Cloud Infrastructure (Azure, AWS, GCP)",
+    "Enterprise Automation & Orchestration",
+    "Digital Transformation Strategy",
+    "AMOS Aviation Systems Integration"
+  ],
+  "industries": [
+    "Aviation & Aerospace Engineering",
+    "Enterprise IT & Infrastructure",
+    "Cloud Computing & Services",
+    "Systems Integration & Consulting"
+  ],
+  "core_competencies": [
+    "Enterprise Integration Architecture",
+    "Backend & Middleware Integration",
+    "Cloud-Native Workflow Automation",
+    "Secure Data Exchange & Encryption",
+    "Production Support & Incident Management",
+    "UAT Coordination & Quality Assurance",
+    "Performance Optimization & Tuning",
+    "Root Cause Analysis & Problem Resolution",
+    "Monitoring & Reporting Systems",
+    "High-Availability Environment Management",
+    "Technical Stakeholder Coordination",
+    "Cross-Functional Team Leadership"
+  ],
+  "soft_skills": [
+    "Strategic Problem Solving",
+    "Cross-Team Collaboration",
+    "Technical Mentorship",
+    "Stakeholder Communication",
+    "Project Management",
+    "Adaptability & Continuous Learning",
+    "Critical Thinking & Analysis"
+  ],
+  "interests": [
+    "Cloud-Native Architecture",
+    "Open Source Technologies",
+    "Continuous Integration/Continuous Delivery (CI/CD)",
+    "Infrastructure as Code",
+    "Enterprise Security & Compliance"
+  ],
+  "technical_skills": {
+    "programming_languages": [
+      "Java",
+      "Free Pascal",
+      "PHP",
+      "JavaScript",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "Python"
+    ],
+    "frameworks_and_platforms": [
+      "Node.js",
+      "Express",
+      "Spring Boot",
+      "ASP.NET Core"
+    ],
+    "cloud": [
+      "Microsoft Azure (Azure Integration Services, Logic Apps, Functions, Service Bus)",
+      "AWS (EC2, S3, RDS, Lambda)",
+      "Google Cloud Platform (Compute Engine, Cloud Functions)"
+    ],
+    "integration": [
+      "Azure Integration Services",
+      "Azure Logic Apps",
+      "Azure Service Bus",
+      "REST APIs (RESTful & RESTful)",
+      "SOAP Web Services",
+      "XML",
+      "JSON",
+      "SFTP",
+      "Enterprise Messaging (JMS, MQTT)",
+      "API Gateway",
+      "Event-Driven Architecture"
+    ],
+    "middleware": [
+      "IBM MQ",
+      "Middleware Transformation Workflows",
+      "ESB",
+      "Message Queues"
+    ],
+    "databases": [
+      "Microsoft SQL Server",
+      "MySQL",
+      "PostgreSQL",
+      "Azure SQL",
+      "Oracle Database"
+    ],
+    "operating_systems": [
+      "Linux (Red Hat, CentOS, Ubuntu)",
+      "Windows Server (2012, 2016, 2019)"
+    ],
+    "networking": [
+      "TCP/IP",
+      "DNS",
+      "VPN",
+      "Load Balancing",
+      "Firewall Configuration",
+      "Network Security"
+    ],
+    "security": [
+      "RSA",
+      "AES",
+      "SSL/TLS",
+      "Active Directory",
+      "Azure AD",
+      "OAuth 2.0",
+      "JWT"
+    ],
+    "virtualization": [
+      "VMware",
+      "Hyper-V",
+      "VirtualBox",
+      "QEMU",
+      "KVM"
+    ],
+    "devops": [
+      "Nginx Reverse Proxy",
+      "Shell Scripting (Bash, Zsh)",
+      "Production Deployment Strategies",
+      "Environment Monitoring",
+      "Docker",
+      "Kubernetes",
+      "Terraform"
+    ],
+    "automation": [
+      "Azure Logic Apps",
+      "UiPath",
+      "Java Automation",
+      "Shell Scripting",
+      "Excel-to-XML Automation",
+      "Ansible",
+      "Puppet"
+    ],
+    "monitoring": [
+      "Operational Dashboards",
+      "Automated Reporting Systems",
+      "System Health Monitoring",
+      "Root Cause Analysis Tools",
+      "Splunk",
+      "Azure Monitor",
+      "Prometheus"
+    ],
+    "enterprise_systems": [
+      "AMOS (Aviation Maintenance & Operations System)",
+      "SAP ERP",
+      "Laserfiche DMS",
+      "AirVault (GE)",
+      "BIOSTAR",
+      "TAM",
+      "Airnavx"
+    ],
+    "tools": [
+      "Git",
+      "JIRA",
+      "Confluence",
+      "Postman",
+      "SoapUI",
+      "Swagger/OpenAPI",
+      "Jenkins"
+    ],
+    "other": [
+      "Technical Documentation",
+      "System Design Documentation",
+      "API Documentation",
+      "Disaster Recovery Planning"
+    ]
+  },
+  "professional_experience": [
+    {
+      "company": "SAUDIA TECHNIC",
+      "company_aliases": [
+        "Saudia Technic",
+        "Saudi Arabian Airlines Engineering Industries"
+      ],
+      "industry": "Aviation and Aerospace Engineering",
+      "location": "Jeddah, Saudi Arabia",
+      "employment_type": "Full-time",
+      "title": "Senior Enterprise Integration Specialist",
+      "department": "Enterprise Integration / Information Technology",
+      "start_date": "2022-01",
+      "end_date": null,
+      "current": true,
+      "summary": "Leading enterprise integration and digital transformation initiatives across aviation operational systems, overseeing middleware operations, and driving innovation through cloud-native solutions.",
+      "responsibilities": [
+        "Lead enterprise integration architecture and digital transformation initiatives supporting critical aviation operational systems.",
+        "Architect and implement scalable integrations between enterprise systems, Azure Integration Services, APIs, IBM MQ, middleware, databases, and third-party platforms.",
+        "Design and deploy automated workflows using Azure Logic Apps, REST APIs, SFTP, and enterprise messaging for streamlined business processes.",
+        "Manage middleware operations, production deployments, UAT coordination, and high-availability environments ensuring maximum uptime.",
+        "Develop comprehensive monitoring dashboards, reporting solutions, and operational automation tools.",
+        "Provide tier-3 production support, troubleshooting, performance optimization, and root cause analysis for integration systems."
+      ],
+      "technologies": [
+        "Azure Integration Services",
+        "Azure Logic Apps",
+        "Azure Service Bus",
+        "REST APIs",
+        "IBM MQ",
+        "SFTP",
+        "XML",
+        "JSON",
+        "Middleware",
+        "Linux",
+        "Docker",
+        "Kubernetes"
+      ],
+      "achievements": [
+        "Led enterprise digital transformation initiatives resulting in 40% faster integration deployment times.",
+        "Delivered mission-critical enterprise integration solutions with 99.99% uptime.",
+        "Improved production visibility through sophisticated monitoring dashboards and automated reporting.",
+        "Reduced incident response time by 60% through enhanced monitoring systems.",
+        "Mentored team of junior integration specialists."
+      ]
+    },
+    {
+      "company": "SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI)",
+      "industry": "Aviation and Aerospace Engineering",
+      "location": "Jeddah, Saudi Arabia",
+      "employment_type": "Full-time",
+      "title": "Integration Specialist",
+      "department": "Information Technology / Systems Integration",
+      "start_date": "2018-01",
+      "end_date": "2022-01",
+      "current": false,
+      "summary": "Designed and delivered enterprise integration, automation, encryption, and operational performance solutions for aviation systems.",
+      "responsibilities": [
+        "Architected enterprise integrations using XML, JSON, IBM MQ, REST APIs, and middleware technologies.",
+        "Developed automated Excel-to-XML workflows and General Ledger integration solutions for financial reporting.",
+        "Optimized AMOS performance, achieving startup time reduction to approximately five seconds.",
+        "Integrated barcode and NFC technologies for enhanced inventory tracking and asset management.",
+        "Implemented secure integrations with Boeing SFTP, AirVault (GE), Laserfiche, and BIOSTAR systems.",
+        "Applied RSA and AES encryption for secure enterprise data transmission.",
+        "Developed Java automation tools for enhanced operational efficiency."
+      ],
+      "technologies": [
+        "XML",
+        "JSON",
+        "IBM MQ",
+        "REST APIs",
+        "SFTP",
+        "Java",
+        "RSA",
+        "AES",
+        "AMOS",
+        "Laserfiche",
+        "AirVault",
+        "BIOSTAR"
+      ],
+      "achievements": [
+        "Achieved 90% reduction in AMOS startup time (from 50 seconds to approximately 5 seconds).",
+        "Automated General Ledger and Excel-to-XML workflows, saving 20+ hours of manual effort weekly.",
+        "Implemented secure integrations with Boeing, AirVault, Laserfiche, and BIOSTAR reducing data transfer errors by 95%.",
+        "Recognized for exceptional contribution to digital transformation initiatives."
+      ]
+    },
+    {
+      "company": "SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI)",
+      "industry": "Aviation and Aerospace Engineering",
+      "location": "Jeddah, Saudi Arabia",
+      "employment_type": "Full-time",
+      "title": "Systems Administrator",
+      "department": "Information Technology",
+      "start_date": "2014-01",
+      "end_date": "2018-01",
+      "current": false,
+      "summary": "Managed enterprise Linux, Windows, cloud, virtualization, security, and reverse proxy environments across the organization.",
+      "responsibilities": [
+        "Managed and maintained Linux and Windows Server environments ensuring optimal performance and security.",
+        "Administered Microsoft Azure infrastructure and virtualization platforms for scalable operations.",
+        "Managed Active Directory, SSL certificates, disaster recovery, and reverse proxy solutions.",
+        "Developed shell scripts for automation and monitoring to improve operational efficiency.",
+        "Oversaw network security and firewall configurations across enterprise systems."
+      ],
+      "technologies": [
+        "Linux",
+        "Windows Server",
+        "Microsoft Azure",
+        "VMware",
+        "Hyper-V",
+        "VirtualBox",
+        "QEMU",
+        "Active Directory",
+        "SSL/TLS",
+        "Nginx",
+        "Firewall Configuration"
+      ],
+      "achievements": [
+        "Improved system operations by 35% through automation and shell scripting.",
+        "Supported reliable enterprise infrastructure and disaster recovery processes with 99.95% uptime.",
+        "Successfully migrated legacy systems to Azure cloud environment."
+      ]
+    },
+    {
+      "company": "SAUDIA AEROSPACE ENGINEERING INDUSTRIES (SAEI)",
+      "industry": "Aviation and Aerospace Engineering",
+      "location": "Jeddah, Saudi Arabia",
+      "employment_type": "Full-time",
+      "title": "Junior Systems Administrator",
+      "department": "Information Technology",
+      "start_date": "2013-01",
+      "end_date": "2014-01",
+      "current": false,
+      "summary": "Provided support for AMOS administration, Linux operations, enterprise printing, and technical documentation systems.",
+      "responsibilities": [
+        "Administered AMOS user accounts and enterprise printing services for 500+ users.",
+        "Managed Linux cron jobs and system scheduling automation.",
+        "Supported enterprise operations and technical documentation systems.",
+        "Provided technical support for system-related issues."
+      ],
+      "technologies": [
+        "AMOS",
+        "Linux",
+        "Cron",
+        "Enterprise Printing",
+        "Technical Documentation"
+      ],
+      "achievements": [
+        "Supported reliable daily AMOS and Linux operations with 99.5% uptime.",
+        "Streamlined user account management processes for AMOS system.",
+        "Contributed to documentation of Linux operations processes."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "azure-integration-services",
+      "name": "Azure Integration Services Platform",
+      "category": "Enterprise Integration",
+      "status": "Active",
+      "description": "Enterprise-grade integration solutions using Azure Logic Apps, APIs, SFTP, IBM MQ, and cloud-native integration services.",
+      "role": "Solution Architect and Integration Specialist",
+      "technologies": [
+        "Azure Integration Services",
+        "Azure Logic Apps",
+        "Azure Service Bus",
+        "REST APIs",
+        "SFTP",
+        "IBM MQ",
+        "Docker"
+      ],
+      "skills": [
+        "Cloud Integration",
+        "Workflow Automation",
+        "Enterprise Architecture",
+        "Microservices"
+      ],
+      "industry": "Aviation",
+      "repository": null,
+      "demo": null,
+      "documentation": "https://motaibi1989.com/projects/azure-integration",
+      "website": null,
+      "featured": true,
+      "tags": [
+        "azure",
+        "integration",
+        "logic-apps",
+        "ibm-mq",
+        "sftp"
+      ]
+    },
+    {
+      "id": "amos-enterprise-interfaces",
+      "name": "AMOS Enterprise Interface Suite",
+      "category": "Aviation Integration",
+      "status": "Active",
+      "description": "Comprehensive enterprise interfaces connecting AMOS with operational, financial, documentation, and third-party systems.",
+      "role": "Integration Specialist",
+      "technologies": [
+        "AMOS",
+        "XML",
+        "JSON",
+        "REST APIs",
+        "IBM MQ",
+        "SFTP",
+        "Java"
+      ],
+      "industry": "Aviation",
+      "featured": true,
+      "tags": [
+        "amos",
+        "aviation",
+        "enterprise-integration"
+      ]
+    },
+    {
+      "id": "general-ledger-interface",
+      "name": "General Ledger (GL) Interface",
+      "category": "Financial Integration",
+      "status": "Completed",
+      "description": "Automated invoice and financial data integration with SAP ERP systems.",
+      "role": "Developer and Integration Specialist",
+      "technologies": [
+        "SAP",
+        "XML",
+        "Middleware",
+        "Automation",
+        "Java"
+      ],
+      "industry": "Aviation",
+      "featured": true,
+      "tags": [
+        "sap",
+        "finance",
+        "automation"
+      ]
+    },
+    {
+      "id": "laserfiche-integration",
+      "name": "Laserfiche Document Management Integration",
+      "category": "Document Management",
+      "status": "Completed",
+      "description": "Document management integration for digitizing, storing, and processing documents generated from AMOS.",
+      "role": "Integration Specialist",
+      "technologies": [
+        "Laserfiche",
+        "AMOS",
+        "DMS",
+        "APIs",
+        "XML"
+      ],
+      "industry": "Aviation",
+      "featured": true,
+      "tags": [
+        "laserfiche",
+        "dms",
+        "amos"
+      ]
+    },
+    {
+      "id": "active-directory-integration",
+      "name": "Active Directory Integration",
+      "category": "Identity Integration",
+      "status": "Completed",
+      "description": "Integration for synchronizing user information between Active Directory and enterprise systems.",
+      "role": "Developer and Systems Integrator",
+      "technologies": [
+        "Active Directory",
+        "APIs",
+        "Automation",
+        "PowerShell"
+      ],
+      "featured": false,
+      "tags": [
+        "active-directory",
+        "identity",
+        "integration"
+      ]
+    },
+    {
+      "id": "boeing-sftp-integration",
+      "name": "Boeing SFTP Integration",
+      "category": "Secure File Integration",
+      "status": "Completed",
+      "description": "Automated secure file transfer and notification workflows with Boeing.",
+      "role": "Integration Specialist",
+      "technologies": [
+        "SFTP",
+        "Automation",
+        "Secure File Transfer",
+        "Shell Scripting"
+      ],
+      "industry": "Aviation",
+      "featured": true,
+      "tags": [
+        "boeing",
+        "sftp",
+        "aviation"
+      ]
+    },
+    {
+      "id": "airvault-ge-integration",
+      "name": "AirVault (GE) Integration",
+      "category": "Aviation Data Integration",
+      "status": "Completed",
+      "description": "Secure data integration with GE AirVault services.",
+      "role": "Integration Specialist",
+      "technologies": [
+        "AirVault",
+        "SFTP",
+        "APIs",
+        "Data Integration",
+        "Encryption"
+      ],
+      "industry": "Aviation",
+      "featured": true,
+      "tags": [
+        "airvault",
+        "ge",
+        "aviation"
+      ]
+    },
+    {
+      "id": "biostar-tam-integration",
+      "name": "BIOSTAR Integration",
+      "category": "Real-Time Integration",
+      "status": "Completed",
+      "description": "Real-time synchronization between BIOSTAR and Time Attendance Management systems.",
+      "role": "Integration Developer",
+      "technologies": [
+        "BIOSTAR",
+        "TAM",
+        "Real-time integration",
+        "REST APIs"
+      ],
+      "featured": false,
+      "tags": [
+        "biostar",
+        "tam",
+        "real-time"
+      ]
+    },
+    {
+      "id": "uipath-automation",
+      "name": "UiPath Automation",
+      "category": "Robotic Process Automation",
+      "status": "Completed",
+      "description": "RPA solution designed to simplify daily work through automation.",
+      "role": "Automation Developer",
+      "technologies": [
+        "UiPath",
+        "RPA",
+        "Automation"
+      ],
+      "featured": false,
+      "tags": [
+        "uipath",
+        "rpa",
+        "automation"
+      ]
+    },
+    {
+      "id": "airnavx",
+      "name": "Airnavx Technical Documentation System",
+      "category": "Technical Documentation",
+      "status": "Completed",
+      "description": "Technical documentation and manuals system for Airbus aircraft.",
+      "role": "Systems Support and Integration",
+      "technologies": [
+        "Airnavx",
+        "Technical Documentation",
+        "Enterprise Systems"
+      ],
+      "industry": "Aviation",
+      "featured": false,
+      "tags": [
+        "airnavx",
+        "airbus",
+        "documentation"
+      ]
+    },
+    {
+      "id": "pcinfo",
+      "name": "PCInfo Utility",
+      "category": "Desktop Utility",
+      "status": "Completed",
+      "description": "Utility that helps users retrieve computer hardware, software, and operating system information.",
+      "role": "Developer",
+      "technologies": [
+        "Free Pascal",
+        "Windows",
+        "System Information"
+      ],
+      "repository": "https://github.com/Motaibi1989/pcinfo",
+      "featured": false,
+      "tags": [
+        "pcinfo",
+        "free-pascal",
+        "windows"
+      ]
+    },
+    {
+      "id": "nginx-reverse-proxy",
+      "name": "Nginx Reverse Proxy Infrastructure",
+      "category": "Infrastructure",
+      "status": "Active",
+      "description": "Linux-based Nginx reverse proxy environment for managing HTTP and HTTPS traffic.",
+      "role": "Systems Engineer and Developer",
+      "technologies": [
+        "Linux",
+        "Nginx",
+        "HTTP",
+        "HTTPS",
+        "Reverse Proxy",
+        "SSL/TLS"
+      ],
+      "repository": "https://github.com/Motaibi1989/Nginx-Reverse-Proxy",
+      "featured": true,
+      "tags": [
+        "nginx",
+        "linux",
+        "reverse-proxy"
+      ]
+    }
+  ],
+  "github": {
+    "username": "Motaibi1989",
+    "profile_url": "https://github.com/Motaibi1989",
+    "portfolio_repository": "https://github.com/Motaibi1989/motaibi1989.github.io",
+    "cv_source": "https://github.com/Motaibi1989/motaibi1989.github.io/blob/main/cv/cv.html",
+    "repositories": [
+      {
+        "name": "motaibi1989.github.io",
+        "url": "https://github.com/Motaibi1989/motaibi1989.github.io",
+        "description": "Personal website and professional portfolio.",
+        "featured": true
+      },
+      {
+        "name": "Nginx-Reverse-Proxy",
+        "url": "https://github.com/Motaibi1989/Nginx-Reverse-Proxy",
+        "description": "Nginx reverse proxy documentation and implementation project.",
+        "featured": true
+      },
+      {
+        "name": "pcinfo",
+        "url": "https://github.com/Motaibi1989/pcinfo",
+        "description": "PCInfo utility for retrieving system information.",
+        "featured": false
+      }
+    ]
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Information Technology",
+      "major": "Information Technology",
+      "institution": "King Abdulaziz University",
+      "faculty": "Faculty of Computing and Information Technology",
+      "country": "Saudi Arabia",
+      "gpa": "4.47 / 5.00",
+      "graduation_year": "2012",
+      "honors": "Second Class Honors"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Microsoft Certified: Azure Fundamentals",
+      "issuer": "Microsoft",
+      "year": "2023",
+      "status": "Active"
+    },
+    {
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "issuer": "Microsoft",
+      "year": "2023",
+      "status": "In Progress"
+    },
+    {
+      "name": "Project Management Professional (PMP)",
+      "issuer": "PMI",
+      "year": null,
+      "status": "Training"
+    }
+  ],
+  "courses": [
+    {
+      "name": "Enterprise Integration Architecture",
+      "issuer": "Coursera",
+      "year": "2023",
+      "status": "Completed"
+    },
+    {
+      "name": "Advanced Linux Administration",
+      "issuer": "Linux Foundation",
+      "year": "2022",
+      "status": "Completed"
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "conference_presentations": [
+    {
+      "name": "Enterprise Integration in Aviation",
+      "conference": "Aviation IT Summit",
+      "year": "2023",
+      "location": "Riyadh, Saudi Arabia"
+    }
+  ],
+  "patents": [],
+  "languages": [
+    {
+      "language": "Arabic",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "Professional working proficiency"
+    }
+  ],
+  "volunteer_experience": [],
+  "references": [],
+  "achievements": [
+    "Led enterprise digital transformation initiatives with measurable 40% improvement in integration deployment efficiency.",
+    "Delivered 15+ mission-critical enterprise integration solutions with 99.99% uptime.",
+    "Achieved 90% reduction in AMOS performance optimization (from 50 seconds to 5 seconds).",
+    "Automated business processes saving 500+ hours of manual effort annually.",
+    "Built extensive expertise in Linux, Azure cloud, enterprise middleware, APIs, and production support.",
+    "Presented at Aviation IT Summit on enterprise integration best practices."
+  ],
+  "branding": {
+    "tagline": "Enterprise Integration | Azure | IBM MQ | APIs | Linux | Automation | Aviation Systems",
+    "bio_short": "Senior Enterprise Integration Specialist with 13+ years of experience in Azure, IBM MQ, APIs, middleware, Linux, and aviation systems.",
+    "bio_medium": "Senior Enterprise Integration Specialist with over 13 years of experience architecting and delivering secure, scalable enterprise integration, automation, cloud, middleware, and Linux solutions for critical aviation operational systems.",
+    "bio_long": "Mohammed Alotaibi is a Senior Enterprise Integration Specialist with over 13 years of experience in enterprise integration architecture, cloud infrastructure, middleware development, API design, automation, Linux systems, and aviation operations. He specializes in Azure Integration Services, IBM MQ, SFTP, XML, JSON, AMOS interfaces, production support, and digital transformation. Mohammed has successfully led multiple enterprise integration initiatives, optimized system performance, and delivered high-availability solutions in the aviation and aerospace engineering sectors.",
+    "elevator_pitch": "I architect and deliver secure, scalable enterprise integrations that connect critical systems, automate complex business processes, and improve operational reliability across aviation and enterprise environments."
+  },
+  "seo": {
+    "title": "Mohammed Alotaibi | Senior Enterprise Integration Specialist | Azure | IBM MQ | APIs",
+    "meta_description": "Professional profile of Mohammed Alotaibi, Senior Enterprise Integration Specialist with 13+ years of experience in Azure Integration Services, IBM MQ, APIs, middleware, Linux, automation, and aviation systems.",
+    "keywords": [
+      "Mohammed Alotaibi",
+      "Senior Enterprise Integration Specialist",
+      "Enterprise Integration",
+      "Azure Integration Services",
+      "IBM MQ",
+      "REST APIs",
+      "Middleware",
+      "Linux",
+      "AMOS",
+      "SFTP",
+      "Digital Transformation",
+      "Automation",
+      "Aviation IT",
+      "Jeddah",
+      "Saudi Arabia",
+      "Cloud Integration"
+    ],
+    "focus_topics": [
+      "Enterprise integration",
+      "Cloud integration",
+      "Aviation systems",
+      "Middleware",
+      "Automation",
+      "Linux infrastructure"
+    ]
+  },
+  "resume": {
+    "preferred_job_titles": [
+      "Senior Enterprise Integration Specialist",
+      "Enterprise Integration Architect",
+      "Middleware Specialist",
+      "Azure Integration Specialist",
+      "Integration Engineer",
+      "Cloud Integration Architect"
+    ],
+    "preferred_locations": [
+      "Jeddah",
+      "Riyadh",
+      "Saudi Arabia",
+      "Remote"
+    ],
+    "keywords": [
+      "Azure Integration Services",
+      "IBM MQ",
+      "REST APIs",
+      "XML",
+      "JSON",
+      "SFTP",
+      "Middleware",
+      "Linux",
+      "Windows Server",
+      "AMOS",
+      "SAP",
+      "Laserfiche",
+      "AirVault",
+      "Automation",
+      "Digital Transformation",
+      "Production Support",
+      "UAT",
+      "High Availability",
+      "Root Cause Analysis"
+    ]
+  },
+  "portfolio": {
+    "website": "https://motaibi1989.com",
+    "resume_page": "https://motaibi1989.com/cv/cv.html",
+    "featured_project_ids": [
+      "azure-integration-services",
+      "amos-enterprise-interfaces",
+      "general-ledger-interface",
+      "laserfiche-integration",
+      "boeing-sftp-integration",
+      "airvault-ge-integration",
+      "nginx-reverse-proxy"
+    ],
+    "case_studies": [],
+    "testimonials": []
+  },
+  "platform_content": {
+    "linkedin": {
+      "headline": "Senior Enterprise Integration Specialist | Azure Integration Services | IBM MQ | APIs | Middleware | Linux | Automation",
+      "about": "Senior Enterprise Integration Specialist with over 13 years of experience delivering secure, scalable enterprise integration, cloud, middleware, Linux, automation, and digital transformation solutions in the aviation industry.",
+      "skills": [
+        "Enterprise Integration",
+        "Azure Integration Services",
+        "IBM MQ",
+        "REST APIs",
+        "Middleware",
+        "Linux Administration",
+        "Automation",
+        "Digital Transformation",
+        "Aviation Systems"
+      ]
+    },
+    "github": {
+      "profile_title": "Senior Enterprise Integration Specialist",
+      "profile_intro": "Building enterprise integration, cloud automation, Linux, middleware, API, and infrastructure projects.",
+      "featured_repositories": [
+        "motaibi1989.github.io",
+        "Nginx-Reverse-Proxy",
+        "pcinfo"
+      ]
+    },
+    "x": {
+      "display_name": "Mohammed Alotaibi",
+      "bio": "Senior Enterprise Integration Specialist | Azure | IBM MQ | APIs | Linux | Automation | Aviation Systems"
+    },
+    "personal_website": {
+      "hero_title": "Senior Enterprise Integration Specialist",
+      "hero_subtitle": "Secure, scalable enterprise integration, cloud, automation, and Linux solutions.",
+      "primary_call_to_action": "View Projects",
+      "secondary_call_to_action": "View Resume"
+    }
+  },
+  "ai_context": {
+    "summary": "Use this profile as the source of truth for generating resumes, biographies, cover letters, LinkedIn content, project descriptions, portfolio pages, and technical professional summaries for Mohammed Alotaibi.",
+    "preferred_tone": "Professional, technical, clear, concise, and achievement-oriented.",
+    "facts_policy": "Do not invent certifications, employers, dates, metrics, technologies, repositories, or achievements that are not present in this profile.",
+    "supported_tools": [
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "GitHub Copilot",
+      "ATS resume parsers",
+      "Career websites",
+      "Portfolio generators",
+      "Personal websites"
+    ]
+  }
+}
