@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quran Library | Mohammed Alotaibi</title>
-  <meta name="description" content="Quran resources, Makkah time, Hijri date tools, prayer times, and Saudi Quran Radio.">
+  <title>مكتبة القرآن | Quran Library</title>
+  <meta name="description" content="مكتبة القرآن الكريم، توقيت مكة، مواقيت الصلاة، تحويل التاريخ الهجري، وإذاعة القرآن الكريم. Quran resources, Makkah time, prayer times, Hijri converter, and Saudi Quran Radio.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <!-- Keep these paths if your shared website header/footer already use them. -->
   <link href="assets/css/master.css" rel="stylesheet">
 
   <style>
@@ -21,7 +19,6 @@
       --green: #0f766e;
       --green-light: #10b981;
       --gold: #d8a72e;
-      --red: #dc2626;
       --surface: #ffffff;
       --background: #f5f7fb;
       --text: #172033;
@@ -32,11 +29,17 @@
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       background: var(--background);
       color: var(--text);
+      font-family: "Noto Kufi Arabic", "Inter", sans-serif;
+      line-height: 1.7;
+    }
+
+    html[lang="en"] body {
       font-family: "Inter", sans-serif;
       line-height: 1.6;
     }
@@ -46,43 +49,67 @@
     .page-shell {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 34px 0 70px;
+      padding: 28px 0 70px;
     }
 
-    .back-link {
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .back-link,
+    .language-button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      margin-bottom: 28px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
+      min-height: 42px;
       padding: 8px 16px;
-      border-radius: 40px;
-      background: var(--surface);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       border: 1px solid var(--border);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
     }
 
-    .back-link:hover {
+    .back-link:hover,
+    .language-button:hover {
       background: var(--primary);
       color: white;
-      border-color: var(--primary);
-      transform: translateX(-4px);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
     }
 
     .hero {
+      position: relative;
+      overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(216, 167, 46, .20), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(216, 167, 46, .24), transparent 28%),
         linear-gradient(135deg, #071f45, #0f3a72 58%, #0f766e);
       color: white;
       border-radius: 28px;
-      padding: 42px;
+      padding: 44px;
       box-shadow: var(--shadow);
-      margin-bottom: 26px;
+      margin-bottom: 24px;
+    }
+
+    .hero::after {
+      content: "۞";
+      position: absolute;
+      inset-inline-end: 34px;
+      bottom: -58px;
+      color: rgba(255, 255, 255, .08);
+      font-family: "Amiri", serif;
+      font-size: 12rem;
+      line-height: 1;
+      pointer-events: none;
     }
 
     .hero-kicker {
@@ -90,27 +117,29 @@
       align-items: center;
       gap: 8px;
       color: #fde68a;
-      font-weight: 700;
+      font-weight: 800;
       font-size: .85rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
     }
 
     .hero h1 {
+      position: relative;
+      z-index: 1;
       margin: 10px 0 8px;
       font-size: clamp(2rem, 5vw, 3.6rem);
-      line-height: 1.1;
+      line-height: 1.2;
     }
 
     .hero p {
+      position: relative;
+      z-index: 1;
       margin: 0;
-      max-width: 760px;
-      color: rgba(255,255,255,.82);
+      max-width: 790px;
+      color: rgba(255, 255, 255, .84);
     }
 
-    .dashboard {
+    .grid-two {
       display: grid;
-      grid-template-columns: 1fr 1.25fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
       margin-bottom: 24px;
     }
@@ -125,20 +154,22 @@
 
     .card-title {
       margin: 0 0 5px;
-      font-size: 1.3rem;
       color: var(--primary);
+      font-size: 1.28rem;
     }
 
     .card-subtitle {
-      margin: 0 0 22px;
+      margin: 0 0 20px;
       color: var(--muted);
-      font-size: .94rem;
+      font-size: .92rem;
     }
 
     .clock {
-      font-size: clamp(2.3rem, 7vw, 4rem);
+      direction: ltr;
+      display: inline-block;
+      font-size: clamp(2.35rem, 7vw, 4rem);
       font-weight: 800;
-      letter-spacing: -.05em;
+      letter-spacing: -.04em;
       color: var(--primary);
       line-height: 1.05;
       font-variant-numeric: tabular-nums;
@@ -152,26 +183,120 @@
     .hijri-line {
       color: var(--green);
       font-family: "Amiri", serif;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       direction: rtl;
-      text-align: left;
+    }
+
+    .radio-card {
+      background:
+        radial-gradient(circle at 90% 10%, rgba(216, 167, 46, .22), transparent 25%),
+        linear-gradient(145deg, #071d3d, #0b315f 62%, #064e3b);
+      color: white;
+      overflow: hidden;
+    }
+
+    .radio-card .card-title { color: white; }
+    .radio-card .card-subtitle { color: rgba(255, 255, 255, .74); }
+
+    .radio-player {
+      background: rgba(255, 255, 255, .09);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .radio-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 14px;
+    }
+
+    .play-button {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      border: 0;
+      border-radius: 16px;
+      background: var(--gold);
+      color: #111827;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .station-name { font-weight: 800; }
+    .stream-name { color: rgba(255, 255, 255, .65); font-size: .85rem; }
+
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #fca5a5;
+      font-size: .74rem;
+      font-weight: 800;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse 1.3s infinite;
+    }
+
+    @keyframes pulse {
+      50% { opacity: .35; transform: scale(.8); }
+    }
+
+    audio { width: 100%; margin: 8px 0 10px; }
+
+    .radio-status {
+      min-height: 24px;
+      color: rgba(255, 255, 255, .74);
+      font-size: .84rem;
+    }
+
+    .share-button,
+    .primary-button,
+    .tab-button {
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .share-button:hover,
+    .primary-button:hover,
+    .tab-button:hover,
+    .play-button:hover { transform: translateY(-1px); }
+
+    .share-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #071d3d;
+      background: white;
     }
 
     .prayer-banner {
-      background: linear-gradient(135deg, #064e3b, #0f766e);
-      color: white;
-      border-radius: 16px;
-      padding: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      padding: 18px;
       margin-bottom: 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #064e3b, #0f766e);
+      color: white;
     }
 
-    .prayer-banner small { color: rgba(255,255,255,.75); }
+    .prayer-banner small { color: rgba(255, 255, 255, .75); }
 
     .countdown {
+      direction: ltr;
       font-size: 1.8rem;
       font-weight: 800;
       color: #fde68a;
@@ -186,9 +311,9 @@
     }
 
     .prayer-time {
+      padding: 12px;
       border: 1px solid var(--border);
       border-radius: 13px;
-      padding: 12px;
       text-align: center;
       background: #f8fafc;
     }
@@ -206,38 +331,24 @@
     }
 
     .prayer-time strong {
+      direction: ltr;
+      display: inline-block;
       color: var(--primary);
       font-variant-numeric: tabular-nums;
     }
 
-    .text-link {
-      display: inline-block;
-      margin-top: 16px;
-      color: var(--primary-light);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.25fr;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
     .converter-tabs {
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 18px;
     }
 
     .tab-button {
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 999px;
       padding: 9px 14px;
-      cursor: pointer;
-      font-weight: 700;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
       color: var(--muted);
     }
 
@@ -250,12 +361,6 @@
     .converter-form { display: none; }
     .converter-form.active { display: block; }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
     .date-input-label {
       margin-bottom: 10px;
       color: var(--muted);
@@ -263,28 +368,10 @@
       font-weight: 700;
     }
 
-    .result-grid {
+    .form-row {
       display: grid;
-      gap: 8px;
-    }
-
-    .result-line {
-      display: grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      align-items: start;
-    }
-
-    .result-label {
-      color: var(--muted);
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .result-value {
-      color: var(--primary);
-      overflow-wrap: anywhere;
     }
 
     .field label {
@@ -295,153 +382,78 @@
       margin-bottom: 5px;
     }
 
-    .field input, .field select {
+    .field select {
       width: 100%;
+      padding: 11px 12px;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 11px 12px;
       background: white;
       color: var(--text);
-    }
-
-    .primary-button, .share-button, .play-button {
-      border: 0;
-      cursor: pointer;
-      font-weight: 800;
-      border-radius: 12px;
-      transition: transform .2s ease, opacity .2s ease;
-    }
-
-    .primary-button:hover, .share-button:hover, .play-button:hover {
-      transform: translateY(-1px);
     }
 
     .primary-button {
       width: 100%;
       margin-top: 14px;
       padding: 12px;
+      border-radius: 12px;
       background: var(--primary);
       color: white;
     }
 
     .converter-result {
+      min-height: 58px;
       margin-top: 14px;
-      min-height: 52px;
-      border-radius: 12px;
       padding: 14px;
-      background: #f8fafc;
       border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: #f8fafc;
       color: var(--primary);
       font-weight: 700;
     }
 
-    .radio-card {
-      background:
-        radial-gradient(circle at 90% 10%, rgba(216,167,46,.22), transparent 25%),
-        linear-gradient(145deg, #071d3d, #0b315f 62%, #064e3b);
-      color: white;
-      overflow: hidden;
-    }
+    .result-grid { display: grid; gap: 8px; }
 
-    .radio-card .card-title { color: white; }
-    .radio-card .card-subtitle { color: rgba(255,255,255,.73); }
-
-    .radio-player {
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .radio-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 18px;
-    }
-
-    .play-button {
-      width: 58px;
-      height: 58px;
-      flex: 0 0 58px;
-      border-radius: 16px;
-      background: var(--gold);
-      color: #111827;
-      font-size: 1.25rem;
-    }
-
-    .station-name { font-weight: 800; }
-    .stream-name { color: rgba(255,255,255,.65); font-size: .88rem; }
-
-    .live {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #fca5a5;
-      font-size: .76rem;
-      font-weight: 800;
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #ef4444;
-      border-radius: 50%;
-      animation: pulse 1.3s infinite;
-    }
-
-    @keyframes pulse {
-      50% { opacity: .35; transform: scale(.8); }
-    }
-
-    audio {
-      width: 100%;
-      margin: 8px 0 12px;
-    }
-
-    .radio-status {
-      min-height: 24px;
-      color: rgba(255,255,255,.72);
-      font-size: .84rem;
-    }
-
-    .radio-actions {
-      display: flex;
-      flex-wrap: wrap;
+    .result-line {
+      display: grid;
+      grid-template-columns: 90px 1fr;
       gap: 10px;
-      margin-top: 14px;
+      align-items: start;
     }
 
-    .share-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 14px;
-      color: #071d3d;
-      background: white;
-      font-size: .86rem;
+    .result-label {
+      color: var(--muted);
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .result-value {
+      direction: ltr;
+      text-align: start;
+      color: var(--primary);
+      overflow-wrap: anywhere;
     }
 
     .section-card { margin-bottom: 24px; }
 
     .library-table-wrap {
       overflow-x: auto;
-      border-radius: 16px;
       border: 1px solid var(--border);
+      border-radius: 16px;
     }
 
     table {
       width: 100%;
+      min-width: 760px;
       border-collapse: collapse;
       background: white;
-      min-width: 760px;
     }
 
-    th, td {
+    th,
+    td {
       padding: 15px 16px;
       border-bottom: 1px solid var(--border);
-      text-align: left;
+      text-align: start;
     }
 
     th {
@@ -453,11 +465,10 @@
     tr:last-child td { border-bottom: 0; }
     tbody tr:hover { background: #f8fafc; }
 
-    .arabic {
+    .arabic-name {
       direction: rtl;
       font-family: "Amiri", serif;
-      font-size: 1.05rem;
-      text-align: right;
+      font-size: 1.08rem;
     }
 
     .open-link {
@@ -469,13 +480,13 @@
     .reminder {
       text-align: center;
       background:
-        radial-gradient(circle at center, rgba(16,185,129,.08), transparent 50%),
+        radial-gradient(circle at center, rgba(16, 185, 129, .08), transparent 50%),
         white;
     }
 
     .ayah {
-      font-family: "Amiri", serif;
       direction: rtl;
+      font-family: "Amiri", serif;
       color: var(--green);
       font-size: clamp(1.7rem, 4vw, 2.5rem);
       line-height: 1.8;
@@ -484,21 +495,27 @@
     .translation { color: var(--muted); }
 
     .notice {
+      grid-column: 1 / -1;
       padding: 10px 12px;
       border-radius: 10px;
       background: #fffbeb;
       color: #92400e;
       font-size: .82rem;
-      margin-top: 12px;
     }
 
+    html[dir="rtl"] .back-icon { transform: rotate(180deg); }
+    html[dir="rtl"] .hijri-line { text-align: right; }
+    html[dir="ltr"] .hijri-line { text-align: left; }
+
     @media (max-width: 850px) {
-      .dashboard, .tools-grid { grid-template-columns: 1fr; }
-      .hero { padding: 30px 24px; }
+      .grid-two { grid-template-columns: 1fr; }
+      .hero { padding: 32px 24px; }
     }
 
     @media (max-width: 560px) {
-      .page-shell { width: min(100% - 20px, 1180px); padding-top: 20px; }
+      .page-shell { width: min(100% - 20px, 1180px); padding-top: 18px; }
+      .top-actions { align-items: stretch; }
+      .back-link, .language-button { padding-inline: 12px; }
       .card { padding: 20px; }
       .prayer-grid { grid-template-columns: repeat(2, 1fr); }
       .form-row { grid-template-columns: 1fr; }
@@ -506,204 +523,188 @@
     }
   </style>
 </head>
-
 <body>
   <div data-include="header.html"></div>
   <div data-include="nav.html"></div>
 
   <main class="page-shell">
-    <a class="back-link" href="/">
-      <i class="fa-solid fa-arrow-left"></i>
-      Back to Home
-    </a>
+    <div class="top-actions">
+      <a class="back-link" href="/">
+        <i class="fa-solid fa-arrow-left back-icon"></i>
+        <span data-i18n="backHome">العودة للرئيسية</span>
+      </a>
+
+      <button id="languageButton" class="language-button" type="button" aria-label="Switch language">
+        <i class="fa-solid fa-language"></i>
+        <span id="languageButtonText">English</span>
+      </button>
+    </div>
 
     <section class="hero">
       <div class="hero-kicker">
         <i class="fa-solid fa-book-quran"></i>
-        Quran & Islamic Tools
+        <span data-i18n="heroKicker">القرآن والأدوات الإسلامية</span>
       </div>
-      <h1>Quran Library</h1>
-      <p>Quran PDFs, Islamic books, Makkah time, Hijri date tools, prayer times, and Saudi Quran Radio.</p>
+      <h1 data-i18n="heroTitle">مكتبة القرآن الكريم</h1>
+      <p data-i18n="heroDescription">مصاحف وكتب إسلامية، توقيت مكة، مواقيت الصلاة، محول التاريخ الهجري، وإذاعة القرآن الكريم من المملكة العربية السعودية.</p>
     </section>
 
-    <section class="dashboard">
+    <section class="grid-two">
       <article class="card">
-        <h2 class="card-title">🕋 Makkah Time</h2>
-        <p class="card-subtitle">Current local time and Hijri date</p>
-
+        <h2 class="card-title" data-i18n="makkahTimeTitle">🕋 توقيت مكة المكرمة</h2>
+        <p class="card-subtitle" data-i18n="makkahTimeSubtitle">الوقت المحلي الحالي والتاريخ الهجري</p>
         <div id="makkahClock" class="clock">--:--:--</div>
-        <div id="gregorianDate" class="date-line">Loading date…</div>
-        <div id="hijriDate" class="hijri-line">جارٍ تحميل التاريخ الهجري…</div>
-      </article>
-
-      <article class="card">
-        <h2 class="card-title">🕌 Makkah Prayer Times</h2>
-        <p class="card-subtitle">Today's prayer schedule for Makkah</p>
-
-        <div class="prayer-banner">
-          <div>
-            <small>Time until</small>
-            <div id="nextPrayerName"><strong>Next prayer</strong></div>
-          </div>
-          <div id="prayerCountdown" class="countdown">--:--:--</div>
-        </div>
-
-        <div id="prayerGrid" class="prayer-grid">
-          <div class="prayer-time"><span>Fajr</span><strong>--:--</strong></div>
-          <div class="prayer-time"><span>Sunrise</span><strong>--:--</strong></div>
-          <div class="prayer-time"><span>Dhuhr</span><strong>--:--</strong></div>
-          <div class="prayer-time"><span>Asr</span><strong>--:--</strong></div>
-          <div class="prayer-time"><span>Maghrib</span><strong>--:--</strong></div>
-          <div class="prayer-time"><span>Isha</span><strong>--:--</strong></div>
-        </div>
-
-        <a class="text-link" href="https://makkahlive.net/en/prayer-times/saudi-arabia/makkah" target="_blank" rel="noopener">
-          Full Makkah prayer schedule →
-        </a>
-      </article>
-    </section>
-
-    <section class="tools-grid">
-      <article class="card">
-        <h2 class="card-title">Hijri Date Converter</h2>
-        <p class="card-subtitle">Convert between Hijri and Gregorian dates</p>
-
-        <div class="converter-tabs">
-          <button class="tab-button active" type="button" data-tab="gToH">Gregorian to Hijri</button>
-          <button class="tab-button" type="button" data-tab="hToG">Hijri to Gregorian</button>
-        </div>
-
-        <form id="gToH" class="converter-form active">
-          <div class="date-input-label">Gregorian date</div>
-          <div class="form-row">
-            <div class="field">
-              <label for="gDay">Day</label>
-              <select id="gDay" required></select>
-            </div>
-            <div class="field">
-              <label for="gMonth">Month</label>
-              <select id="gMonth" required></select>
-            </div>
-            <div class="field">
-              <label for="gYear">Year</label>
-              <select id="gYear" required></select>
-            </div>
-          </div>
-          <button class="primary-button" type="submit">Convert to Hijri</button>
-        </form>
-
-        <form id="hToG" class="converter-form">
-          <div class="date-input-label">Hijri date</div>
-          <div class="form-row">
-            <div class="field">
-              <label for="hDay">Day</label>
-              <select id="hDay" required></select>
-            </div>
-            <div class="field">
-              <label for="hMonth">Month</label>
-              <select id="hMonth" required></select>
-            </div>
-            <div class="field">
-              <label for="hYear">Year</label>
-              <select id="hYear" required></select>
-            </div>
-          </div>
-          <button class="primary-button" type="submit">Convert to Gregorian</button>
-        </form>
-
-        <div id="converterResult" class="converter-result" aria-live="polite">
-          Select a date and press Convert.
-        </div>
+        <div id="gregorianDate" class="date-line">...</div>
+        <div id="hijriDate" class="hijri-line">...</div>
       </article>
 
       <article class="card radio-card">
-        <h2 class="card-title">📻 Saudi Quran Radio — Live Stream</h2>
-        <p class="card-subtitle">
-          Listen for free to Quran Radio from the Kingdom of Saudi Arabia, 24/7.
-        </p>
+        <h2 class="card-title" data-i18n="radioTitle">📻 إذاعة القرآن الكريم — بث مباشر</h2>
+        <p class="card-subtitle" data-i18n="radioSubtitle">استمع مجانًا إلى إذاعة القرآن الكريم من المملكة العربية السعودية على مدار الساعة.</p>
 
         <div class="radio-player">
           <div class="radio-header">
-            <button id="playButton" class="play-button" type="button" aria-label="Play Saudi Quran Radio">
+            <button id="playButton" class="play-button" type="button" aria-label="تشغيل إذاعة القرآن الكريم">
               <i class="fa-solid fa-play"></i>
             </button>
-
             <div>
-              <div class="station-name">Saudi Quran Radio</div>
-              <div class="stream-name">Stream 1</div>
-              <div class="live"><span class="live-dot"></span>LIVE</div>
+              <div class="station-name" data-i18n="stationName">إذاعة القرآن الكريم السعودية</div>
+              <div class="stream-name" data-i18n="streamName">البث الأول</div>
+              <div class="live"><span class="live-dot"></span><span data-i18n="live">مباشر</span></div>
             </div>
           </div>
 
           <audio id="radioAudio" preload="none">
             <source src="https://stream.radiojar.com/0tpy1h0kxtzuv" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
 
-          <div id="radioStatus" class="radio-status">
-            Press Play to start the live stream.
-          </div>
+          <div id="radioStatus" class="radio-status" data-i18n="radioReady">اضغط تشغيل لبدء البث المباشر.</div>
 
-          <div class="radio-actions">
-            <button id="shareButton" class="share-button" type="button">
-              <i class="fa-solid fa-share-nodes"></i>
-              Share this page
-            </button>
-          </div>
+          <button id="shareButton" class="share-button" type="button">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span data-i18n="sharePage">مشاركة الصفحة</span>
+          </button>
         </div>
       </article>
     </section>
 
+    <section class="grid-two">
+      <article class="card">
+        <h2 class="card-title" data-i18n="prayerTitle">🕌 مواقيت الصلاة في مكة</h2>
+        <p class="card-subtitle" data-i18n="prayerSubtitle">مواقيت الصلاة لهذا اليوم في مكة المكرمة</p>
+
+        <div class="prayer-banner">
+          <div>
+            <small data-i18n="timeUntil">الوقت المتبقي حتى</small>
+            <div id="nextPrayerName"><strong data-i18n="nextPrayer">الصلاة القادمة</strong></div>
+          </div>
+          <div id="prayerCountdown" class="countdown">--:--:--</div>
+        </div>
+
+        <div id="prayerGrid" class="prayer-grid"></div>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title" data-i18n="converterTitle">محول التاريخ الهجري</h2>
+        <p class="card-subtitle" data-i18n="converterSubtitle">التحويل بين التاريخ الهجري والميلادي</p>
+
+        <div class="converter-tabs">
+          <button class="tab-button active" type="button" data-tab="gToH" data-i18n="gToHTab">ميلادي إلى هجري</button>
+          <button class="tab-button" type="button" data-tab="hToG" data-i18n="hToGTab">هجري إلى ميلادي</button>
+        </div>
+
+        <form id="gToH" class="converter-form active">
+          <div class="date-input-label" data-i18n="gregorianDate">التاريخ الميلادي</div>
+          <div class="form-row">
+            <div class="field">
+              <label for="gDay" data-i18n="day">اليوم</label>
+              <select id="gDay" required></select>
+            </div>
+            <div class="field">
+              <label for="gMonth" data-i18n="month">الشهر</label>
+              <select id="gMonth" required></select>
+            </div>
+            <div class="field">
+              <label for="gYear" data-i18n="year">السنة</label>
+              <select id="gYear" required></select>
+            </div>
+          </div>
+          <button class="primary-button" type="submit" data-i18n="convertToHijri">تحويل إلى هجري</button>
+        </form>
+
+        <form id="hToG" class="converter-form">
+          <div class="date-input-label" data-i18n="hijriDate">التاريخ الهجري</div>
+          <div class="form-row">
+            <div class="field">
+              <label for="hDay" data-i18n="day">اليوم</label>
+              <select id="hDay" required></select>
+            </div>
+            <div class="field">
+              <label for="hMonth" data-i18n="month">الشهر</label>
+              <select id="hMonth" required></select>
+            </div>
+            <div class="field">
+              <label for="hYear" data-i18n="year">السنة</label>
+              <select id="hYear" required></select>
+            </div>
+          </div>
+          <button class="primary-button" type="submit" data-i18n="convertToGregorian">تحويل إلى ميلادي</button>
+        </form>
+
+        <div id="converterResult" class="converter-result" aria-live="polite" data-i18n="selectDate">اختر التاريخ ثم اضغط تحويل.</div>
+      </article>
+    </section>
+
     <section class="card section-card">
-      <h2 class="card-title">📚 Quran & Islamic Books</h2>
-      <p class="card-subtitle">Open the available Quran PDFs and Islamic resources</p>
+      <h2 class="card-title" data-i18n="libraryTitle">📚 القرآن والكتب الإسلامية</h2>
+      <p class="card-subtitle" data-i18n="librarySubtitle">افتح ملفات القرآن الكريم والموارد الإسلامية المتاحة</p>
 
       <div class="library-table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Category</th>
-              <th>English Name</th>
-              <th>Arabic Name</th>
-              <th>Type</th>
-              <th>Open</th>
+              <th data-i18n="category">التصنيف</th>
+              <th data-i18n="englishName">الاسم بالإنجليزية</th>
+              <th data-i18n="arabicName">الاسم بالعربية</th>
+              <th data-i18n="type">النوع</th>
+              <th data-i18n="open">فتح</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Quran</td>
+              <td data-i18n="quranCategory">قرآن</td>
               <td>King Fahd Quran</td>
-              <td class="arabic">مصحف الملك فهد</td>
+              <td class="arabic-name">مصحف الملك فهد</td>
               <td>PDF</td>
-              <td><a class="open-link" href="https://drive.google.com/file/d/1jdrf6tH3LmdVEa_ACQfbq_DGrA9-Wg6E/view" target="_blank" rel="noopener">Open PDF</a></td>
+              <td><a class="open-link" href="https://drive.google.com/file/d/1jdrf6tH3LmdVEa_ACQfbq_DGrA9-Wg6E/view" target="_blank" rel="noopener" data-i18n="openPdf">فتح PDF</a></td>
             </tr>
             <tr>
-              <td>Quran</td>
+              <td data-i18n="quranCategory">قرآن</td>
               <td>Medina Quran</td>
-              <td class="arabic">مصحف المدينة النبوية</td>
+              <td class="arabic-name">مصحف المدينة النبوية</td>
               <td>PDF</td>
-              <td><a class="open-link" href="https://drive.google.com/file/d/1kPqjHCB8zCrQW8U58FBsTHGl8CtWsdNg/view" target="_blank" rel="noopener">Open PDF</a></td>
+              <td><a class="open-link" href="https://drive.google.com/file/d/1kPqjHCB8zCrQW8U58FBsTHGl8CtWsdNg/view" target="_blank" rel="noopener" data-i18n="openPdf">فتح PDF</a></td>
             </tr>
             <tr>
-              <td>Translation</td>
+              <td data-i18n="translationCategory">ترجمة</td>
               <td>The Holy Quran in All Languages</td>
-              <td class="arabic">القرآن الكريم بجميع اللغات</td>
+              <td class="arabic-name">القرآن الكريم بجميع اللغات</td>
               <td>PDF</td>
-              <td><a class="open-link" href="https://drive.google.com/file/d/1jKpGZoitlN7rCxToHq_dq1i3Dqtix1Vh/view" target="_blank" rel="noopener">Open PDF</a></td>
+              <td><a class="open-link" href="https://drive.google.com/file/d/1jKpGZoitlN7rCxToHq_dq1i3Dqtix1Vh/view" target="_blank" rel="noopener" data-i18n="openPdf">فتح PDF</a></td>
             </tr>
             <tr>
-              <td>Hadith</td>
+              <td data-i18n="hadithCategory">حديث</td>
               <td>The Nawawi Forty Hadith</td>
-              <td class="arabic">الأربعون النووية</td>
+              <td class="arabic-name">الأربعون النووية</td>
               <td>PDF</td>
-              <td><a class="open-link" href="https://drive.google.com/file/d/1mnpAvUb717sza2tqfPriTJccpLAhVP6z/view" target="_blank" rel="noopener">Open PDF</a></td>
+              <td><a class="open-link" href="https://drive.google.com/file/d/1mnpAvUb717sza2tqfPriTJccpLAhVP6z/view" target="_blank" rel="noopener" data-i18n="openPdf">فتح PDF</a></td>
             </tr>
             <tr>
-              <td>Dua</td>
+              <td data-i18n="duaCategory">أدعية</td>
               <td>Fortress of the Muslim</td>
-              <td class="arabic">حصن المسلم</td>
+              <td class="arabic-name">حصن المسلم</td>
               <td>PDF</td>
-              <td><a class="open-link" href="https://drive.google.com/file/d/1l0tZAXUdKzomCfjrgsbiT7O2SIJezRtz/view" target="_blank" rel="noopener">Open PDF</a></td>
+              <td><a class="open-link" href="https://drive.google.com/file/d/1l0tZAXUdKzomCfjrgsbiT7O2SIJezRtz/view" target="_blank" rel="noopener" data-i18n="openPdf">فتح PDF</a></td>
             </tr>
           </tbody>
         </table>
@@ -712,9 +713,7 @@
 
     <section class="card reminder">
       <div class="ayah">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
-      <div class="translation">
-        Verily, in the remembrance of Allah do hearts find rest. (Quran 13:28)
-      </div>
+      <div class="translation" data-i18n="ayahTranslation">ألا بذكر الله تطمئن القلوب — سورة الرعد، الآية 28</div>
     </section>
   </main>
 
@@ -732,10 +731,163 @@
 
     const MAKKAH_TIME_ZONE = "Asia/Riyadh";
     const PRAYER_API = "https://api.aladhan.com/v1";
-    const prayers = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
+    const prayerKeys = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
+    const translations = {
+      ar: {
+        pageTitle: "مكتبة القرآن | Quran Library",
+        backHome: "العودة للرئيسية",
+        heroKicker: "القرآن والأدوات الإسلامية",
+        heroTitle: "مكتبة القرآن الكريم",
+        heroDescription: "مصاحف وكتب إسلامية، توقيت مكة، مواقيت الصلاة، محول التاريخ الهجري، وإذاعة القرآن الكريم من المملكة العربية السعودية.",
+        makkahTimeTitle: "🕋 توقيت مكة المكرمة",
+        makkahTimeSubtitle: "الوقت المحلي الحالي والتاريخ الهجري",
+        radioTitle: "📻 إذاعة القرآن الكريم — بث مباشر",
+        radioSubtitle: "استمع مجانًا إلى إذاعة القرآن الكريم من المملكة العربية السعودية على مدار الساعة.",
+        stationName: "إذاعة القرآن الكريم السعودية",
+        streamName: "البث الأول",
+        live: "مباشر",
+        radioReady: "اضغط تشغيل لبدء البث المباشر.",
+        sharePage: "مشاركة الصفحة",
+        prayerTitle: "🕌 مواقيت الصلاة في مكة",
+        prayerSubtitle: "مواقيت الصلاة لهذا اليوم في مكة المكرمة",
+        timeUntil: "الوقت المتبقي حتى",
+        nextPrayer: "الصلاة القادمة",
+        converterTitle: "محول التاريخ الهجري",
+        converterSubtitle: "التحويل بين التاريخ الهجري والميلادي",
+        gToHTab: "ميلادي إلى هجري",
+        hToGTab: "هجري إلى ميلادي",
+        gregorianDate: "التاريخ الميلادي",
+        hijriDate: "التاريخ الهجري",
+        day: "اليوم",
+        month: "الشهر",
+        year: "السنة",
+        convertToHijri: "تحويل إلى هجري",
+        convertToGregorian: "تحويل إلى ميلادي",
+        selectDate: "اختر التاريخ ثم اضغط تحويل.",
+        libraryTitle: "📚 القرآن والكتب الإسلامية",
+        librarySubtitle: "افتح ملفات القرآن الكريم والموارد الإسلامية المتاحة",
+        category: "التصنيف",
+        englishName: "الاسم بالإنجليزية",
+        arabicName: "الاسم بالعربية",
+        type: "النوع",
+        open: "فتح",
+        quranCategory: "قرآن",
+        translationCategory: "ترجمة",
+        hadithCategory: "حديث",
+        duaCategory: "أدعية",
+        openPdf: "فتح PDF",
+        ayahTranslation: "ألا بذكر الله تطمئن القلوب — سورة الرعد، الآية 28",
+        number: "رقم",
+        text: "نص",
+        converting: "جارٍ التحويل...",
+        conversionUnavailable: "خدمة التحويل غير متاحة حاليًا. حاول مرة أخرى لاحقًا.",
+        invalidHijri: "خدمة التحويل غير متاحة. تحقق من التاريخ الهجري.",
+        prayerUnavailable: "تعذر تحميل مواقيت الصلاة.",
+        connecting: "جارٍ الاتصال بالبث المباشر...",
+        playing: "إذاعة القرآن الكريم تعمل الآن.",
+        paused: "تم إيقاف الإذاعة مؤقتًا.",
+        buffering: "جارٍ تحميل البث المباشر...",
+        streamUnavailable: "البث المباشر غير متاح أو محظور بواسطة المتصفح.",
+        copied: "تم نسخ رابط الصفحة.",
+        shareFailed: "تعذرت مشاركة رابط الصفحة.",
+        playAria: "تشغيل إذاعة القرآن الكريم",
+        pauseAria: "إيقاف إذاعة القرآن الكريم مؤقتًا",
+        shareTitle: "إذاعة القرآن الكريم — بث مباشر",
+        shareText: "استمع إلى إذاعة القرآن الكريم السعودية مباشرة على مدار الساعة.",
+        prayers: {
+          Fajr: "الفجر",
+          Sunrise: "الشروق",
+          Dhuhr: "الظهر",
+          Asr: "العصر",
+          Maghrib: "المغرب",
+          Isha: "العشاء"
+        },
+        gregorianMonths: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+        hijriMonths: ["محرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"]
+      },
+      en: {
+        pageTitle: "Quran Library | Mohammed Alotaibi",
+        backHome: "Back to Home",
+        heroKicker: "Quran & Islamic Tools",
+        heroTitle: "Quran Library",
+        heroDescription: "Quran PDFs, Islamic books, Makkah time, prayer times, Hijri date tools, and Saudi Quran Radio.",
+        makkahTimeTitle: "🕋 Makkah Time",
+        makkahTimeSubtitle: "Current local time and Hijri date",
+        radioTitle: "📻 Saudi Quran Radio — Live Stream",
+        radioSubtitle: "Listen free to Quran Radio from the Kingdom of Saudi Arabia, 24/7.",
+        stationName: "Saudi Quran Radio",
+        streamName: "Stream 1",
+        live: "LIVE",
+        radioReady: "Press Play to start the live stream.",
+        sharePage: "Share this page",
+        prayerTitle: "🕌 Makkah Prayer Times",
+        prayerSubtitle: "Today's prayer schedule for Makkah",
+        timeUntil: "Time until",
+        nextPrayer: "Next prayer",
+        converterTitle: "Hijri Date Converter",
+        converterSubtitle: "Convert between Hijri and Gregorian dates",
+        gToHTab: "Gregorian to Hijri",
+        hToGTab: "Hijri to Gregorian",
+        gregorianDate: "Gregorian date",
+        hijriDate: "Hijri date",
+        day: "Day",
+        month: "Month",
+        year: "Year",
+        convertToHijri: "Convert to Hijri",
+        convertToGregorian: "Convert to Gregorian",
+        selectDate: "Select a date and press Convert.",
+        libraryTitle: "📚 Quran & Islamic Books",
+        librarySubtitle: "Open the available Quran PDFs and Islamic resources",
+        category: "Category",
+        englishName: "English Name",
+        arabicName: "Arabic Name",
+        type: "Type",
+        open: "Open",
+        quranCategory: "Quran",
+        translationCategory: "Translation",
+        hadithCategory: "Hadith",
+        duaCategory: "Dua",
+        openPdf: "Open PDF",
+        ayahTranslation: "Verily, in the remembrance of Allah do hearts find rest. (Quran 13:28)",
+        number: "Number",
+        text: "Text",
+        converting: "Converting...",
+        conversionUnavailable: "Conversion is currently unavailable. Please try again later.",
+        invalidHijri: "Conversion is unavailable. Please verify the Hijri date.",
+        prayerUnavailable: "Prayer times could not be loaded.",
+        connecting: "Connecting to the live stream...",
+        playing: "Saudi Quran Radio is playing live.",
+        paused: "Radio paused.",
+        buffering: "Buffering the live stream...",
+        streamUnavailable: "The live stream is unavailable or blocked by the browser.",
+        copied: "Page link copied to the clipboard.",
+        shareFailed: "The page link could not be shared.",
+        playAria: "Play Saudi Quran Radio",
+        pauseAria: "Pause Saudi Quran Radio",
+        shareTitle: "Saudi Quran Radio — Live Stream",
+        shareText: "Listen to Saudi Quran Radio live, 24/7.",
+        prayers: {
+          Fajr: "Fajr",
+          Sunrise: "Sunrise",
+          Dhuhr: "Dhuhr",
+          Asr: "Asr",
+          Maghrib: "Maghrib",
+          Isha: "Isha"
+        },
+        gregorianMonths: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        hijriMonths: ["Muharram", "Safar", "Rabi Al-Awwal", "Rabi Al-Thani", "Jumada Al-Awwal", "Jumada Al-Thani", "Rajab", "Shaban", "Ramadan", "Shawwal", "Dhul Qidah", "Dhul Hijjah"]
+      }
+    };
+
+    let currentLanguage = localStorage.getItem("quranLanguage") === "en" ? "en" : "ar";
     let prayerSchedule = [];
     let countdownTimer = null;
+    let lastConverterState = "select";
+
+    function t(key) {
+      return translations[currentLanguage][key] ?? key;
+    }
 
     function makkahDateParts() {
       const parts = new Intl.DateTimeFormat("en-CA", {
@@ -754,6 +906,7 @@
 
     function updateMakkahClock() {
       const now = new Date();
+      const locale = currentLanguage === "ar" ? "ar-SA" : "en-GB";
 
       document.getElementById("makkahClock").textContent =
         new Intl.DateTimeFormat("en-GB", {
@@ -765,7 +918,7 @@
         }).format(now);
 
       document.getElementById("gregorianDate").textContent =
-        new Intl.DateTimeFormat("en-US", {
+        new Intl.DateTimeFormat(locale, {
           timeZone: MAKKAH_TIME_ZONE,
           weekday: "long",
           day: "numeric",
@@ -775,7 +928,7 @@
 
       try {
         document.getElementById("hijriDate").textContent =
-          new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura", {
+          new Intl.DateTimeFormat(`${locale}-u-ca-islamic-umalqura`, {
             timeZone: MAKKAH_TIME_ZONE,
             weekday: "long",
             day: "numeric",
@@ -783,8 +936,9 @@
             year: "numeric"
           }).format(now);
       } catch (error) {
-        document.getElementById("hijriDate").textContent =
-          "Hijri date is not supported by this browser.";
+        document.getElementById("hijriDate").textContent = currentLanguage === "ar"
+          ? "التاريخ الهجري غير مدعوم في هذا المتصفح."
+          : "Hijri date is not supported by this browser.";
       }
     }
 
@@ -797,43 +951,50 @@
       return new Date(`${year}-${month}-${day}T${time}:00+03:00`);
     }
 
-    async function loadPrayerTimes() {
+    function renderPrayerGrid() {
       const grid = document.getElementById("prayerGrid");
 
-      try {
-        const response = await fetch(
-          `${PRAYER_API}/timingsByCity?city=Makkah&country=Saudi%20Arabia&method=4`
-        );
+      if (!prayerSchedule.length) {
+        grid.innerHTML = prayerKeys.map(name => `
+          <div class="prayer-time" data-prayer="${name}">
+            <span>${translations[currentLanguage].prayers[name]}</span>
+            <strong>--:--</strong>
+          </div>
+        `).join("");
+        return;
+      }
 
+      grid.innerHTML = prayerSchedule.map(item => `
+        <div class="prayer-time" data-prayer="${item.name}">
+          <span>${translations[currentLanguage].prayers[item.name]}</span>
+          <strong>${item.time}</strong>
+        </div>
+      `).join("");
+    }
+
+    async function loadPrayerTimes() {
+      try {
+        const response = await fetch(`${PRAYER_API}/timingsByCity?city=Makkah&country=Saudi%20Arabia&method=4`);
         if (!response.ok) throw new Error(`Prayer API returned ${response.status}`);
 
         const payload = await response.json();
         const timings = payload.data.timings;
 
-        prayerSchedule = prayers.map(name => ({
+        prayerSchedule = prayerKeys.map(name => ({
           name,
           time: cleanTime(timings[name]),
           date: todayInMakkahAt(cleanTime(timings[name]))
         }));
 
-        grid.innerHTML = prayerSchedule.map(item => `
-          <div class="prayer-time" data-prayer="${item.name}">
-            <span>${item.name}</span>
-            <strong>${item.time}</strong>
-          </div>
-        `).join("");
-
+        renderPrayerGrid();
         updatePrayerCountdown();
         clearInterval(countdownTimer);
         countdownTimer = setInterval(updatePrayerCountdown, 1000);
       } catch (error) {
         console.error(error);
-        document.getElementById("nextPrayerName").innerHTML =
-          "<strong>Prayer schedule unavailable</strong>";
+        document.getElementById("nextPrayerName").innerHTML = `<strong>${t("prayerUnavailable")}</strong>`;
         document.getElementById("prayerCountdown").textContent = "--:--:--";
-        grid.innerHTML = `<div class="notice" style="grid-column:1/-1">
-          Prayer times could not be loaded. Please use the full Makkah prayer schedule link.
-        </div>`;
+        document.getElementById("prayerGrid").innerHTML = `<div class="notice">${t("prayerUnavailable")}</div>`;
       }
     }
 
@@ -849,7 +1010,6 @@
           name: "Fajr",
           date: new Date(prayerSchedule[0].date.getTime() + 24 * 60 * 60 * 1000)
         };
-        nextIndex = 0;
       } else {
         nextPrayer = prayerSchedule[nextIndex];
       }
@@ -860,31 +1020,15 @@
       const seconds = Math.floor((remaining % 60000) / 1000);
 
       document.getElementById("nextPrayerName").innerHTML =
-        `<strong>${nextPrayer.name}</strong>`;
+        `<strong>${translations[currentLanguage].prayers[nextPrayer.name]}</strong>`;
 
       document.getElementById("prayerCountdown").textContent =
-        [hours, minutes, seconds]
-          .map(value => String(value).padStart(2, "0"))
-          .join(":");
+        [hours, minutes, seconds].map(value => String(value).padStart(2, "0")).join(":");
 
       document.querySelectorAll(".prayer-time").forEach(card => {
-        card.classList.toggle(
-          "active",
-          card.dataset.prayer === nextPrayer.name
-        );
+        card.classList.toggle("active", card.dataset.prayer === nextPrayer.name);
       });
     }
-
-    const gregorianMonths = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    const hijriMonths = [
-      "Muharram", "Safar", "Rabi Al-Awwal", "Rabi Al-Thani",
-      "Jumada Al-Awwal", "Jumada Al-Thani", "Rajab", "Shaban",
-      "Ramadan", "Shawwal", "Dhul Qidah", "Dhul Hijjah"
-    ];
 
     function pad2(value) {
       return String(value).padStart(2, "0");
@@ -916,6 +1060,13 @@
       });
     }
 
+    function refreshMonthNames() {
+      const gMonth = Number(document.getElementById("gMonth").value || 1);
+      const hMonth = Number(document.getElementById("hMonth").value || 1);
+      fillMonthSelect("gMonth", translations[currentLanguage].gregorianMonths, gMonth);
+      fillMonthSelect("hMonth", translations[currentLanguage].hijriMonths, hMonth);
+    }
+
     function daysInGregorianMonth(year, month) {
       return new Date(Number(year), Number(month), 0).getDate();
     }
@@ -929,14 +1080,15 @@
     }
 
     function renderConversionResult(numberValue, textValue) {
+      lastConverterState = "result";
       document.getElementById("converterResult").innerHTML = `
         <div class="result-grid">
           <div class="result-line">
-            <span class="result-label">Number</span>
+            <span class="result-label">${t("number")}</span>
             <strong class="result-value">${numberValue}</strong>
           </div>
           <div class="result-line">
-            <span class="result-label">Text</span>
+            <span class="result-label">${t("text")}</span>
             <strong class="result-value">${textValue}</strong>
           </div>
         </div>
@@ -949,10 +1101,13 @@
 
       const payload = await response.json();
       const hijri = payload.data.hijri;
+      const text = currentLanguage === "ar"
+        ? `${hijri.weekday.ar || hijri.weekday.en}، ${hijri.day} ${hijri.month.ar || hijri.month.en} ${hijri.year} هـ`
+        : `${hijri.weekday.en}, ${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
 
       return {
         number: `${pad2(hijri.day)}-${pad2(hijri.month.number)}-${hijri.year} AH`,
-        text: `${hijri.weekday.en}, ${hijri.day} ${hijri.month.en} ${hijri.year} AH`
+        text
       };
     }
 
@@ -962,26 +1117,54 @@
 
       const payload = await response.json();
       const gregorian = payload.data.gregorian;
+      const text = currentLanguage === "ar"
+        ? `${gregorian.weekday.ar || gregorian.weekday.en}، ${gregorian.day} ${gregorian.month.ar || gregorian.month.en} ${gregorian.year}`
+        : `${gregorian.weekday.en}, ${gregorian.day} ${gregorian.month.en} ${gregorian.year}`;
 
       return {
         number: `${pad2(gregorian.day)}-${pad2(gregorian.month.number)}-${gregorian.year}`,
-        text: `${gregorian.weekday.en}, ${gregorian.day} ${gregorian.month.en} ${gregorian.year}`
+        text
       };
     }
 
+    function applyLanguage(language) {
+      currentLanguage = language;
+      localStorage.setItem("quranLanguage", language);
+
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+      document.title = t("pageTitle");
+      document.getElementById("languageButtonText").textContent = language === "ar" ? "English" : "العربية";
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        if (translations[language][key]) element.textContent = translations[language][key];
+      });
+
+      refreshMonthNames();
+      renderPrayerGrid();
+      updatePrayerCountdown();
+      updateMakkahClock();
+
+      playButton.setAttribute("aria-label", radioAudio.paused ? t("playAria") : t("pauseAria"));
+
+      if (lastConverterState === "select") {
+        document.getElementById("converterResult").textContent = t("selectDate");
+      }
+    }
+
+    document.getElementById("languageButton").addEventListener("click", () => {
+      applyLanguage(currentLanguage === "ar" ? "en" : "ar");
+    });
+
     document.querySelectorAll(".tab-button").forEach(button => {
       button.addEventListener("click", () => {
-        document.querySelectorAll(".tab-button").forEach(item =>
-          item.classList.remove("active")
-        );
-        document.querySelectorAll(".converter-form").forEach(form =>
-          form.classList.remove("active")
-        );
-
+        document.querySelectorAll(".tab-button").forEach(item => item.classList.remove("active"));
+        document.querySelectorAll(".converter-form").forEach(form => form.classList.remove("active"));
         button.classList.add("active");
         document.getElementById(button.dataset.tab).classList.add("active");
-        document.getElementById("converterResult").textContent =
-          "Select a date and press Convert.";
+        lastConverterState = "select";
+        document.getElementById("converterResult").textContent = t("selectDate");
       });
     });
 
@@ -990,39 +1173,39 @@
 
     document.getElementById("gToH").addEventListener("submit", async event => {
       event.preventDefault();
-
       const result = document.getElementById("converterResult");
-      const day = document.getElementById("gDay").value;
-      const month = document.getElementById("gMonth").value;
-      const year = document.getElementById("gYear").value;
-
-      result.textContent = "Converting...";
+      result.textContent = t("converting");
 
       try {
-        const converted = await convertGregorianToHijri(day, month, year);
+        const converted = await convertGregorianToHijri(
+          document.getElementById("gDay").value,
+          document.getElementById("gMonth").value,
+          document.getElementById("gYear").value
+        );
         renderConversionResult(converted.number, converted.text);
       } catch (error) {
         console.error(error);
-        result.textContent = "Conversion is currently unavailable. Please try again later.";
+        lastConverterState = "error";
+        result.textContent = t("conversionUnavailable");
       }
     });
 
     document.getElementById("hToG").addEventListener("submit", async event => {
       event.preventDefault();
-
       const result = document.getElementById("converterResult");
-      const day = document.getElementById("hDay").value;
-      const month = document.getElementById("hMonth").value;
-      const year = document.getElementById("hYear").value;
-
-      result.textContent = "Converting...";
+      result.textContent = t("converting");
 
       try {
-        const converted = await convertHijriToGregorian(day, month, year);
+        const converted = await convertHijriToGregorian(
+          document.getElementById("hDay").value,
+          document.getElementById("hMonth").value,
+          document.getElementById("hYear").value
+        );
         renderConversionResult(converted.number, converted.text);
       } catch (error) {
         console.error(error);
-        result.textContent = "Conversion is currently unavailable. Please verify the Hijri date.";
+        lastConverterState = "error";
+        result.textContent = t("invalidHijri");
       }
     });
 
@@ -1034,11 +1217,7 @@
       playButton.innerHTML = playing
         ? '<i class="fa-solid fa-pause"></i>'
         : '<i class="fa-solid fa-play"></i>';
-
-      playButton.setAttribute(
-        "aria-label",
-        playing ? "Pause Saudi Quran Radio" : "Play Saudi Quran Radio"
-      );
+      playButton.setAttribute("aria-label", playing ? t("pauseAria") : t("playAria"));
     }
 
     playButton.addEventListener("click", async () => {
@@ -1047,42 +1226,39 @@
         return;
       }
 
-      radioStatus.textContent = "Connecting to the live stream…";
-
+      radioStatus.textContent = t("connecting");
       try {
         await radioAudio.play();
       } catch (error) {
         console.error(error);
         setRadioButton(false);
-        radioStatus.textContent =
-          "The stream was blocked or is unavailable.";
+        radioStatus.textContent = t("streamUnavailable");
       }
     });
 
     radioAudio.addEventListener("playing", () => {
       setRadioButton(true);
-      radioStatus.textContent = "Saudi Quran Radio is playing live.";
+      radioStatus.textContent = t("playing");
     });
 
     radioAudio.addEventListener("pause", () => {
       setRadioButton(false);
-      radioStatus.textContent = "Radio paused.";
+      radioStatus.textContent = t("paused");
     });
 
     radioAudio.addEventListener("waiting", () => {
-      radioStatus.textContent = "Buffering the live stream…";
+      radioStatus.textContent = t("buffering");
     });
 
     radioAudio.addEventListener("error", () => {
       setRadioButton(false);
-      radioStatus.textContent =
-        "The direct stream is unavailable or blocked by the browser.";
+      radioStatus.textContent = t("streamUnavailable");
     });
 
     document.getElementById("shareButton").addEventListener("click", async () => {
       const shareData = {
-        title: "Saudi Quran Radio — Live Stream",
-        text: "Listen to Saudi Quran Radio live, 24/7.",
+        title: t("shareTitle"),
+        text: t("shareText"),
         url: window.location.href
       };
 
@@ -1091,12 +1267,12 @@
           await navigator.share(shareData);
         } else {
           await navigator.clipboard.writeText(window.location.href);
-          radioStatus.textContent = "Page link copied to the clipboard.";
+          radioStatus.textContent = t("copied");
         }
       } catch (error) {
         if (error.name !== "AbortError") {
           console.error(error);
-          radioStatus.textContent = "The page link could not be shared.";
+          radioStatus.textContent = t("shareFailed");
         }
       }
     });
@@ -1106,14 +1282,15 @@
       const currentGregorianYear = Number(year);
 
       fillNumberSelect("gYear", 1900, 2100, currentGregorianYear);
-      fillMonthSelect("gMonth", gregorianMonths, Number(month));
       fillNumberSelect("gDay", 1, daysInGregorianMonth(year, month), Number(day));
-
       fillNumberSelect("hYear", 1300, 1600, 1448);
-      fillMonthSelect("hMonth", hijriMonths, 2);
       fillNumberSelect("hDay", 1, 30, 19);
 
-      updateMakkahClock();
+      fillMonthSelect("gMonth", translations[currentLanguage].gregorianMonths, Number(month));
+      fillMonthSelect("hMonth", translations[currentLanguage].hijriMonths, 2);
+
+      renderPrayerGrid();
+      applyLanguage(currentLanguage);
       setInterval(updateMakkahClock, 1000);
       loadPrayerTimes();
     });
