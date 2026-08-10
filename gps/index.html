@@ -395,6 +395,63 @@
       color: #b9f5ff;
     }
 
+
+    .quality {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 7px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 750;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .quality.excellent { color: var(--good); border-color: rgba(80,216,144,.35); }
+    .quality.good { color: #9de9c0; border-color: rgba(80,216,144,.24); }
+    .quality.fair { color: var(--warn); border-color: rgba(240,200,90,.32); }
+    .quality.poor { color: var(--bad); border-color: rgba(255,107,107,.30); }
+
+    .table-wrap {
+      margin-top: 14px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(7,17,31,.42);
+    }
+
+    .sat-table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .sat-table th,
+    .sat-table td {
+      padding: 11px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(33,54,77,.68);
+      white-space: nowrap;
+    }
+
+    .sat-table th {
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      background: rgba(16,34,56,.92);
+      position: sticky;
+      top: 0;
+    }
+
+    .sat-table tr:last-child td { border-bottom: 0; }
+    .sat-used { color: var(--good); font-weight: 750; }
+    .sat-not-used { color: var(--muted); }
+    .native-only { color: var(--info); }
+
     .footer {
       text-align: center;
       color: var(--muted);
@@ -454,6 +511,7 @@
           <div class="metric">
             <span class="label">Accuracy</span>
             <strong id="accuracy">--</strong>
+            <span id="accuracyQuality" class="quality">Waiting</span>
           </div>
 
           <div class="metric">
@@ -513,6 +571,16 @@
           </div>
 
           <div class="status-row">
+            <span>GNSS engine</span>
+            <strong id="gnssEngine" class="value-muted">Browser controlled</strong>
+          </div>
+
+          <div class="status-row">
+            <span>Time to first fix</span>
+            <strong id="ttff" class="value-muted">--</strong>
+          </div>
+
+          <div class="status-row">
             <span>Last update</span>
             <strong id="lastUpdate" class="value-muted">--</strong>
           </div>
@@ -535,12 +603,41 @@
         <div class="systems" id="systems"></div>
 
         <div class="notice">
-          <b>Important:</b> A normal website receives one combined location fix from the device.
-          Browsers do not expose which satellites are connected or how many satellites are being used
-          from GPS, Galileo, GLONASS, BeiDou, QZSS, or NavIC.
+          <b>Browser mode:</b> latitude, longitude, accuracy, altitude, speed and heading can work directly.
+          Satellite-level values are intentionally not exposed by the browser.
           <br><br>
-          The cards below are ready for a future Android native bridge. If native GNSS data is supplied,
-          the same page can display real per-constellation satellite counts.
+          <b>Android GNSS mode:</b> the companion Android bridge fills the constellation cards and the
+          satellite table below with real receiver data.
+        </div>
+      </article>
+
+      <article class="card systems-card">
+        <div class="eyebrow">Live Satellite Details</div>
+        <div class="notice" id="satelliteMessage">
+          Open this dashboard in the Android GNSS companion app to see raw satellite details.
+        </div>
+
+        <div class="table-wrap">
+          <table class="sat-table">
+            <thead>
+              <tr>
+                <th>System</th>
+                <th>SVID</th>
+                <th>C/N0</th>
+                <th>Used</th>
+                <th>Elevation</th>
+                <th>Azimuth</th>
+                <th>Frequency</th>
+                <th>Ephemeris</th>
+                <th>Almanac</th>
+              </tr>
+            </thead>
+            <tbody id="satelliteRows">
+              <tr>
+                <td colspan="9" class="value-muted">Native GNSS data not connected.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </article>
 
@@ -600,7 +697,8 @@
       { key: "GLONASS", country: "Russia", role: "Global" },
       { key: "BeiDou",  country: "China", role: "Global" },
       { key: "QZSS",    country: "Japan", role: "Regional" },
-      { key: "NavIC",   country: "India", role: "Regional" }
+      { key: "NavIC",   country: "India", role: "Regional" },
+      { key: "SBAS",    country: "Augmentation", role: "Regional augmentation" }
     ];
 
     let watchId = null;
@@ -688,6 +786,40 @@
       return Number.isFinite(value) ? `${value.toFixed(1)}°` : "--";
     }
 
+    function updateAccuracyQuality(value) {
+      const el = $("accuracyQuality");
+      if (!Number.isFinite(value)) {
+        el.textContent = "Unavailable";
+        el.className = "quality";
+        return;
+      }
+
+      let text = "Poor";
+      let cls = "poor";
+
+      if (value <= 5) {
+        text = "Excellent";
+        cls = "excellent";
+      } else if (value <= 15) {
+        text = "Very good";
+        cls = "excellent";
+      } else if (value <= 50) {
+        text = "Good";
+        cls = "good";
+      } else if (value <= 100) {
+        text = "Fair";
+        cls = "fair";
+      }
+
+      el.textContent = text;
+      el.className = `quality ${cls}`;
+    }
+
+    function jsNumber(value) {
+      const n = Number(value);
+      return Number.isFinite(n) ? n : null;
+    }
+
     function getEnvironment() {
       const protocol = location.protocol || "unknown:";
       const hostname = location.hostname || "";
@@ -761,6 +893,7 @@
       $("latitude").textContent = fmtNumber(c.latitude);
       $("longitude").textContent = fmtNumber(c.longitude);
       $("accuracy").textContent = fmtMeters(c.accuracy);
+      updateAccuracyQuality(c.accuracy);
       $("altitude").textContent = fmtMeters(c.altitude);
       $("speed").textContent = fmtSpeed(c.speed);
       $("heading").textContent = fmtHeading(c.heading);
@@ -991,35 +1124,113 @@
     /*
       NATIVE ANDROID GNSS BRIDGE
       --------------------------
-      A future Android WebView can send real constellation data to this page:
-
-      window.updateGNSSStatus({
-        systems: {
-          GPS:     { visible: 10, used: 7 },
-          Galileo: { visible: 8,  used: 5 },
-          GLONASS: { visible: 7,  used: 4 },
-          BeiDou:  { visible: 12, used: 8 },
-          QZSS:    { visible: 2,  used: 1 },
-          NavIC:   { visible: 3,  used: 2 }
-        }
-      });
+      Browser mode cannot read raw satellite information.
+      The companion Android app calls these functions with real LocationManager/GnssStatus data.
     */
+
+    window.setNativeBridgeAvailable = function(available) {
+      if (!available) return;
+      $("nativeStatus").textContent = "Android GNSS bridge ready";
+      $("nativeStatus").className = "value-good";
+      $("sourceMode").textContent = "Android native GNSS";
+      $("gnssEngine").textContent = "Ready";
+      $("gnssEngine").className = "value-good";
+      $("satelliteMessage").innerHTML =
+        '<span class="native-only">Native GNSS connected. Waiting for satellite status...</span>';
+    };
+
+    window.updateGnssEngine = function(data) {
+      if (!data) return;
+
+      const state = data.state || "unknown";
+      const engine = $("gnssEngine");
+
+      if (state === "started" || state === "first_fix") {
+        engine.textContent = state === "first_fix" ? "Fix acquired" : "Started";
+        engine.className = "value-good";
+      } else if (state === "stopped") {
+        engine.textContent = "Stopped";
+        engine.className = "value-warn";
+      } else {
+        engine.textContent = state;
+        engine.className = "value-muted";
+      }
+
+      if (Number.isFinite(Number(data.ttffMs))) {
+        $("ttff").textContent = `${(Number(data.ttffMs) / 1000).toFixed(2)} s`;
+        $("ttff").className = "value-good";
+      }
+    };
+
+    window.updateNativeLocation = function(data) {
+      if (!data) return;
+
+      const lat = jsNumber(data.latitude);
+      const lon = jsNumber(data.longitude);
+      const accuracy = jsNumber(data.accuracy);
+      const altitude = jsNumber(data.altitude);
+      const speed = jsNumber(data.speed);
+      const bearing = jsNumber(data.bearing);
+      const verticalAccuracy = jsNumber(data.verticalAccuracy);
+
+      if (lat === null || lon === null) return;
+
+      latestPosition = {
+        coords: {
+          latitude: lat,
+          longitude: lon,
+          accuracy: accuracy,
+          altitude: altitude,
+          altitudeAccuracy: verticalAccuracy,
+          speed: speed,
+          heading: bearing
+        },
+        timestamp: Number(data.timestamp || Date.now())
+      };
+
+      $("latitude").textContent = fmtNumber(lat);
+      $("longitude").textContent = fmtNumber(lon);
+      $("accuracy").textContent = fmtMeters(accuracy);
+      updateAccuracyQuality(accuracy);
+      $("altitude").textContent = fmtMeters(altitude);
+      $("speed").textContent = fmtSpeed(speed);
+      $("heading").textContent = fmtHeading(bearing);
+      $("altAccuracy").textContent = fmtMeters(verticalAccuracy);
+      $("timestamp").textContent = new Date(latestPosition.timestamp).toLocaleString();
+      $("lastUpdate").textContent = new Date().toLocaleTimeString();
+      $("mapCoords").textContent = `${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+      $("sourceMode").textContent = `Android GNSS${data.provider ? " / " + data.provider : ""}`;
+
+      $("mapsBtn").href =
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat + "," + lon)}`;
+      $("mapsBtn").style.pointerEvents = "auto";
+      $("mapsBtn").style.opacity = "1";
+      $("copyBtn").disabled = false;
+      $("shareBtn").disabled = false;
+
+      $("streamStatus").textContent = "Live";
+      $("streamStatus").className = "value-good";
+      $("permissionStatus").textContent = "Allowed";
+      $("permissionStatus").className = "value-good";
+      setTopStatus("Native GNSS live", "live");
+    };
 
     window.updateGNSSStatus = function(data) {
       if (!data || !data.systems) return;
 
       nativeSatelliteDataReceived = true;
 
-      $("nativeStatus").textContent = "Native GNSS active";
+      $("nativeStatus").textContent = "Native satellite data live";
       $("nativeStatus").className = "value-good";
-      $("sourceMode").textContent = "Web + Android GNSS";
+      $("sourceMode").textContent = "Android native GNSS";
+      $("satelliteMessage").innerHTML =
+        '<span class="value-good">Live raw GNSS satellite data.</span>';
 
       let totalVisible = 0;
       let totalUsed = 0;
 
       for (const c of constellations) {
-        const d = data.systems[c.key];
-        if (!d) continue;
+        const d = data.systems[c.key] || { visible: 0, used: 0 };
 
         const visible = Number.isFinite(Number(d.visible)) ? Number(d.visible) : 0;
         const used = Number.isFinite(Number(d.used)) ? Number(d.used) : 0;
@@ -1028,8 +1239,16 @@
         $(`used-${c.key}`).textContent = used;
 
         const badge = $(`badge-${c.key}`);
-        badge.textContent = visible > 0 ? "Detected" : "No signal";
-        badge.className = visible > 0 ? "native-badge active" : "native-badge";
+        if (used > 0) {
+          badge.textContent = "Used in fix";
+          badge.className = "native-badge active";
+        } else if (visible > 0) {
+          badge.textContent = "Visible";
+          badge.className = "native-badge";
+        } else {
+          badge.textContent = "No signal";
+          badge.className = "native-badge";
+        }
 
         totalVisible += visible;
         totalUsed += used;
@@ -1037,6 +1256,39 @@
 
       $("totalVisible").textContent = totalVisible;
       $("totalUsed").textContent = totalUsed;
+
+      const rows = Array.isArray(data.satellites) ? data.satellites : [];
+      if (!rows.length) {
+        $("satelliteRows").innerHTML =
+          '<tr><td colspan="9" class="value-muted">No satellites currently reported.</td></tr>';
+        return;
+      }
+
+      const safe = value => String(value ?? "--")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+
+      $("satelliteRows").innerHTML = rows
+        .sort((a, b) => {
+          const ua = a.used ? 1 : 0;
+          const ub = b.used ? 1 : 0;
+          if (ub !== ua) return ub - ua;
+          return Number(b.cn0 || 0) - Number(a.cn0 || 0);
+        })
+        .map(s => `
+          <tr>
+            <td><strong>${safe(s.system)}</strong></td>
+            <td>${safe(s.svid)}</td>
+            <td>${Number.isFinite(Number(s.cn0)) ? Number(s.cn0).toFixed(1) + " dB-Hz" : "--"}</td>
+            <td class="${s.used ? "sat-used" : "sat-not-used"}">${s.used ? "Yes" : "No"}</td>
+            <td>${Number.isFinite(Number(s.elevation)) ? Number(s.elevation).toFixed(1) + "°" : "--"}</td>
+            <td>${Number.isFinite(Number(s.azimuth)) ? Number(s.azimuth).toFixed(1) + "°" : "--"}</td>
+            <td>${Number.isFinite(Number(s.carrierMHz)) ? Number(s.carrierMHz).toFixed(3) + " MHz" : "--"}</td>
+            <td>${s.ephemeris ? "Yes" : "No"}</td>
+            <td>${s.almanac ? "Yes" : "No"}</td>
+          </tr>
+        `).join("");
     };
 
     function tryStartNativeGNSS() {
