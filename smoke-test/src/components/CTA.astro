@@ -1,0 +1,4 @@
+---
+const { item, class: className = '' } = Astro.props;
+---
+<a href={item.href} class={className} data-analytics-event={item.event}>{item.label}</a>

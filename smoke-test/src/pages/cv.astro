@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageById } from '../config/pages.config';
+import { siteConfig } from '../config/site.config';
+import { enabledExpertise } from '../config/expertise.config';
+import { experience } from '../config/experience.config';
+const page = pageById.cv;
+---
+<BaseLayout page={page}>
+  <h1>{page.h1}</h1>
+  <p><strong>{siteConfig.identity.titles.primary}</strong> · {siteConfig.identity.location.city}, {siteConfig.identity.location.country}</p>
+  <p>This is the web CV source. The PDF generator will consume the same canonical data.</p>
+  <h2>Core Skills</h2>
+  <p>{enabledExpertise.map((x) => x.name).join(' · ')}</p>
+  <h2>Experience</h2>
+  {experience.map((role) => <p><strong>{role.title}</strong> — {role.organization} ({role.startYear}–{role.current ? 'Present' : role.endYear})</p>)}
+</BaseLayout>

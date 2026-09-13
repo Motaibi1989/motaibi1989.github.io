@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageById } from '../config/pages.config';
+import { experience } from '../config/experience.config';
+const page = pageById.experience;
+---
+<BaseLayout page={page}>
+  <h1>{page.h1}</h1>
+  {experience.map((role) => (
+    <article>
+      <h2>{role.title}</h2>
+      <p><strong>{role.organization}</strong> · {role.startYear} – {role.current ? 'Present' : role.endYear}</p>
+      <p>{role.summary}</p>
+    </article>
+  ))}
+</BaseLayout>

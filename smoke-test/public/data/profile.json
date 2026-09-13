@@ -1,0 +1,63 @@
+{
+  "generated": true,
+  "bootstrapGeneratedWithoutNpm": true,
+  "name": "Mohammed Alotaibi",
+  "title": "Senior Enterprise Integration Specialist",
+  "location": "Jeddah, Saudi Arabia",
+  "website": "https://motaibi1989.com",
+  "linkedin": "Senior Enterprise Integration Specialist | IBM MQ | Azure Integration Services | Linux | SFTP | Aviation IT",
+  "github": "https://github.com/Motaibi1989",
+  "expertise": [
+    "Enterprise Integration",
+    "IBM MQ",
+    "Azure Integration Services",
+    "Azure Logic Apps",
+    "API Integration",
+    "Linux",
+    "SFTP",
+    "Middleware",
+    "AMOS Aviation Integration",
+    "Automation",
+    "Nginx",
+    "Docker",
+    "Free Pascal"
+  ],
+  "stats": {
+    "yearsOfExperienceApprox": 13,
+    "careerStartPrecision": "year",
+    "projectCount": 6,
+    "expertiseCount": 13
+  },
+  "projects": [
+    {
+      "id": "nginx-reverse-proxy",
+      "title": "Nginx Reverse Proxy",
+      "slug": "/projects/nginx-reverse-proxy"
+    },
+    {
+      "id": "sftp-automation",
+      "title": "SFTP Automation",
+      "slug": "/projects/sftp-automation"
+    },
+    {
+      "id": "amos-aviation-integration",
+      "title": "Enterprise & AMOS Integration",
+      "slug": "/projects/amos-aviation-integration"
+    },
+    {
+      "id": "docker-devops",
+      "title": "Docker & DevOps",
+      "slug": "/projects/docker-devops"
+    },
+    {
+      "id": "shellscript-repository",
+      "title": "ShellScript Repository",
+      "slug": "/projects/shellscript-repository"
+    },
+    {
+      "id": "free-pascal-projects",
+      "title": "Free Pascal Projects",
+      "slug": "/projects/free-pascal-projects"
+    }
+  ]
+}

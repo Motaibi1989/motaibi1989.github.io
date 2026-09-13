@@ -1,0 +1,28 @@
+{
+  "name": "motaibi1989-webtest",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "validate": "tsx scripts/validate-all.ts",
+    "generate": "tsx scripts/generate-all.ts",
+    "build": "npm run validate && npm run generate && astro build",
+    "preview": "astro preview",
+    "check:external": "tsx scripts/validate-external-links.ts"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^6.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.8.0",
+    "@types/node": "^22.0.0"
+  }
+}

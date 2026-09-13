@@ -1,0 +1,18 @@
+# Mohammed Alotaibi
+> Enterprise Integration Specialist — Saudi Arabia
+
+## Expertise
+- Enterprise Integration
+- IBM MQ
+- Azure Integration Services
+- AMOS Aviation Integration
+
+## Links
+- /cv
+- /projects
+- /ibm-mq
+- /azure-integration
+- /amos-integration
+
+# Status
+Experimental convenience file; not a Google Search ranking requirement.

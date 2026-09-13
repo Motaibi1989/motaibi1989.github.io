@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { pageById } from '../config/pages.config';
+import { expertise } from '../config/expertise.config';
+import { cta } from '../config/cta.config';
+const page = pageById['ibm-mq'];
+const skills = page.expertise.map((id) => expertise.find((x) => x.id === id)).filter(Boolean);
+---
+<BaseLayout page={page}>
+  <h1>{page.h1}</h1>
+  <p>Experience includes IBM MQ enterprise messaging, connectivity, queues/channels, integration support and troubleshooting. Only verified IBM MQ experience is published; IIB/ACE/WAS candidates remain disabled until confirmed.</p>
+  <h2>What I Do</h2>
+  <p>Production-focused integration engineering, troubleshooting, monitoring, documentation and operational readiness using technologies that are verified in the canonical registry.</p>
+  <h2>Technologies & Tools</h2>
+  <div class="chips">{skills.map((x) => <span class="chip">{x.name}</span>)}</div>
+  <h2>Real Projects</h2>
+  <p><a href="/projects">View related projects and sanitized case studies</a>.</p>
+  <h2>Related Expertise</h2>
+  <p><a href="/enterprise-integration">Enterprise Integration Hub</a></p>
+  <p><CTA item={cta.cv} /> · <CTA item={cta.contact} /></p>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { pageById } from '../config/pages.config';
+import { cta } from '../config/cta.config';
+import { coreExpertise, enabledExpertise } from '../config/expertise.config';
+import { getStats } from '../lib/derived/stats';
+const page = pageById.home;
+const stats = getStats();
+---
+<BaseLayout page={page}>
+  <section class="hero">
+    <h1>{page.h1}</h1>
+    <p>Designing reliable enterprise integrations across Azure, IBM MQ, Linux, APIs, SFTP, middleware, automation and aviation systems.</p>
+    <p><strong>{stats.yearsOfExperience}+ Years</strong> · {stats.projectCount}+ public projects · Jeddah, Saudi Arabia</p>
+    <p><CTA item={cta.projects} /> · <CTA item={cta.cv} /> · <CTA item={cta.contact} /></p>
+  </section>
+  <section>
+    <h2>Core Expertise</h2>
+    <div class="chips">{coreExpertise.map((x) => <span class="chip">{x.name}</span>)}</div>
+  </section>
+  <section>
+    <h2>Verified Technical Areas</h2>
+    <div class="chips">{enabledExpertise.map((x) => <span class="chip">{x.name}</span>)}</div>
+  </section>
+</BaseLayout>

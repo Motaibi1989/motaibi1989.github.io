@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+import { pageById } from '../config/pages.config';
+import { siteConfig } from '../config/site.config';
+import { cta } from '../config/cta.config';
+const page = pageById.contact;
+---
+<BaseLayout page={page}>
+  <h1>{page.h1}</h1>
+  <p>For professional networking, enterprise integration discussions and relevant opportunities.</p>
+  <p>Email: <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a></p>
+  <p><CTA item={cta.linkedin} /> · <CTA item={cta.github} /></p>
+</BaseLayout>

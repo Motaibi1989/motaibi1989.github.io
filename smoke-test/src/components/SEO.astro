@@ -1,0 +1,17 @@
+---
+import JsonLd from './JsonLd.astro';
+import { generateSchemaGraph } from '../lib/schema/graph';
+import { siteConfig } from '../config/site.config';
+const { page } = Astro.props;
+const canonical = new URL(page.path, siteConfig.brand.url).toString();
+const graph = generateSchemaGraph(page);
+---
+<title>{page.title}</title>
+<meta name="description" content={page.description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={page.title} />
+<meta property="og:description" content={page.description} />
+<meta property="og:url" content={canonical} />
+<meta name="twitter:card" content="summary_large_image" />
+<JsonLd data={graph} />

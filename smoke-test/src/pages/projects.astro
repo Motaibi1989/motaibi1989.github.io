@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageById } from '../config/pages.config';
+import { projects } from '../config/projects.config';
+const page = pageById.projects;
+---
+<BaseLayout page={page}>
+  <h1>{page.h1}</h1>
+  <div class="cards">
+    {projects.map((project) => (
+      <article class="card">
+        <h2>{project.title}</h2>
+        <p>{project.summary}</p>
+        <p><small>Status: {project.status}</small></p>
+        {project.repository && <a href={project.repository}>Repository</a>}
+      </article>
+    ))}
+  </div>
+</BaseLayout>
