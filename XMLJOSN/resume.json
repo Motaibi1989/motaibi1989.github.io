@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "profile_version": "5.1.9",
+    "updated_at": "2026-11-10",
+    "language": "en"
+  },
+  "identity": {
+    "firstName": "Mohammed",
+    "lastName": "Alotaibi",
+    "years_of_experience": "10+ years",
+    "availability": "Open to senior integration roles — Jeddah / Remote",
+    "desiredJobTitle": "Senior Integration Specialist",
+    "phone_number": "+966569794545",
+    "email": "motaibi1989@gmail.com",
+    "city": "Jeddah",
+    "country": "Saudi Arabia",
+    "about": "Senior Integration Specialist with 10+ years of experience in enterprise integration, middleware engineering, Linux infrastructure, cloud platforms, automation, and digital transformation within aviation and enterprise IT environments. Experienced in Azure Integration Services (AIS), enterprise middleware, APIs, reverse proxy technologies, enterprise automation, production support, and high-availability systems. Strong background in enterprise architecture, operational support, workflow automation, infrastructure optimization, incident troubleshooting, release management, and enterprise modernization initiatives. Proven ability to support mission-critical enterprise systems, optimize operational workflows, and deliver scalable enterprise IT integration solutions.",
+    "linkedin": "https://www.linkedin.com/in/motaibi1989",
+    "github": "https://github.com/Motaibi1989",
+    "website": "https://motaibi1989.com"
+  },
+  "branding": {
+    "tagline": "I build and run the integrations that connect aviation systems to the enterprise.",
+    "elevator_pitch": "I design and deliver secure, scalable enterprise integrations that connect critical systems, automate business processes, and improve operational reliability.",
+    "focus_areas": [
+      "Enterprise Integration",
+      "AMOS Interfaces",
+      "Backend Engineering",
+      "Middleware Architecture",
+      "API Development",
+      "DevOps",
+      "Linux Automation"
+    ]
+  },
+  "experience": [
+    {
+      "id": "exp-001",
+      "jobTitle": "Senior Integration Specialist",
+      "employer": "Saudia Technic",
+      "location": "Jeddah, Saudi Arabia",
+      "startDate": "2022",
+      "endDate": "Present",
+      "currentlyWorkHere": true,
+      "description": "Lead enterprise integration and digital transformation initiatives supporting aviation operational systems, including AMOS interfacing and backend system integrations. Architect and manage enterprise integrations between core business systems, middleware platforms, Azure services, APIs, and third-party applications. Develop scalable automation workflows using Azure Integration Services (AIS), Power Automate, APIs, and SFTP integrations. Manage enterprise middleware operations, production deployment, UAT coordination, release validation, and operational readiness. Support high-availability enterprise environments and mission-critical production systems, applying DevOps principles. Develop operational dashboards, enterprise monitoring solutions, automated notifications, and reporting enhancements. Implement enterprise-grade integration security standards for APIs, SFTP workflows, and data exchange. Support cloud integration initiatives across development, testing, and production environments. Participate in CAB meetings, deployment planning, and enterprise release coordination. Build automated reporting solutions improving operational visibility and management reporting.",
+      "achievements": [
+        {
+          "id": "wproj-001",
+          "title": "ESB Monitoring & Reporting",
+          "description": "Developed operational dashboards and enterprise monitoring solutions for the Enterprise Service Bus.",
+          "technologies": ["ESB", "Monitoring", "Reporting Dashboards"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-002",
+          "title": "Enterprise Workflow Automation",
+          "description": "Built automated reporting solutions and workflow automation improving operational visibility and management reporting.",
+          "technologies": ["Power Automate", "APIs", "SFTP"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-003",
+          "title": "Emergency Alert System & Reporting Dashboards",
+          "description": "Enterprise application development for critical alerts and visibility.",
+          "technologies": ["Enterprise Applications", "Dashboards"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-004",
+          "title": "Document Management Platform & Attendance Management System",
+          "description": "Developed enterprise applications for document handling and attendance tracking.",
+          "technologies": ["Enterprise Applications"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-005",
+          "title": "Mobile Enterprise Application",
+          "description": "Developed mobile enterprise application solutions.",
+          "technologies": ["Mobile Applications"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        }
+      ]
+    },
+    {
+      "id": "exp-002",
+      "jobTitle": "Integration Specialist",
+      "employer": "Saudia Aerospace Engineering Industries (SAEI)",
+      "location": "Jeddah, Saudi Arabia",
+      "startDate": "2018",
+      "endDate": "2022",
+      "currentlyWorkHere": false,
+      "description": "Designed and deployed enterprise integrations using XML, MQ, JSON, APIs, and middleware transformation workflows. Developed Excel-to-XML automation engines supporting Work Order processing. Managed General Ledger Interface automation and enterprise financial synchronization workflows using Power Automate. Built automated reporting and analytics pipelines improving operational visibility. Reduced AMOS startup latency to approximately 5 seconds through performance tuning. Integrated barcode and NFC technologies for maintenance tracking and operational efficiency. Supported high-availability Linux environments for aviation operational systems. Developed Java-based automation tools and GUI-based database extraction utilities. Applied RSA and AES encryption standards for secure enterprise data transmission. Automated Boeing SFTP confirmation notifications and interface operational alert workflows. Supported AirVault (GE) and Laserfiche integrations for document digitization. Engineered BIOSTAR integration for clock-in/clock-out processes to update TAM system in real time.",
+      "achievements": [
+        {
+          "id": "wproj-006",
+          "title": "BIOSTAR integration",
+          "description": "Engineered BIOSTAR integration for clock-in/clock-out processes to update TAM system in real time.",
+          "technologies": ["BIOSTAR", "TAM", "API"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-007",
+          "title": "General Ledger Interface Automation",
+          "description": "Managed General Ledger Interface automation and enterprise financial synchronization workflows using Power Automate.",
+          "technologies": ["Power Automate", "SAP"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-008",
+          "title": "Boeing Modification Status Interface",
+          "description": "Sent modification status information to Saudia Engineering.",
+          "technologies": ["Integration", "Notification"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-009",
+          "title": "Boeing SFTP Notification Automation",
+          "description": "Automated Boeing SFTP confirmation notifications and interface operational alert workflows.",
+          "technologies": ["SFTP", "Automation"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-010",
+          "title": "AMOS Performance Tuning",
+          "description": "Reduced AMOS startup latency to approximately 5 seconds through performance tuning.",
+          "technologies": ["AMOS", "Performance Tuning"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-011",
+          "title": "AirVault (GE) & Laserfiche Integrations",
+          "description": "Supported AirVault (GE) and Laserfiche integrations for document digitization.",
+          "technologies": ["AirVault", "Laserfiche"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        }
+      ]
+    },
+    {
+      "id": "exp-003",
+      "jobTitle": "Systems Administrator",
+      "employer": "Saudia Aerospace Engineering Industries (SAEI)",
+      "location": "Jeddah, Saudi Arabia",
+      "startDate": "2014",
+      "endDate": "2018",
+      "currentlyWorkHere": false,
+      "description": "Managed Linux and Windows enterprise servers supporting operational environments. Engineered reverse proxy platforms for secure enterprise application delivery. Configured Microsoft Azure infrastructure and virtualization platforms including VMware, Hyper-V, and QEMU. Managed Active Directory synchronization, infrastructure monitoring, and operational maintenance. Supported disaster recovery planning, backup operations, and infrastructure optimization. Developed shell scripts for automation, monitoring, and operational reporting. Supported SSL certificate deployment, renewal, and HTTPS validation. Managed reverse proxy access logs, error logs, monitoring, and troubleshooting.",
+      "achievements": [
+        {
+          "id": "wproj-012",
+          "title": "Reverse Proxy Platform",
+          "description": "Engineered reverse proxy platforms for secure enterprise application delivery.",
+          "technologies": ["Linux", "Nginx", "SSL/TLS"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-013",
+          "title": "ServerMonitor & QRCode Application",
+          "description": "Infrastructure monitoring and application utilities.",
+          "technologies": ["Linux", "Monitoring"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        },
+        {
+          "id": "wproj-014",
+          "title": "Enterprise Scheduling Automation",
+          "description": "Automated enterprise scheduling and cron jobs.",
+          "technologies": ["Linux", "Automation"],
+          "repository_url": "",
+          "evidence_status": "user_reported"
+        }
+      ]
+    },
+    {
+      "id": "exp-004",
+      "jobTitle": "Junior Systems Administrator",
+      "employer": "Saudia Aerospace Engineering Industries (SAEI)",
+      "location": "Jeddah, Saudi Arabia",
+      "startDate": "2013",
+      "endDate": "2014",
+      "currentlyWorkHere": false,
+      "description": "Administered AMOS user accounts, cron jobs, and enterprise printing services. Supported technical documentation systems for operational manuals. Assisted with Linux administration, troubleshooting, and operational support. Monitored scheduled jobs, enterprise services, and operational support environments.",
+      "achievements": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "King Abdulaziz University",
+      "location": "Jeddah, Saudi Arabia",
+      "degree": "Bachelor of Information Technology",
+      "stillEnrolled": false,
+      "description": "GPA: 4.47 / 5.00"
+    }
+  ],
+  "skills": {
+    "showExperienceLevel": false,
+    "items": [
+      "Azure Integration Services (AIS)", "Enterprise Service Bus (ESB)", "REST/SOAP APIs", "XML", "JSON/MQ", "SFTP Integration", "Power Automate", "API Governance", "BIOSTAR Integration", "Enterprise Application Integration", "Linux Administration", "Windows Server", "Microsoft Azure", "AWS", "VMware", "Hyper-V", "QEMU", "Reverse Proxy Platforms", "Active Directory", "DNS Management", "Disaster Recovery", "High Availability", "Infrastructure Hardening", "Java", "PHP", "JavaScript", "PowerShell", "Shell Scripting", "HTML/CSS", "Free Pascal", "Workflow Automation", "Reporting Automation", "Enterprise Utilities Development", "MySQL", "RSA Encryption", "AES Encryption", "Security Validation", "Enterprise Security Standards", "Infrastructure Security", "Networking Fundamentals", "ERP Systems", "MAXIMO", "Power BI"
+    ]
+  },
+  "languages": [
+    { "language": "Arabic", "level": "Native" },
+    { "language": "English", "level": "Professional Working" }
+  ],
+  "certifications": [
+    "Microsoft Operations Analyst (2025)",
+    "PMP (35 Training Hours, 2024)",
+    "Enterprise Linux Administration",
+    "Cloud Infrastructure & Virtualization",
+    "Networking Fundamentals",
+    "ITIL Foundation"
+  ],
+  "projects": [
+    {
+      "id": "pproj-001",
+      "name": "Nginx Reverse Proxy",
+      "description": "Linux-based reverse proxy for HTTP/HTTPS traffic with SSL/TLS and access logging.",
+      "technologies": ["Linux", "Nginx", "SSL/TLS"],
+      "repository_url": "https://github.com/Motaibi1989/Nginx-Reverse-Proxy"
+    },
+    {
+      "id": "pproj-002",
+      "name": "PCInfo Utility",
+      "description": "Free Pascal desktop utility for retrieving hardware, software, and OS information.",
+      "technologies": ["Free Pascal", "Windows"],
+      "repository_url": "https://github.com/Motaibi1989/pcinfo"
+    },
+    {
+      "id": "pproj-003",
+      "name": "FreePascal",
+      "description": "Free Pascal / Lazarus utilities including ScanFolder.",
+      "technologies": ["Free Pascal", "Lazarus"],
+      "repository_url": "https://github.com/Motaibi1989/FreePascal"
+    },
+    {
+      "id": "pproj-004",
+      "name": "linuxosar",
+      "description": "Linux documentation and notes in Arabic.",
+      "technologies": ["Linux"],
+      "repository_url": "https://github.com/Motaibi1989/linuxosar"
+    }
+  ]
+}

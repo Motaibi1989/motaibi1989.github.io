@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+    <meta>
+        <schema_version>1.0</schema_version>
+        <profile_version>5.1.9</profile_version>
+        <updated_at>2026-11-10</updated_at>
+        <language>en</language>
+    </meta>
+
+    <identity>
+        <firstName>Mohammed</firstName>
+        <lastName>Alotaibi</lastName>
+        <years_of_experience>10+ years</years_of_experience>
+        <availability>Open to senior integration roles — Jeddah / Remote</availability>
+        <desiredJobTitle>Senior Integration Specialist</desiredJobTitle>
+        <phone_number>+966569794545</phone_number>
+        <email>motaibi1989@gmail.com</email>
+        <city>Jeddah</city>
+        <country>Saudi Arabia</country>
+        <about>Senior Integration Specialist with 10+ years of experience in enterprise integration, middleware engineering, Linux infrastructure, cloud platforms, automation, and digital transformation within aviation and enterprise IT environments. Experienced in Azure Integration Services (AIS), enterprise middleware, APIs, reverse proxy technologies, enterprise automation, production support, and high-availability systems. Strong background in enterprise architecture, operational support, workflow automation, infrastructure optimization, incident troubleshooting, release management, and enterprise modernization initiatives. Proven ability to support mission-critical enterprise systems, optimize operational workflows, and deliver scalable enterprise IT integration solutions.</about>
+        <linkedin>https://www.linkedin.com/in/motaibi1989</linkedin>
+        <github>https://github.com/Motaibi1989</github>
+        <website>https://motaibi1989.com</website>
+    </identity>
+
+    <branding>
+        <tagline>I build and run the integrations that connect aviation systems to the enterprise.</tagline>
+        <elevator_pitch>I design and deliver secure, scalable enterprise integrations that connect critical systems, automate business processes, and improve operational reliability.</elevator_pitch>
+        <focus_areas>
+            <item>Enterprise Integration</item>
+            <item>AMOS Interfaces</item>
+            <item>Backend Engineering</item>
+            <item>Middleware Architecture</item>
+            <item>API Development</item>
+            <item>DevOps</item>
+            <item>Linux Automation</item>
+        </focus_areas>
+    </branding>
+
+    <experiences>
+        <experience>
+            <id>exp-001</id>
+            <jobTitle>Senior Integration Specialist</jobTitle>
+            <employer>Saudia Technic</employer>
+            <location>Jeddah, Saudi Arabia</location>
+            <startDate>2022</startDate>
+            <endDate>Present</endDate>
+            <currentlyWorkHere>true</currentlyWorkHere>
+            <description>Lead enterprise integration and digital transformation initiatives supporting aviation operational systems, including AMOS interfacing and backend system integrations. Architect and manage enterprise integrations between core business systems, middleware platforms, Azure services, APIs, and third-party applications. Develop scalable automation workflows using Azure Integration Services (AIS), Power Automate, APIs, and SFTP integrations. Manage enterprise middleware operations, production deployment, UAT coordination, release validation, and operational readiness. Support high-availability enterprise environments and mission-critical production systems, applying DevOps principles. Develop operational dashboards, enterprise monitoring solutions, automated notifications, and reporting enhancements. Implement enterprise-grade integration security standards for APIs, SFTP workflows, and data exchange. Support cloud integration initiatives across development, testing, and production environments. Participate in CAB meetings, deployment planning, and enterprise release coordination. Build automated reporting solutions improving operational visibility and management reporting.</description>
+            <achievements>
+                <achievement>
+                    <id>wproj-001</id>
+                    <title>ESB Monitoring &amp; Reporting</title>
+                    <description>Developed operational dashboards and enterprise monitoring solutions for the Enterprise Service Bus.</description>
+                    <technologies><item>ESB</item><item>Monitoring</item><item>Reporting Dashboards</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-002</id>
+                    <title>Enterprise Workflow Automation</title>
+                    <description>Built automated reporting solutions and workflow automation improving operational visibility and management reporting.</description>
+                    <technologies><item>Power Automate</item><item>APIs</item><item>SFTP</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-003</id>
+                    <title>Emergency Alert System &amp; Reporting Dashboards</title>
+                    <description>Enterprise application development for critical alerts and visibility.</description>
+                    <technologies><item>Enterprise Applications</item><item>Dashboards</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-004</id>
+                    <title>Document Management Platform &amp; Attendance Management System</title>
+                    <description>Developed enterprise applications for document handling and attendance tracking.</description>
+                    <technologies><item>Enterprise Applications</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-005</id>
+                    <title>Mobile Enterprise Application</title>
+                    <description>Developed mobile enterprise application solutions.</description>
+                    <technologies><item>Mobile Applications</item></technologies>
+                </achievement>
+            </achievements>
+        </experience>
+
+        <experience>
+            <id>exp-002</id>
+            <jobTitle>Integration Specialist</jobTitle>
+            <employer>Saudia Aerospace Engineering Industries (SAEI)</employer>
+            <location>Jeddah, Saudi Arabia</location>
+            <startDate>2018</startDate>
+            <endDate>2022</endDate>
+            <currentlyWorkHere>false</currentlyWorkHere>
+            <description>Designed and deployed enterprise integrations using XML, MQ, JSON, APIs, and middleware transformation workflows. Developed Excel-to-XML automation engines supporting Work Order processing. Managed General Ledger Interface automation and enterprise financial synchronization workflows using Power Automate. Built automated reporting and analytics pipelines improving operational visibility. Reduced AMOS startup latency to approximately 5 seconds through performance tuning. Integrated barcode and NFC technologies for maintenance tracking and operational efficiency. Supported high-availability Linux environments for aviation operational systems. Developed Java-based automation tools and GUI-based database extraction utilities. Applied RSA and AES encryption standards for secure enterprise data transmission. Automated Boeing SFTP confirmation notifications and interface operational alert workflows. Supported AirVault (GE) and Laserfiche integrations for document digitization. Engineered BIOSTAR integration for clock-in/clock-out processes to update TAM system in real time.</description>
+            <achievements>
+                <achievement>
+                    <id>wproj-006</id>
+                    <title>BIOSTAR integration</title>
+                    <description>Engineered BIOSTAR integration for clock-in/clock-out processes to update TAM system in real time.</description>
+                    <technologies><item>BIOSTAR</item><item>TAM</item><item>API</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-007</id>
+                    <title>General Ledger Interface Automation</title>
+                    <description>Managed General Ledger Interface automation and enterprise financial synchronization workflows using Power Automate.</description>
+                    <technologies><item>Power Automate</item><item>SAP</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-008</id>
+                    <title>Boeing Modification Status Interface</title>
+                    <description>Sent modification status information to Saudia Engineering.</description>
+                    <technologies><item>Integration</item><item>Notification</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-009</id>
+                    <title>Boeing SFTP Notification Automation</title>
+                    <description>Automated Boeing SFTP confirmation notifications and interface operational alert workflows.</description>
+                    <technologies><item>SFTP</item><item>Automation</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-010</id>
+                    <title>AMOS Performance Tuning</title>
+                    <description>Reduced AMOS startup latency to approximately 5 seconds through performance tuning.</description>
+                    <technologies><item>AMOS</item><item>Performance Tuning</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-011</id>
+                    <title>AirVault (GE) &amp; Laserfiche Integrations</title>
+                    <description>Supported AirVault (GE) and Laserfiche integrations for document digitization.</description>
+                    <technologies><item>AirVault</item><item>Laserfiche</item></technologies>
+                </achievement>
+            </achievements>
+        </experience>
+
+        <experience>
+            <id>exp-003</id>
+            <jobTitle>Systems Administrator</jobTitle>
+            <employer>Saudia Aerospace Engineering Industries (SAEI)</employer>
+            <location>Jeddah, Saudi Arabia</location>
+            <startDate>2014</startDate>
+            <endDate>2018</endDate>
+            <currentlyWorkHere>false</currentlyWorkHere>
+            <description>Managed Linux and Windows enterprise servers supporting operational environments. Engineered reverse proxy platforms for secure enterprise application delivery. Configured Microsoft Azure infrastructure and virtualization platforms including VMware, Hyper-V, and QEMU. Managed Active Directory synchronization, infrastructure monitoring, and operational maintenance. Supported disaster recovery planning, backup operations, and infrastructure optimization. Developed shell scripts for automation, monitoring, and operational reporting. Supported SSL certificate deployment, renewal, and HTTPS validation. Managed reverse proxy access logs, error logs, monitoring, and troubleshooting.</description>
+            <achievements>
+                <achievement>
+                    <id>wproj-012</id>
+                    <title>Reverse Proxy Platform</title>
+                    <description>Engineered reverse proxy platforms for secure enterprise application delivery.</description>
+                    <technologies><item>Linux</item><item>Nginx</item><item>SSL/TLS</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-013</id>
+                    <title>ServerMonitor &amp; QRCode Application</title>
+                    <description>Infrastructure monitoring and application utilities.</description>
+                    <technologies><item>Linux</item><item>Monitoring</item></technologies>
+                </achievement>
+                <achievement>
+                    <id>wproj-014</id>
+                    <title>Enterprise Scheduling Automation</title>
+                    <description>Automated enterprise scheduling and cron jobs.</description>
+                    <technologies><item>Linux</item><item>Automation</item></technologies>
+                </achievement>
+            </achievements>
+        </experience>
+
+        <experience>
+            <id>exp-004</id>
+            <jobTitle>Junior Systems Administrator</jobTitle>
+            <employer>Saudia Aerospace Engineering Industries (SAEI)</employer>
+            <location>Jeddah, Saudi Arabia</location>
+            <startDate>2013</startDate>
+            <endDate>2014</endDate>
+            <currentlyWorkHere>false</currentlyWorkHere>
+            <description>Administered AMOS user accounts, cron jobs, and enterprise printing services. Supported technical documentation systems for operational manuals. Assisted with Linux administration, troubleshooting, and operational support. Monitored scheduled jobs, enterprise services, and operational support environments.</description>
+            <achievements />
+        </experience>
+    </experiences>
+
+    <education>
+        <item>
+            <institution>King Abdulaziz University</institution>
+            <location>Jeddah, Saudi Arabia</location>
+            <degree>Bachelor of Information Technology</degree>
+            <stillEnrolled>false</stillEnrolled>
+            <description>GPA: 4.47 / 5.00</description>
+        </item>
+    </education>
+
+    <skills>
+        <items>
+            <item>Azure Integration Services (AIS)</item>
+            <item>Enterprise Service Bus (ESB)</item>
+            <item>REST/SOAP APIs</item>
+            <item>XML</item>
+            <item>JSON/MQ</item>
+            <item>SFTP Integration</item>
+            <item>Power Automate</item>
+            <item>API Governance</item>
+            <item>BIOSTAR Integration</item>
+            <item>Enterprise Application Integration</item>
+            <item>Linux Administration</item>
+            <item>Windows Server</item>
+            <item>Microsoft Azure</item>
+            <item>AWS</item>
+            <item>VMware</item>
+            <item>Hyper-V</item>
+            <item>QEMU</item>
+            <item>Reverse Proxy Platforms</item>
+            <item>Active Directory</item>
+            <item>DNS Management</item>
+            <item>Disaster Recovery</item>
+            <item>High Availability</item>
+            <item>Infrastructure Hardening</item>
+            <item>Java</item>
+            <item>PHP</item>
+            <item>JavaScript</item>
+            <item>PowerShell</item>
+            <item>Shell Scripting</item>
+            <item>HTML/CSS</item>
+            <item>Free Pascal</item>
+            <item>Workflow Automation</item>
+            <item>Reporting Automation</item>
+            <item>Enterprise Utilities Development</item>
+            <item>MySQL</item>
+            <item>RSA Encryption</item>
+            <item>AES Encryption</item>
+            <item>Security Validation</item>
+            <item>Enterprise Security Standards</item>
+            <item>Infrastructure Security</item>
+            <item>Networking Fundamentals</item>
+            <item>ERP Systems</item>
+            <item>MAXIMO</item>
+            <item>Power BI</item>
+        </items>
+    </skills>
+
+    <languages>
+        <languageEntry><language>Arabic</language><level>Native</level></languageEntry>
+        <languageEntry><language>English</language><level>Professional Working</level></languageEntry>
+    </languages>
+
+    <certifications>
+        <item>Microsoft Operations Analyst (2025)</item>
+        <item>PMP (35 Training Hours, 2024)</item>
+        <item>Enterprise Linux Administration</item>
+        <item>Cloud Infrastructure &amp; Virtualization</item>
+        <item>Networking Fundamentals</item>
+        <item>ITIL Foundation</item>
+    </certifications>
+
+    <projects>
+        <project>
+            <id>pproj-001</id>
+            <name>Nginx Reverse Proxy</name>
+            <description>Linux-based reverse proxy for HTTP/HTTPS traffic with SSL/TLS and access logging.</description>
+            <technologies><item>Linux</item><item>Nginx</item><item>SSL/TLS</item></technologies>
+            <repository_url>https://github.com/Motaibi1989/Nginx-Reverse-Proxy</repository_url>
+        </project>
+        <project>
+            <id>pproj-002</id>
+            <name>PCInfo Utility</name>
+            <description>Free Pascal desktop utility for retrieving hardware, software, and OS information.</description>
+            <technologies><item>Free Pascal</item><item>Windows</item></technologies>
+            <repository_url>https://github.com/Motaibi1989/pcinfo</repository_url>
+        </project>
+        <project>
+            <id>pproj-003</id>
+            <name>FreePascal</name>
+            <description>Free Pascal / Lazarus utilities including ScanFolder.</description>
+            <technologies><item>Free Pascal</item><item>Lazarus</item></technologies>
+            <repository_url>https://github.com/Motaibi1989/FreePascal</repository_url>
+        </project>
+        <project>
+            <id>pproj-004</id>
+            <name>linuxosar</name>
+            <description>Linux documentation and notes in Arabic.</description>
+            <technologies><item>Linux</item></technologies>
+            <repository_url>https://github.com/Motaibi1989/linuxosar</repository_url>
+        </project>
+    </projects>
+</profile>
